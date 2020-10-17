@@ -9,3 +9,4 @@ Simplify (using one string to store and update the equation)
 Method: finding the first ')' 
 - removing brackets 
 - getting standardized form
+Solving for the roots
