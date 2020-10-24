@@ -1,22 +1,21 @@
-public class Checker {
+public class InputValidator{
 
-    public boolean check(String[] exps) {
-
-        
+    public boolean validate(String[] exps) {
         for (String e : exps) {
 
             String[] exp = e.split("");
-            if (!checkBrackets(exp)) {
+            if (!bracketsValid(exp)) {
                 return false;
             }
-            if(!checkOperators(exp)){
-
+            if(!operatorsValid(exp)){
+                return false;
             }
         }
+        return true;
     }
 
-    private boolean checkOperators(String[] exp) {
-        if(exp[0].matches("[+\\-*/^]+")||exp[exp.length-1].matches("[+\\-*/^]+")){
+    private boolean operatorsValid(String[] exp) {
+        if(exp[0].matches("[*/^]+")||exp[exp.length-1].matches("[+\\-*/^]+")){
             return false;
         }
         for(int i = 1 ; i<exp.length-1; i++){
@@ -32,7 +31,7 @@ public class Checker {
         return true;
     }
 
-    public boolean checkBrackets(String[] exp) {
+    public boolean bracketsValid(String[] exp) {
         int counter = 0;
         for (String e : exp) {
             if (e.equals("(")) {
@@ -63,4 +62,4 @@ public class Checker {
         return false;
     }
 }
-}
+
