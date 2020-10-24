@@ -1,3 +1,8 @@
+package InputValidation;
+
+import java.util.ArrayList;
+import java.util.Stack;
+
 public class InputValidator{
 
     public boolean validate(String[] exps) {
@@ -32,19 +37,48 @@ public class InputValidator{
     }
 
     public boolean bracketsValid(String[] exp) {
-        int counter = 0;
+        Stack<String> stack = new Stack<>() ; 
         for (String e : exp) {
-            if (e.equals("(")) {
-                counter++;
+            if (e.matches("[({\\[]+")) {
+                stack.push(e);
             } else if (e.equals(")")) {
-                counter--;
+            	if(stack.isEmpty()) {
+            		return false;
+            	}
+                if(stack.peek().equals("(")) {
+                	stack.pop();
+                }else {
+                	return false;
+                }
+                	
+            }else if(e.equals("}")) {
+            	if(stack.isEmpty()) {
+            		return false;
+            	}
+            	if(stack.peek().equals("{")) {
+                	stack.pop();
+                }else {
+                	return false;
+                }
+            	
+            }else if(e.equals("]")) {
+            	if(stack.isEmpty()) {
+            		return false;
+            	}
+            	if(stack.peek().equals("[")) {
+                	stack.pop();
+                }else {
+                	return false;
+                }
             }
         }
-        if (counter != 0) {
+        if (!stack.empty()) {
             return false;
         }
         return true;
     }
+    
+    
     public int checkDegree(char[] exp){
         int degree=0;
         for(int i=0;i<exp.length-1;i++){
