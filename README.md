@@ -10,3 +10,13 @@ Method: finding the first ')'
 - removing brackets 
 - getting standardized form
 Solving for the roots
+
+calc - Yash 
+to finish -3x+2x, 3x^2-2x^2, qudratic as well
+
+multi func - shrivatsa
+- 3+(x+1)
+- 3(x-2)+1
+- (x+2)3+1
+- (x+2)(x-3)
+- (x-1)(x-3)(x+2)
