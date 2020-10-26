@@ -19,7 +19,7 @@ public class InputValidator{
         return true;
     }
 
-    private boolean operatorsValid(String[] exp) {
+    public boolean operatorsValid(String[] exp) {
         if(exp[0].matches("[*/^]+")||exp[exp.length-1].matches("[+\\-*/^]+")){
             return false;
         }
