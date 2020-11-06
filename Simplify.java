@@ -27,10 +27,14 @@ public class Simplify{
     public String calc(String s){
         ArrayList<String>[] terms = split(s);
 
-        int sum = 0;
+        return calc(terms);
+    }
+
+    public String calc(ArrayList<String>[] terms){
+        double sum = 0;
         String fin="";
         for(int i=0;i<terms[0].size();i++){
-            sum+=Integer.parseInt(terms[0].get(i));
+            sum+=Double.parseDouble(terms[0].get(i));
         }
         
         for(int i = 0;i<terms[1].size();i++){
@@ -41,13 +45,29 @@ public class Simplify{
         else
             fin+='+'+sum;
 
-        
         return fin;
+    }
+
+    public String calc(ArrayList<String> terms){
+        int c;
+        double sum=0;
+        for(int i=0;i<=3;i++){
+            for(int j=0;j<terms.size();j++){
+                c=0;
+                sum=0;
+                //if()
+                if(getPower(terms.get(j))== i){
+                    c++;
+                    sum+=getCoefficient(terms.get(j));
+                }
+
+            }
+        }
 
     }
 
 
-    public void multiply(String a, String b){
+    public String multiply(String a, String b){
         
         ArrayList<String>[] termsa = split(a);
         ArrayList<String>[] termsb = split(b);
@@ -58,20 +78,20 @@ public class Simplify{
 
         for(int i =0;i<termsa[0].size();i++){
             for(int j=0;j<termsb[0].size();j++){
-                int product = (Integer.parseInt(termsa[0].get(i)))*(Integer.parseInt(termsb[0].get(j)));
+                double product = (Double.parseDouble(termsa[0].get(i)))*(Double.parseDouble(termsb[0].get(j)));
                 termsfin[0].add(product+"");
             }   
         }
 
         for(int i=0;i<termsa[0].size();i++){
             for(int j=0;j<termsb[1].size();j++){
-                termsfin[1].add(multiplyTerm(Integer.parseInt(termsa[0].get(i)),termsb[1].get(j)));
+                termsfin[1].add(multiplyTerm(Double.parseDouble(termsa[0].get(i)),termsb[1].get(j)));
             }
         }
 
         for(int i=0;i<termsa[1].size();i++){
             for(int j=0;j<termsb[0].size();j++){
-                termsfin[1].add(multiplyTerm(Integer.parseInt(termsb[0].get(j)),termsa[1].get(i)));
+                termsfin[1].add(multiplyTerm(Double.parseDouble(termsb[0].get(j)),termsa[1].get(i)));
             }
         }
 
@@ -81,13 +101,13 @@ public class Simplify{
             }
         }
 
-        calc(termsfin);
+        return calc(termsfin);
 
     }
 
     public String multiplyTerm(String a, String b){ //x*x^2, 2x*23x, x^1*x^2
-        int coeffa = getCoefficient(a);
-        int coeffb = getCoefficient(b);
+        double coeffa = getCoefficient(a);
+        double coeffb = getCoefficient(b);
 
         String vara = getVar(a);
         String varb = getVar(b);
@@ -96,8 +116,8 @@ public class Simplify{
         
     }
 
-    public String multiplyTerm(int a, String b){ //2*23x, x*3, 5*56x^2
-        int coeff = getCoefficient(b);
+    public String multiplyTerm(Double a, String b){ //2*23x, x*3, 5*56x^2
+        double coeff = getCoefficient(b);
         return (a*coeff)+getVar(b);
     }
 
@@ -107,9 +127,9 @@ public class Simplify{
         return Integer.parseInt(a.substring(a.length()-1));
     }
 
-    public int getCoefficient(String a){
+    public double getCoefficient(String a){
 
-        String coefficient=""; int c=1;
+        String coefficient=""; double c=1;
         for(int i =0;i<a.length();i++){
             char x=a.charAt(i);
             if(x>='0' && x<='9'){
@@ -118,7 +138,7 @@ public class Simplify{
             else{
                 if(coefficient=="")
                     return c;
-                c = Integer.parseInt(coefficient);
+                c = Double.parseDouble(coefficient);
                 return c;
             }
         }
