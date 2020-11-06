@@ -20,3 +20,10 @@ multi func - shrivatsa
 - (x+2)3+1
 - (x+2)(x-3)
 - (x-1)(x-3)(x+2)
+
+
+Term -> coefficient, var and power 
+Equation -> ArrayList<Term>
+
+ArrayList<Equation>
+Equation -> 2 Arraylist - one variables and one constant
