@@ -1,11 +1,17 @@
-package InputValidation;
+package input;
 
 import java.util.ArrayList;
 import java.util.Stack;
 
 public class InputValidator{
+private static InputValidator instance = new InputValidator();
 
-    public boolean validate(String[] exps) {
+	
+	public static InputValidator getInstance() {
+		return instance;
+		
+	}
+    public boolean isValid(String[] exps) {
         for (String e : exps) {
 
             String[] exp = e.split("");
