@@ -30,7 +30,10 @@ public class Simplify{
         return calc(terms);
     }
 
+    //MERGE CALC AND CALCULATE
+    //IMPORTANT
     public String calc(ArrayList<String>[] terms){
+
         double sum = 0;
         String fin="";
         for(int i=0;i<terms[0].size();i++){
@@ -47,24 +50,107 @@ public class Simplify{
 
         return fin;
     }
+    
+    public String calculate(ArrayList<String> terms){
+        correctPower(terms);
+        simplifyTerms(terms);
 
-    public String calc(ArrayList<String> terms){
-        int c;
-        double sum=0;
-        for(int i=0;i<=3;i++){
-            for(int j=0;j<terms.size();j++){
-                c=0;
-                sum=0;
-                //if()
-                if(getPower(terms.get(j))== i){
-                    c++;
+        String result="";
+        int i=0;
+        while(!terms.isEmpty()){
+            double sum=0;
+            String temp = terms.get(i);
+            terms.remove(i);
+            sum+=getCoefficient(temp);
+            for(int j =terms.size()-1; j<=0;j--){
+                if(getVar(temp).equals(getVar(terms.get(j)))){
                     sum+=getCoefficient(terms.get(j));
+                    terms.remove(j);
                 }
+            }
+            result+=(Double.toString(sum)+getVar(temp));
+        }
+        return result;
+    }
 
+
+    
+    public void correctPower(ArrayList<String> terms){//for taking care of ^0 & ^1
+        for(int l=0;l<terms.size();l++){
+            String term = terms.get(l);
+            String[] subterms = term.split("*");
+            for(int i = 0;i<subterms.length;i++){
+                for(int j=0;j<subterms[i].length();j++){
+                    if(subterms[i].charAt(j)=='^'&&subterms[i].charAt(j+1)=='0'){
+                        
+                        if((subterms[i].charAt(0)>='0'&&subterms[i].charAt(0)<='9'&&subterms[i].length()==3)){
+                            subterms[i]="1";
+                        }
+
+                        else if(subterms[i].length()>3){
+                            subterms[i]=subterms[i].substring(0,subterms[i].length()-3);
+                        }
+                    }
+
+                    else if(subterms[i].charAt(j)=='^'&&subterms[i].charAt(j+1)=='1'){
+                        subterms[i]=subterms[i].substring(0,subterms[i].length()-2);
+                    }
+                }
+            }
+
+            String newTerm = "";
+            for(int i=0;i<subterms.length;i++){
+                newTerm+=subterms[i]+'*';
+            }
+            newTerm=newTerm.substring(0, newTerm.length()-1);
+            terms.set(l,newTerm);
+        }
+    }
+
+    //TAKE CARE OF CONSTANTS WITH POWERS
+    public String constantPower(){
+        
+    }    
+
+    public void simplifyTerms(ArrayList<String> terms){//for taking care of the multiply sign in the terms
+
+        for(int i=0;i<terms.size();i++){
+            String term=terms.get(i);
+            String[] subterms = term.split("*");
+
+            for(int k=0;k<subterms.length-1;k++){
+                if()
             }
         }
 
     }
+
+    public boolean isConstant(String term){
+        if(term.matches("[a-zA-Z]+")){
+            return false;
+        }
+        return true;
+    }
+
+
+    /*public int varCount(ArrayList<String> terms, String var){
+        int count =0;
+        for(String term: terms){
+            if(getVar(term).equals(var)){
+                count ++;
+            }
+        }
+        return count;
+    }
+
+    public boolean isSimplified(ArrayList<String> terms){
+        for(String term: terms){
+            if(varCount(terms, getVar(term))>1){
+                return false;
+            }
+        }
+        return true;
+    }*/
 
 
     public String multiply(String a, String b){
@@ -132,7 +218,7 @@ public class Simplify{
         String coefficient=""; double c=1;
         for(int i =0;i<a.length();i++){
             char x=a.charAt(i);
-            if(x>='0' && x<='9'){
+            if(x>='0'&& x=='.' && x<='9'){
                 coefficient+=x;
             }
             else{
@@ -149,7 +235,7 @@ public class Simplify{
         String var="";
         for(int i=0;i<a.length();i++){
             char x = a.charAt(i);
-            if(x>='0' && x<='9'){
+            if(x>='0' &&x!='.'&& x<='9'){
                 var=a.substring(i+1);
             }
             else{
@@ -173,7 +259,7 @@ public class Simplify{
         sign=s.charAt(0); 
         char newsign;
         for(int i=0;i<s.length();i++){ //+
-            if(s.charAt(i)!='+'||s.charAt(i)!='-'||s.charAt(i)!='*'||s.charAt(i)!='/'){
+            if(s.charAt(i)!='+'||s.charAt(i)!='-'){
                 temp+=s.charAt(i); //temp=1
             }
             else{

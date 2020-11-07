@@ -22,8 +22,14 @@ multi func - shrivatsa
 - (x-1)(x-3)(x+2)
 
 
+Input Conditions:
+- no '/' in the input
+- 
+
 Term -> coefficient, var and power 
 Equation -> ArrayList<Term>
 
 ArrayList<Equation>
 Equation -> 2 Arraylist - one variables and one constant
+
+Simplify-> String calculate(ArrayList<String> terms) NEEDS TO BE CHECKED
