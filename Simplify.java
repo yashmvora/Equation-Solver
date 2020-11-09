@@ -107,7 +107,6 @@ public class Simplify{
     }
 
     //take care of constants with power
-    //see if you have to CHANGE it so that it just MODIFIES THE ARRAYLIST DIRECTLY instead of doing each term
     public String removeConstantPower(String term){
         double a = 0.0;
         for(int i=0;i<term.length();i++){
