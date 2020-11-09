@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Simplify{
 
-    public static void simplify(String s){
+    public void simplify(String s){
         int cBracketPos=0, oBracketPos = 0;
 
         for(int i=0;i<s.length();i++){
@@ -40,17 +40,16 @@ public class Simplify{
             sum+=Double.parseDouble(terms[0].get(i));
         }
         
-        for(int i = 0;i<terms[1].size();i++){
-            fin+=terms[1].get(i);
-        }
+        
         if(sum<0)
             fin += sum;
         else
             fin+='+'+sum;
 
-        return fin;
+        return calculate(terms[1])+fin;
     }
     
+    //for addition of terms with variables
     public String calculate(ArrayList<String> terms){ //pass terms[1]
         correctPower(terms);
         simplifyTerms(terms);
