@@ -108,7 +108,7 @@ public class Simplify{
 
     //take care of constants with power
     //see if you have to CHANGE it so that it just MODIFIES THE ARRAYLIST DIRECTLY instead of doing each term
-    public String constantPower(String term){
+    public String removeConstantPower(String term){
         double a = 0.0;
         for(int i=0;i<term.length();i++){
             if(term.charAt(i)=='^'){
@@ -273,8 +273,6 @@ public class Simplify{
         return var;
     }
 
-    // change the integer to double
-    //change the way of checking the constant so that constants can have powers
     public ArrayList<String>[] split(String s){
         ArrayList<String>[] terms = new ArrayList[2]; //+x-1
         terms[0]=new ArrayList<String>(); //constants
@@ -293,11 +291,12 @@ public class Simplify{
             }
             else{
                 try{
+                    temp = removeConstantPower(temp);
                     newsign=s.charAt(i); //+
                     if(i==0){
                         continue;
                     }
-                    int term = Integer.parseInt(temp);
+                    double term = Double.parseDouble(temp);
                     terms[0].add(sign+temp);
                     sign=newsign; //-
                     temp="";
