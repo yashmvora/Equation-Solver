@@ -31,7 +31,7 @@ public class Simplify{
     }
 
     //MERGE CALC AND CALCULATE
-    //IMPORTANT
+    //IMPORTANT: PASS terms[1] in calculate, correctPower and simplifyTerms
     public String calc(ArrayList<String>[] terms){
 
         double sum = 0;
@@ -51,7 +51,7 @@ public class Simplify{
         return fin;
     }
     
-    public String calculate(ArrayList<String> terms){
+    public String calculate(ArrayList<String> terms){ //pass terms[1]
         correctPower(terms);
         simplifyTerms(terms);
 
@@ -107,9 +107,21 @@ public class Simplify{
         }
     }
 
-    //TAKE CARE OF CONSTANTS WITH POWERS
-    public String constantPower(){
-        
+    //take care of constants with power
+    //see if you have to CHANGE it so that it just MODIFIES THE ARRAYLIST DIRECTLY instead of doing each term
+    public String constantPower(String term){
+        double a = 0.0;
+        for(int i=0;i<term.length();i++){
+            if(term.charAt(i)=='^'){
+                if(isConstant(term.substring(0,i))){
+                    a = Double.parseDouble(term.substring(0,i));
+                    double b = Math.pow(a,Integer.parseInt(term.substring(i,i+1)));
+                    return (term.substring(i).length()>2)?b+term.substring(i+2):b+"";
+                }
+
+            }
+        }
+        return term;
     }    
 
     public void simplifyTerms(ArrayList<String> terms){//for taking care of the multiply sign in the terms
@@ -118,9 +130,26 @@ public class Simplify{
             String term=terms.get(i);
             String[] subterms = term.split("*");
 
-            for(int k=0;k<subterms.length-1;k++){
-                if()
+            String temp = "1.0";
+            for(int j=0;j<subterms.length-1;j++){
+                if(isConstant(subterms[j])&&isConstant(temp)){
+                    double a = Double.parseDouble(subterms[j]);
+                    double b = Double.parseDouble(temp);
+                    temp=Double.toString(a*b);
+                }
+                else if(isConstant(subterms[j])&&!isConstant(temp)){
+                    double a = Double.parseDouble(subterms[j]);
+                    temp = multiplyTerm(a,temp);
+                }
+                else if(!isConstant(subterms[j])&& isConstant(temp)){
+                    double b = Double.parseDouble(temp);
+                    temp = multiplyTerm(b, subterms[j]);
+                }
+                else{
+                    temp = multiplyTerm(subterms[j],temp);
+                }
             }
+            terms.set(i, temp);
         }
 
     }
@@ -202,7 +231,7 @@ public class Simplify{
         
     }
 
-    public String multiplyTerm(Double a, String b){ //2*23x, x*3, 5*56x^2
+    public String multiplyTerm(double a, String b){ //2*23x, x*3, 5*56x^2
         double coeff = getCoefficient(b);
         return (a*coeff)+getVar(b);
     }
@@ -245,7 +274,8 @@ public class Simplify{
         return var;
     }
 
-
+    // change the integer to double
+    //change the way of checking the constant so that constants can have powers
     public ArrayList<String>[] split(String s){
         ArrayList<String>[] terms = new ArrayList[2]; //+x-1
         terms[0]=new ArrayList<String>(); //constants
