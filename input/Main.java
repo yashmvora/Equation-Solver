@@ -1,3 +1,4 @@
+package input;
 import java.util.*;
 
 public class Main {
@@ -5,7 +6,10 @@ public class Main {
 
         Scanner in = new Scanner(System.in);
 		
-		System.out.print("Please input the type of equation: ");
-		String equaType = in.nextLine();
+		System.out.print(" ");
+		String input = in.nextLine();
+		in.close();
+		InputHandler.getInstance().handleInput(input);
+		
     }
 }
