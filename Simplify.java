@@ -25,7 +25,7 @@ public class Simplify{
     }
 
     public String calc(String s){
-        ArrayList<String>[] terms = split(s);
+        ArrayList<String>[] terms = splitIntoTerms(s);
 
         return calc(terms);
     }
@@ -182,8 +182,8 @@ public class Simplify{
 
     public String multiply(String a, String b){
         
-        ArrayList<String>[] termsa = split(a);
-        ArrayList<String>[] termsb = split(b);
+        ArrayList<String>[] termsa = splitIntoTerms(a);
+        ArrayList<String>[] termsb = splitIntoTerms(b);
 
         ArrayList<String>[] termsfin = new ArrayList[2];
         termsfin[0]=new ArrayList<String>();
@@ -272,7 +272,7 @@ public class Simplify{
         return var;
     }
 
-    public ArrayList<String>[] split(String s){
+    public ArrayList<String>[] splitIntoTerms(String s){
         ArrayList<String>[] terms = new ArrayList[2]; //+x-1
         terms[0]=new ArrayList<String>(); //constants
         terms[1] = new ArrayList<String>(); //variables
