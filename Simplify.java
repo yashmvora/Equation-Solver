@@ -24,15 +24,14 @@ public class Simplify{
         }
     }
 
-    public String calc(String s){
+    public String calc(String s){//takes simplified terms, sends to calc(ArrayList[]......) after splitting into terms
         ArrayList<String>[] terms = splitIntoTerms(s);
 
         return calc(terms);
     }
 
-    //MERGE CALC AND CALCULATE
     //IMPORTANT: PASS terms[1] in calculate, correctPower and simplifyTerms
-    public String calc(ArrayList<String>[] terms){
+    public String calc(ArrayList<String>[] terms){//handles the constant terms addition/subtraction and calls calculate(Array....), returns simplified string
 
         double sum = 0;
         String fin="";
@@ -74,7 +73,7 @@ public class Simplify{
 
 
     
-    public void correctPower(ArrayList<String> terms){//for taking care of ^0 & ^1
+    public void correctPower(ArrayList<String> terms){//for taking care of ^0 & ^1 in variables, is called in calc to make sure the terms are appropriate for addition
         for(int l=0;l<terms.size();l++){
             String term = terms.get(l);
             String[] subterms = term.split("*");
@@ -123,6 +122,7 @@ public class Simplify{
     }    
 
     public void simplifyTerms(ArrayList<String> terms){//for taking care of the multiply sign in the terms
+    	//is called in calc to take care so that terms are appropriate for addition
 
         for(int i=0;i<terms.size();i++){
             String term=terms.get(i);
@@ -181,7 +181,7 @@ public class Simplify{
 
 
     public String multiply(String a, String b){
-        
+        //takes two expressions, multiplies them, returns a string
         ArrayList<String>[] termsa = splitIntoTerms(a);
         ArrayList<String>[] termsb = splitIntoTerms(b);
 
@@ -219,6 +219,7 @@ public class Simplify{
     }
 
     public String multiplyTerm(String a, String b){ //x*x^2, 2x*23x, x^1*x^2
+    	//pass both terms separately in this, get the new term
         double coeffa = getCoefficient(a);
         double coeffb = getCoefficient(b);
 
@@ -230,6 +231,7 @@ public class Simplify{
     }
 
     public String multiplyTerm(double a, String b){ //2*23x, x*3, 5*56x^2
+    	//constant multiplied by variable term
         double coeff = getCoefficient(b);
         return (a*coeff)+getVar(b);
     }

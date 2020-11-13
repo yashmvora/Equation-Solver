@@ -1,3 +1,5 @@
+import equation.Equation;
+
 public class SimultaneousEquation {
     
     ArrayList<Equation> eqs;

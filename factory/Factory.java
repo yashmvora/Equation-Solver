@@ -1,5 +1,24 @@
 package factory;
 
-public interface Factory {
-	public Factory factoryMethod();
+import java.util.ArrayList;
+
+import equation.*;
+
+public abstract class Factory {
+	public abstract Equation factoryMethod(String input);
+	
+	public ArrayList<Term> simplify(String input) {
+		ArrayList<Term> result = new ArrayList<>();
+		String temp = Simplify.getInstance().simplify(input);
+		ArrayList<String>[] strTerms = Simplify.getInstance().splitIntoTerms(input);
+		for(int i =0; i<strTerms[1].size();i++) {
+			result.add(new VariableTerm(strTerms[1].get(i)));
+		}
+		if(strTerms[0].isEmpty()) {
+			strTerms[0].add("0.0");
+		}
+		result.add(new ConstantTerm(strTerms[0].get(0)));
+		return result;
+	}
 }
+
