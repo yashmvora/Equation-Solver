@@ -1,7 +1,6 @@
 package factory;
 
-
-public class factoryCubic implements Factory {
+public class factorySimulteneous implements Factory {
 
 	@Override
 	public Factory factoryMethod() {
