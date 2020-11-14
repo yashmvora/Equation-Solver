@@ -1,5 +1,10 @@
 package command;
 
+import equation.CubicEquation;
+import equation.QuadraticEquation;
+import factory.factoryCubic;
+import factory.factoryQuadratic;
+
 public class cmdSolveQuadratic implements Command {
 	
 	private static cmdSolveQuadratic instance = new cmdSolveQuadratic();
@@ -10,7 +15,7 @@ public class cmdSolveQuadratic implements Command {
 
 	@Override
 	public void execute(String[] args) {
-		// TODO Auto-generated method stub
+		QuadraticEquation eq = (QuadraticEquation) factoryQuadratic.getInstance().factoryMethod(args[1]);
 
 	}
 	

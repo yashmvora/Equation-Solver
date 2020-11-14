@@ -1,5 +1,10 @@
 package command;
 
+import equation.QuadraticEquation;
+import equation.SimultaneousEquation;
+import factory.factorySimulteneous;
+import input.InputValidator;
+
 public class cmdSolveLinear implements Command {
 	
 	private static cmdSolveLinear instance = new cmdSolveLinear();
@@ -10,7 +15,8 @@ public class cmdSolveLinear implements Command {
 
 	@Override
 	public void execute(String[] args) {
-		// TODO Auto-generated method stub
+		
+		SimultaneousEquation eq = factorySimulteneous.getInstance().factoryMethod(args);
 
 	}
 	

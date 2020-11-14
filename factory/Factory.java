@@ -3,8 +3,12 @@ package factory;
 import java.util.ArrayList;
 
 import equation.*;
+import simplify.Simplify;
 
 public abstract class Factory {
+	
+	
+	
 	public abstract Equation factoryMethod(String input);
 	
 	public ArrayList<Term> simplify(String input) {

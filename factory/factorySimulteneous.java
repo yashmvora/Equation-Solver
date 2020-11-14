@@ -1,13 +1,29 @@
 
 package factory;
-import equation.Equation;
+import java.util.ArrayList;
 
-public class factorySimulteneous extends Factory {
+import equation.*;
 
-	@Override
-	public Equation factoryMethod(String input) {
-		// TODO Auto-generated method stub
-		return null;
+public class factorySimulteneous{
+	
+	private static factorySimulteneous instance = new factorySimulteneous();
+
+	public static factorySimulteneous getInstance() {
+		return instance;
+	}
+
+	private factorySimulteneous() {
+	}
+
+
+	public SimultaneousEquation factoryMethod(String[]input) {
+		ArrayList<LinearEquation> result = new ArrayList<>();
+		
+		for(int i =1; i<input.length;i++) {
+			result.add((LinearEquation) factoryLinear.getInstance().factoryMethod(input[i]));
+		}
+		
+		return new SimultaneousEquation(result);
 	}
 
 }

@@ -1,5 +1,8 @@
 package command;
 
+import equation.CubicEquation;
+import factory.factoryCubic;
+
 public class cmdSolveCubic implements Command {
 	
 	private static cmdSolveCubic instance = new cmdSolveCubic();
@@ -10,8 +13,7 @@ public class cmdSolveCubic implements Command {
 
 	@Override
 	public void execute(String[] args) {
-		// TODO Auto-generated method stub
-
+		CubicEquation eq = factoryCubic.getInstance().factoryMethod(args[1]);
 	}
 	
 	public static cmdSolveCubic getInstance() {

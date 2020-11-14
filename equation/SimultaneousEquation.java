@@ -1,10 +1,12 @@
-import equation.Equation;
+package equation;
+
+import java.util.ArrayList;
 
 public class SimultaneousEquation {
     
-    ArrayList<Equation> eqs;
+    ArrayList<LinearEquation> eqs;
     
-    SimultaneousEquation (ArrayList<Equation> equations) {
+    public SimultaneousEquation (ArrayList<LinearEquation> equations) {
         eqs = equations;
     }
 

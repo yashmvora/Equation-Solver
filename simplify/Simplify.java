@@ -1,8 +1,21 @@
+package simplify;
 import java.util.ArrayList;
 
-public class Simplify{
+import factory.factoryQuadratic;
 
-    public void simplify(String s){
+public class Simplify{
+	
+	private static Simplify instance = new Simplify();
+
+	public static Simplify getInstance() {
+		return instance;
+	}
+
+	private Simplify() {
+	}
+
+
+    public String simplify(String s){
         int cBracketPos=0, oBracketPos = 0;
 
         for(int i=0;i<s.length();i++){
