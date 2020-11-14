@@ -13,7 +13,7 @@ public class cmdSolveCubic implements Command {
 
 	@Override
 	public void execute(String[] args) {
-		CubicEquation eq = factoryCubic.getInstance().factoryMethod(args[1]);
+		CubicEquation eq = (CubicEquation) factoryCubic.getInstance().factoryMethod(args[1]);
 	}
 	
 	public static cmdSolveCubic getInstance() {
