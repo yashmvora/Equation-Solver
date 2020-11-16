@@ -64,10 +64,11 @@ public class Simplify{
     //for addition of terms with variables
     public String calculate(ArrayList<String> terms[]){ //pass terms[1]
         correctPower(terms);
+        simplifyTerms(terms[1]);
 
         String result="";
         int i=0;
-        while(!terms.isEmpty()){
+        while(!terms[1].isEmpty()){
             double sum=0;
             String temp = terms[1].get(i);
             terms[1].remove(i);
