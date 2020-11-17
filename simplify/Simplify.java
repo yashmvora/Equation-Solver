@@ -344,10 +344,11 @@ public class Simplify{
                     double term = Double.parseDouble(temp);
                     terms[0].add(sign+temp);
                     sign=newsign; //-
-                    temp="";
                     
                 }catch(NumberFormatException e){
                     terms[1].add(sign+temp);
+                }
+                finally{
                     temp="";
                 }
             }
