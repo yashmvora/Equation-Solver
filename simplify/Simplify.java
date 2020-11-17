@@ -73,7 +73,7 @@ public class Simplify{
             String temp = terms[1].get(i);
             terms[1].remove(i);
             sum+=getCoefficient(temp);
-            for(int j =terms[1].size()-1; j<=0;j--){
+            for(int j =terms[1].size()-1; j>=0;j--){
                 if(getVar(temp).equals(getVar(terms[1].get(j)))){
                     sum+=getCoefficient(terms[1].get(j));
                     terms[1].remove(j);
@@ -329,10 +329,12 @@ public class Simplify{
         sign=s.charAt(0); 
         char newsign;
         for(int i=0;i<s.length();i++){ //+
-            if(s.charAt(i)!='+'||s.charAt(i)!='-'){
+            if(s.charAt(i)!='+'&&s.charAt(i)!='-'&&i!=s.length()-1){
                 temp+=s.charAt(i); //temp=1
             }
-            else{
+            else {
+                if(i==s.length()-1)
+                    temp+=s.charAt(i);
                 try{
                     temp = removeConstantPower(temp);
                     newsign=s.charAt(i); //+
@@ -352,7 +354,6 @@ public class Simplify{
         }
         return terms;
     }
-
 
     public static void main(String args[]){
       //  simplify("((x-2)(x+2) + 3)");
