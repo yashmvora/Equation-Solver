@@ -353,7 +353,7 @@ public class Simplify{
         if(s.charAt(0)!='-'&&s.charAt(0)!='+')
             s='+'+s;
         sign=s.charAt(0); 
-        char newsign;
+        char newsign = '+';
         for(int i=0;i<s.length();i++){ //+
             if(s.charAt(i)!='+'&&s.charAt(i)!='-'&&i!=s.length()-1){
                 temp+=s.charAt(i); //temp=1
@@ -370,11 +370,11 @@ public class Simplify{
                     double term = Double.parseDouble(temp);
                     terms[0].add(sign+temp);
                     sign=newsign; //-
+                    temp="";
                     
                 }catch(NumberFormatException e){
                     terms[1].add(sign+temp);
-                }
-                finally{
+                    sign=newsign;
                     temp="";
                 }
             }

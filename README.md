@@ -46,8 +46,9 @@ Bugs in Simplify:
 7. removeConstantPower is not working
 8. calc: 
      fin = '+'+sum; so the ascii code of '+' was getting added to sum
-9. splitIntoTerms cannot handle '-' sign
+9. splitIntoTerms :
+    sign = newsign was not added in the catch block, thus it could not handle - signs
 
 
 Problems left to solve:
-3. removeConstantPower is not working
+1. removeConstantPower is not working
