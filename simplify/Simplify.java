@@ -46,6 +46,8 @@ public class Simplify{
     //IMPORTANT: PASS terms[1] in calculate, correctPower and simplifyTerms
     public String calc(ArrayList<String>[] terms){//handles the constant terms addition/subtraction and calls calculate(Array....), returns simplified string
 
+        String abc = calculate(terms);
+        
         double sum = 0;
         String fin="";
         for(int i=0;i<terms[0].size();i++){
@@ -56,14 +58,16 @@ public class Simplify{
         if(sum<0)
             fin += sum;
         else
-            fin+='+'+sum;
+            fin+='+'+""+sum;
 
-        return calculate(terms)+fin;
+        return abc+fin;
+        
     }
-    
+
     //for addition of terms with variables
     public String calculate(ArrayList<String> terms[]){ //pass terms[1]
         correctPower(terms);
+        rearrange(terms);
         simplifyTerms(terms[1]);
 
         String result="";
@@ -128,6 +132,28 @@ public class Simplify{
             }
             newTerm=newTerm.substring(0, newTerm.length()-1);
             terms[1].set(l,newTerm);
+        }
+    }
+    public void rearrange(ArrayList<String>[] terms){
+        int c=0;
+        ArrayList<Integer> indices= new ArrayList();
+        for(int i=0;i<terms[1].size();i++){
+            try{
+                double temp = Double.parseDouble(terms[1].get(i));
+                indices.add(i);
+            }   catch(NumberFormatException e){
+                continue;
+            }
+        }
+        for(int i=0;i<indices.size();i++){
+            
+            terms[0].add(terms[1].get(indices.get(i)));
+            terms[1].remove(terms[1].get(indices.get(i)));
+
+            for(int j=i;j<indices.size();j++){
+                //System.out.println(indices.get(j)+"  "+terms[1].get(indices.get(i)));
+                indices.set(j,indices.get(j)-1);
+            }
         }
     }
 
