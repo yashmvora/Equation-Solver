@@ -48,7 +48,7 @@ crashes
 5. getCoefficient could not handle signs, modified it to be able to do so
     returned empty string if a term had a sign (eg -45x or +45x)
 6. splitIntoTerms did not give the last term in the expression, fixed it
-7. removeConstantPower is not working
+7. removeConstantPower is not working (does not do anything)
 8. calc: 
      fin = '+'+sum; so the ascii code of '+' was getting added to sum
 9. splitIntoTerms :
@@ -56,6 +56,11 @@ crashes
     only added terms irrespective of the sign of the term in the inputted string
 10. multiply:
     ArrayIndexOutOfBoundsException, wrote i instead of j in termsb[1].get
+11. rearrange:
+    constant terms are not getting removed from the variable array
+    term.remove(indices.get(i)) does not remove the required term for some reason
+12. correctPower: does not handle signs
+     if 
 
 
 Problems left to solve:
