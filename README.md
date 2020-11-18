@@ -48,6 +48,8 @@ Bugs in Simplify:
      fin = '+'+sum; so the ascii code of '+' was getting added to sum
 9. splitIntoTerms :
     sign = newsign was not added in the catch block, thus it could not handle - signs
+10. multiply:
+    ArrayIndexOutOfBoundsException, wrote i instead of j in a bracket
 
 
 Problems left to solve:

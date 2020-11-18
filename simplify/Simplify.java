@@ -265,7 +265,7 @@ public class Simplify{
 
         for(int i =0;i<termsa[1].size();i++){
             for(int j=0;j<termsb[1].size();j++){
-                termsfin[1].add(multiplyTerm(termsa[1].get(i),termsb[1].get(i)));
+                termsfin[1].add(multiplyTerm(termsa[1].get(i),termsb[1].get(j)));
             }
         }
 
