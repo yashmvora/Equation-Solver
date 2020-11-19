@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 import equation.*;
 
-public class factorySimulteneous{
+public class factorySimultaneous{
 	
-	private static factorySimulteneous instance = new factorySimulteneous();
+	private static factorySimultaneous instance = new factorySimultaneous();
 
-	public static factorySimulteneous getInstance() {
+	public static factorySimultaneous getInstance() {
 		return instance;
 	}
 
-	private factorySimulteneous() {
+	private factorySimultaneous() {
 	}
 
 

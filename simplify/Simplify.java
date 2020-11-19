@@ -15,7 +15,7 @@ public class Simplify{
 	}
 
 
-   /* public String simplify(String s){
+    public String simplify(String s){
         int cBracketPos=0, oBracketPos = 0;
 
         for(int i=0;i<s.length();i++){
@@ -31,11 +31,12 @@ public class Simplify{
 
                 }
 
-                s = s.substring(0,oBracketPos)+calc(temp)+s.substring
+                s = s.substring(0,oBracketPos)+calc(temp);
             }
             //System.out.println(oBracketPos+" "+ cBracketPos);
         }
-    }*/
+        return s;
+    }
 
     public String calc(String s){//takes simplified terms, sends to calc(ArrayList[]......) after splitting into terms
         ArrayList<String>[] terms = splitIntoTerms(s);
@@ -388,7 +389,7 @@ public class Simplify{
       terms.add("+x^2");
       terms.add("-x^0");
       terms.add("-x^1");
-      Simplify.getInstance().correctPower(terms);
+      instance.simplifyTerms(terms);
 
     }
 }
