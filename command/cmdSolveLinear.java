@@ -2,7 +2,7 @@ package command;
 
 import equation.QuadraticEquation;
 import equation.SimultaneousEquation;
-import factory.factorySimulteneous;
+import factory.factorySimultaneous;
 import input.InputValidator;
 
 public class cmdSolveLinear implements Command {
@@ -16,7 +16,7 @@ public class cmdSolveLinear implements Command {
 	@Override
 	public void execute(String[] args) {
 		
-		SimultaneousEquation eq = factorySimulteneous.getInstance().factoryMethod(args);
+		SimultaneousEquation eq = factorySimultaneous.getInstance().factoryMethod(args);
 
 	}
 	

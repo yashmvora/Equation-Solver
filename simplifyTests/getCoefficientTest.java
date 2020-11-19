@@ -32,13 +32,25 @@ public class getCoefficientTest {
 	@Test
 	void test5() {
 		Simplify sim = Simplify.getInstance();
-		double result = sim.getCoefficient("x");
+		double result = sim.getCoefficient("+x");
 		assertEquals(1.0, result);
 	}
 	@Test
 	void test6() {
 		Simplify sim = Simplify.getInstance();
+		double result = sim.getCoefficient("x");
+		assertEquals(1.0, result);
+	}
+	@Test
+	void test7() {
+		Simplify sim = Simplify.getInstance();
 		double result = sim.getCoefficient("-x");
 		assertEquals(-1.0, result);
+	}
+	@Test
+	void test8() {
+		Simplify sim = Simplify.getInstance();
+		double result = sim.getCoefficient("");
+		assertEquals(1.0, result);
 	}
 }

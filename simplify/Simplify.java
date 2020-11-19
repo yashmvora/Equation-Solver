@@ -1,7 +1,6 @@
 package simplify;
 import java.util.ArrayList;
 
-import factory.factoryQuadratic;
 
 public class Simplify{
 	
@@ -13,7 +12,6 @@ public class Simplify{
 
 	private Simplify() {
 	}
-
 
     public String simplify(String s){
         int cBracketPos=0, oBracketPos = 0;
