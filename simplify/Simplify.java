@@ -68,7 +68,6 @@ public class Simplify{
     //for addition of terms with variables
     public String calculate(ArrayList<String> terms[]){ //pass terms[1]
         correctPower(terms);
-        rearrange(terms);
         simplifyTerms(terms[1]);
 
         String result="";
@@ -90,7 +89,7 @@ public class Simplify{
     }
 
 
-    public void correctPower(ArrayList<String> terms[]){//for taking care of ^0 & ^1 in variables, is called in calc to make sure the terms are appropriate for addition
+    public ArrayList<String>[] correctPower(ArrayList<String> terms[]){//for taking care of ^0 & ^1 in variables, is called in calc to make sure the terms are appropriate for addition
         for(int l=0;l<terms[1].size();l++){
             String term = terms[1].get(l);
             String[] subterms = term.split("\\*");
@@ -134,6 +133,8 @@ public class Simplify{
             newTerm=newTerm.substring(0, newTerm.length()-1);
             terms[1].set(l,newTerm);
         }
+        rearrange(terms);
+        return terms;
     }
     public void rearrange(ArrayList<String>[] terms){
         int c=0;
@@ -323,7 +324,7 @@ public class Simplify{
         String var="";
         for(int i=0;i<a.length();i++){
             char x = a.charAt(i);
-            if((x>='0'&& x<='9')|| x=='.'||x=='-'||x=='+'){
+            if((x>='0'&& x<='9')|| x=='.'||x=='-'||x=='+'||x=='^'){
                 var=a.substring(i+1);
             }
             else if(i==0&&((x>='a'&&x<='z')||x>='A'&&x<='Z')){
