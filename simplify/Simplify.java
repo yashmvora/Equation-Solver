@@ -195,7 +195,7 @@ public class Simplify{
         rearrange(terms);
         return terms;
     }
-    public void rearrange(ArrayList<String>[] terms){
+    public ArrayList<String>[] rearrange(ArrayList<String>[] terms){
         int c=0;
         ArrayList<Integer> indices= new ArrayList();
         for(int i=0;i<terms[1].size();i++){
@@ -216,6 +216,7 @@ public class Simplify{
                 indices.set(j,indices.get(j)-1);
             }
         }
+        return terms;
     }
 
     //take care of constants with power
@@ -234,11 +235,11 @@ public class Simplify{
         return term;
     }
 
-    public void simplifyTerms(ArrayList<String> terms){//for taking care of the multiply sign in the terms
+    public void simplifyTerms(ArrayList<String>[] terms){//for taking care of the multiply sign in the terms
     	//is called in calc to take care so that terms are appropriate for addition
 
-        for(int i=0;i<terms.size();i++){
-            String term=terms.get(i);
+        for(int i=0;i<terms[1].size();i++){
+            String term=terms[1].get(i);
             String[] subterms = term.split("\\*");
 
             String temp = "1.0";
@@ -260,7 +261,13 @@ public class Simplify{
                     temp = multiplyTerm(subterms[j],temp);
                 }
             }
-            terms.set(i, temp);
+            terms[1].set(i, temp);
+        }
+        
+        for(int i=0;i<terms[0].size();i++) {
+
+            String term=terms[1].get(i);
+            String[] subterms = term.split("\\*");
         }
 
     }

@@ -4,42 +4,40 @@ import java.util.ArrayList;
 
 public class SimultaneousEquation {
     
-    ArrayList<Equation> eqs;
-    Equation equation = new Equation();
+    ArrayList<LinearEquation> eqs;
     double a[][]= new double[10][10];
     double constMatrix[][] = new double[10][1];
     int n;
     
-    SimultaneousEquation (ArrayList<Equation> equations) { //Term and Constant
+    SimultaneousEquation (ArrayList<LinearEquation> equations) { //Term and Constant
         eqs = equations;
     }
 
     public void setMatrix () {
         // initialise the matrix from getting data from eqs
-        n = equation.terms.size;
-        int const = equation.constants.get(0);
+        n = eqs.size();
         
         for(int i=0; i<n; i++)
             for(int j=0; j<n; j++)
-                a[i][j] = eqs.get(i).terms.get(j).getCoefficient();  //need to check
+                a[i][j] = eqs.get(i).getVTerms().get(j).getCoefficient();  //need to check
         
         for (int i=0;i<n;i++) {
-            constMatrix[i][0] = eqs.get(i).constants.get(i);
+            constMatrix[i][0] = eqs.get(i).getConstant();
         }
-        
+        calcInverse();
         
     }
 
     public void calcInverse() {
         // function to calculate the inverse of the matrix
         double d[][] = invert(a);
-        solve();
     }
 
     //need to decide if mulitply in the same function calcInverse 
 
-    public static void solve() {
-        int result[][]=new int[n][n];  //3 rows and 3 columns  
+    public void solve() {
+    	setMatrix();
+    	int result[][]=new int[n][n];  //3 rows and 3 columns  
     
         //multiplying and printing multiplication of 2 matrices    
         for(int i=0;i<n;i++){    
@@ -52,7 +50,7 @@ public class SimultaneousEquation {
         }
     }
 
-    public static double[][] invert(double a[][]) 
+    public double[][] invert(double a[][]) 
     {
         int n = a.length;
         double x[][] = new double[n][n];
@@ -91,7 +89,7 @@ public class SimultaneousEquation {
     // Method to carry out the partial-pivoting Gaussian
     // elimination.  Here index[] stores pivoting order.
  
-    public static void gaussian(double a[][], int index[]) 
+    public void gaussian(double a[][], int index[]) 
     {
         int n = index.length;
         double c[] = new double[n];
@@ -146,7 +144,7 @@ public class SimultaneousEquation {
         }
     }
 
-    public static void printResult() {
+    public void printResult() {
         //print result matrix
     }
 }
