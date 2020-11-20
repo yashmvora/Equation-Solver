@@ -1,4 +1,3 @@
-
 package factory;
 
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ public class factoryLinear extends Factory {
 
 	@Override
 	public Equation factoryMethod(String input) {
-		ArrayList<Term> terms = this.simplify(input);
+		ArrayList<Term> terms = this.getTerms(input);
 		return new LinearEquation(terms);
 	}
 

@@ -8,5 +8,7 @@ public class QuadraticEquation extends PolynomialEquation {
 		super(terms);
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
 }

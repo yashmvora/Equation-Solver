@@ -149,16 +149,16 @@ public class SimultaneousEquation {
     }
 }
 
-3x + 4y = 5
-2x - y = 2
+// 3x + 4y = 5
+// 2x - y = 2
 
-A 
-3 4
-2 -1
+// A 
+// 3 4
+// 2 -1
 
-B
-5
-2
+// B
+// 5
+// 2
 
-AX = B
-X = A-1 * B
+// AX = B
+// X = A-1 * B

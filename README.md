@@ -12,7 +12,7 @@ Method: finding the first ')'
 Solving for the roots
 
 calc - Yash 
-to finish -3x+2x, 3x^2-2x^2, qudratic as well
+to finish -3x+2x, 3x^2-2x^2
 
 multi func - shrivatsa
 - 3+(x+1)

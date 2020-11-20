@@ -3,7 +3,7 @@ import java.util.*;
 public abstract class Equation {
     // class for breaking down the equation
 
-    private ArrayList<Term> terms=new ArrayList<Term>();
+    private ArrayList<Term> terms;
 
     public Equation(ArrayList<Term> terms){
         this.terms=terms;
@@ -11,7 +11,25 @@ public abstract class Equation {
     
 
     public String toString(){
-		return null;
-        
+      return null;  
+    }
+    
+    public ConstantTerm getConstant() {
+    	for(Term term:terms) {
+    		if(term instanceof ConstantTerm ) {
+    			return (ConstantTerm) term;
+    		}
+    	}
+    	return new ConstantTerm("0.0");
+    }
+    
+    public ArrayList<VariableTerm> getVterms(){
+    	ArrayList<VariableTerm>result = new ArrayList<>();
+    	for(Term term:terms) {
+    		if(term instanceof VariableTerm ) {
+    			result.add( (VariableTerm) term);
+    		}
+    	}
+    	return result;
     }
 }
