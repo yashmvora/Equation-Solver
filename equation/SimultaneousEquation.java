@@ -22,29 +22,24 @@ public class SimultaneousEquation {
                 a[i][j] = eqs.get(i).getVTerms().get(j).getCoefficient();  //need to check
         
         for (int i=0;i<n;i++) {
-            constMatrix[i][0] = eqs.get(i).getConstant();
+            constMatrix[i][0] = eqs.get(i).getConstant().getCoefficient();
         }
-        calcInverse();
         
     }
 
-    public void calcInverse() {
-        // function to calculate the inverse of the matrix
-        double d[][] = invert(a);
-    }
 
     //need to decide if mulitply in the same function calcInverse 
 
     public void solve() {
     	setMatrix();
     	int result[][]=new int[n][n];  //3 rows and 3 columns  
-    
+    	double d[][] = invert(a);
         //multiplying and printing multiplication of 2 matrices    
         for(int i=0;i<n;i++){    
             for(int j=0;j<n;j++){    
                 result[i][j]=0;      
                 for(int k=0;k<n;k++){      
-                    result[i][j]+=d[i][k]*b[k][j];      
+                    result[i][j]+=d[i][k]*constMatrix[k][j];      
                 }//end of k loop  
             }//end of j loop  
         }

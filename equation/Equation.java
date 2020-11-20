@@ -23,7 +23,7 @@ public abstract class Equation {
     	return new ConstantTerm("0.0");
     }
     
-    public ArrayList<VariableTerm> getVterms(){
+    public ArrayList<VariableTerm> getVTerms(){
     	ArrayList<VariableTerm>result = new ArrayList<>();
     	for(Term term:terms) {
     		if(term instanceof VariableTerm ) {
