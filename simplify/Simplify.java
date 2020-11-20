@@ -1,9 +1,8 @@
 package simplify;
 import java.util.ArrayList;
 
-
 public class Simplify{
-	
+
 	private static Simplify instance = new Simplify();
 
 	public static Simplify getInstance() {
@@ -13,28 +12,84 @@ public class Simplify{
 	private Simplify() {
 	}
 
-    public String simplify(String s){
-        int cBracketPos=0, oBracketPos = 0;
 
-        for(int i=0;i<s.length();i++){
-            if(s.charAt(i)==')'){
-                cBracketPos = i;
-                oBracketPos=i;
-                while(s.charAt(oBracketPos)!='('){
-                    oBracketPos--;
-                }
-                String temp = s.substring((oBracketPos+1),cBracketPos);
-                //check if any operand is right outside the bracket
-                if(s.charAt(oBracketPos)!='-'||s.charAt(oBracketPos)!='+' ){
+	public boolean noBrackets(String s){
+			return s.indexOf('(')==-1;
+	}
 
-                }
-
-                s = s.substring(0,oBracketPos)+calc(temp);
-            }
-            //System.out.println(oBracketPos+" "+ cBracketPos);
-        }
-        return s;
-    }
+	public String simplify(String s){
+			if(noBrackets(s)){
+					//System.out.println("Check Calc - "+s+" -- "+calc(s));
+					return calc(s);
+			}
+			int c = 0;
+			int firstBracketZero = -1;
+			int bracketCount[] = new int[s.length()];
+			for(int i = 0; i<s.length(); i++){
+					if(s.charAt(i)=='('){
+							c++;
+					}else if(s.charAt(i)==')') {
+							c--;
+					}
+					bracketCount[i]=c;
+					if(c==0 && firstBracketZero == -1)
+							firstBracketZero = i;
+			}
+			if(firstBracketZero == s.length() - 1)
+				return(simplify(s.substring(1,s.length()-1)));
+			/*System.out.print("Bracket Count - ");
+			for(int i=0;i<bracketCount.length;i++){
+					System.out.print(bracketCount[i]+", ");
+			}
+			System.out.println();*/
+			ArrayList<String> terms = new ArrayList<String>();
+			int prevIndex = 0;
+			int currIndex;
+			for(currIndex = 0; currIndex<s.length(); currIndex++){
+					if((s.charAt(currIndex)=='+'||s.charAt(currIndex)=='-') && bracketCount[currIndex]==0){
+							if(currIndex!=0){
+									terms.add(s.substring(prevIndex, currIndex));
+									//System.out.println("Term - " + s.substring(prevIndex, currIndex));
+							}
+							prevIndex = currIndex;
+					}
+			}
+			terms.add(s.substring(prevIndex));
+			//System.out.println("Term - " + s.substring(prevIndex, currIndex));
+			if(terms.size()!=1){
+					String tmp = "";
+					for(int i=0;i<terms.size();i++){
+							String x = simplify(terms.get(i));
+							if(x.charAt(0)=='+'||x.charAt(0)=='-')
+									tmp += x;
+							else
+									tmp += "+"+x;
+					}
+					//System.out.println("Check Calc - "+tmp+" -- "+calc(tmp));
+					return calc(tmp);
+			}
+			String term = terms.get(0);
+			if(term.charAt(0)=='-'){
+					return(multiply(simplify(term.substring(1)),"-1"));
+			} else if(term.charAt(0)=='+'){
+					return(simplify(term.substring(1)));
+			}
+			//ArrayList<String> tokens = new ArrayList<String>();
+			prevIndex = 0;
+			String product = "1";
+			for(currIndex = 0;currIndex<term.length();currIndex++){
+					if(bracketCount[currIndex]==0){
+							String tmp = term.substring(prevIndex, currIndex+1);
+							product = multiply(product, simplify(tmp));
+							prevIndex = currIndex+1;
+							if (prevIndex<term.length()&&term.charAt(prevIndex)=='*') {
+									prevIndex++;
+									currIndex++;
+							}
+					}
+			}
+			return(product);
+	}
 
     public String calc(String s){//takes simplified terms, sends to calc(ArrayList[]......) after splitting into terms
         ArrayList<String>[] terms = splitIntoTerms(s);
@@ -46,25 +101,25 @@ public class Simplify{
     public String calc(ArrayList<String>[] terms){//handles the constant terms addition/subtraction and calls calculate(Array....), returns simplified string
 
         String abc = calculate(terms);
-        
+
         double sum = 0;
         String fin="";
         for(int i=0;i<terms[0].size();i++){
             sum+=Double.parseDouble(terms[0].get(i));
         }
-        
-        
+
+
         if(sum<0)
             fin += sum;
         else
             fin+='+'+""+sum;
 
         return abc+fin;
-        
+
     }
 
     //for addition of terms with variables
-    public String calculate(ArrayList<String> terms[]){ //pass terms[1]
+		public String calculate(ArrayList<String> terms[]){ //pass terms[1]
         correctPower(terms);
         simplifyTerms(terms[1]);
 
@@ -81,8 +136,14 @@ public class Simplify{
                     terms[1].remove(j);
                 }
             }
-            result+=(Double.toString(sum)+getVar(temp));
+            if(sum>=0) {
+            	result+="+"+Double.toString(sum)+getVar(temp);
+            }
+            else {
+            	result+=(Double.toString(sum)+getVar(temp));
+            }
         }
+
         return result;
     }
 
@@ -91,7 +152,7 @@ public class Simplify{
         for(int l=0;l<terms[1].size();l++){
             String term = terms[1].get(l);
             String[] subterms = term.split("\\*");
-            
+
             for(int i = 0;i<subterms.length;i++){
 
                 if(subterms[i].charAt(0)=='-'||subterms[i].charAt(0)=='+'){
@@ -146,7 +207,7 @@ public class Simplify{
             }
         }
         for(int i=0;i<indices.size();i++){
-            
+
             terms[0].add(terms[1].get(indices.get(i)));
             terms[1].remove(terms[1].get(indices.get(i)));
 
@@ -171,7 +232,7 @@ public class Simplify{
             }
         }
         return term;
-    }    
+    }
 
     public void simplifyTerms(ArrayList<String> terms){//for taking care of the multiply sign in the terms
     	//is called in calc to take care so that terms are appropriate for addition
@@ -248,7 +309,7 @@ public class Simplify{
             for(int j=0;j<termsb[0].size();j++){
                 double product = (Double.parseDouble(termsa[0].get(i)))*(Double.parseDouble(termsb[0].get(j)));
                 termsfin[0].add(product+"");
-            }   
+            }
         }
 
         for(int i=0;i<termsa[0].size();i++){
@@ -282,7 +343,7 @@ public class Simplify{
         String varb = getVar(b);
 
         return (coeffa*coeffb)+((vara.charAt(0))+"^"+(getPower(vara)+getPower(varb)));
-        
+
     }
 
     public String multiplyTerm(double a, String b){ //2*23x, x*3, 5*56x^2
@@ -322,7 +383,7 @@ public class Simplify{
         String var="";
         for(int i=0;i<a.length();i++){
             char x = a.charAt(i);
-            if((x>='0'&& x<='9')|| x=='.'||x=='-'||x=='+'||x=='^'){
+            if((x>='0'&& x<='9')|| x=='.'||x=='-'||x=='+'){
                 var=a.substring(i+1);
             }
             else if(i==0&&((x>='a'&&x<='z')||x>='A'&&x<='Z')){
@@ -352,7 +413,7 @@ public class Simplify{
 
         if(s.charAt(0)!='-'&&s.charAt(0)!='+')
             s='+'+s;
-        sign=s.charAt(0); 
+        sign=s.charAt(0);
         char newsign = '+';
         for(int i=0;i<s.length();i++){ //+
             if(s.charAt(i)!='+'&&s.charAt(i)!='-'&&i!=s.length()-1){
@@ -371,7 +432,7 @@ public class Simplify{
                     terms[0].add(sign+temp);
                     sign=newsign; //-
                     temp="";
-                    
+
                 }catch(NumberFormatException e){
                     terms[1].add(sign+temp);
                     sign=newsign;
@@ -383,12 +444,8 @@ public class Simplify{
     }
 
     public static void main(String args[]){
-      //  simplify("((x-2)(x+2) + 3)");
-      ArrayList<String> terms = new ArrayList<String>();
-      terms.add("+x^2");
-      terms.add("-x^0");
-      terms.add("-x^1");
-      instance.simplifyTerms(terms);
+      System.out.println(Simplify.getInstance().simplify("(2*23)*x*(1.5)"));
+			System.out.println(Simplify.getInstance().calc("1*23"));
 
     }
 }
