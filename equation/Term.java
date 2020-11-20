@@ -14,4 +14,6 @@ public abstract class Term {
 	public double getCoefficient(){
         return this.coefficient;
     }
+	
+	public abstract String toString();
 }

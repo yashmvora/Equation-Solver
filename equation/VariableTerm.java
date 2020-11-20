@@ -4,6 +4,8 @@ public class VariableTerm extends Term {
     
     private char var;
     private int power;
+    
+    public VariableTerm() {};
 
     public VariableTerm(String term){
         String coef = "";
@@ -41,8 +43,11 @@ public class VariableTerm extends Term {
         return this.var;
     }
 
+    public void setVar(char v) {
+    	this.var=v;
+    }
     public String toString(){
-        String term = this.getCoefficient()+this.var+"^"+this.power;
+        String term = Double.toString(this.getCoefficient())+this.var+"^"+this.power;
         return term;
     }
 
