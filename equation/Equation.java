@@ -11,7 +11,6 @@ public abstract class Equation {
     
 
     public String toString(){
-		return null;
-        
+      return null;  
     }
 }
