@@ -38,7 +38,7 @@ public class rearrangeTest {
 		terms[0].add("5");
 		ArrayList<String>[] result = sim.rearrange(terms);
 		
-		assertEquals(ListToString(result), ListToString(terms));
+		assertEquals(ListToString(terms),ListToString(result));
 	}
 	@Test
 	void test2() {
@@ -53,6 +53,6 @@ public class rearrangeTest {
 		ArrayList<String>[] result = sim.rearrange(terms);
 		terms[0].add("5");
 		terms[1].remove("5");
-		assertEquals(ListToString(result), ListToString(terms));
+		assertEquals(ListToString(terms),ListToString(result));
 	}
 }

@@ -266,7 +266,7 @@ public class Simplify{
         
         for(int i=0;i<terms[0].size();i++) {
 
-            String term=terms[1].get(i);
+            String term=terms[0].get(i);
             String[] subterms = term.split("\\*");
             double m = 1;
             for(int j=0;j<subterms.length;j++) {
@@ -391,23 +391,18 @@ public class Simplify{
         }
         return c;
     }
-
-    public String getVar(String a){
-        String var="";
-        for(int i=0;i<a.length();i++){
-            char x = a.charAt(i);
-            if((x>='0'&& x<='9')|| x=='.'||x=='-'||x=='+'){
-                var=a.substring(i+1);
-            }
-            else if(i==0&&((x>='a'&&x<='z')||x>='A'&&x<='Z')){
-                return a;
-            }
-            else{
-                return var;
-            }
-        }
-        return var;
+    
+    public String getVar(String a) {
+    	for(int i=0;i<a.length();i++){
+    		char x = a.charAt(i);
+    		if((x>='a' && x<='z')||(x>='A'&&x<='Z')) {
+    			return a.substring(i);
+    		}
+    	}
+    	return "";
     }
+
+    
 
     public boolean isConstant(char x){
         if(x>='0'&&x<='9'){

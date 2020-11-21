@@ -37,8 +37,7 @@ public class splitIntoTermsTest {
 		terms[1].add("+2x");
 		terms[1].add("+3x");
 		terms[0].add("5");
-		assertEquals(ListToString(result), ListToString(terms));
-	}
+		assertEquals(ListToString(terms),ListToString(result));	}
 	@Test
 	void test2() {
 		Simplify sim = Simplify.getInstance();
@@ -48,8 +47,7 @@ public class splitIntoTermsTest {
 		terms[1] = new ArrayList<String>();
 		terms[1].add("+x^2");
 		terms[1].add("-3");
-		assertEquals(ListToString(result), ListToString(terms));
-	}
+		assertEquals(ListToString(terms),ListToString(result));	}
 	@Test
 	void test3() {
 		Simplify sim = Simplify.getInstance();
@@ -59,7 +57,6 @@ public class splitIntoTermsTest {
 		terms[1] = new ArrayList<String>();
 		terms[1].add("-x^2");
 		terms[1].add("+3");
-		assertEquals(ListToString(result), ListToString(terms));
-	}
+		assertEquals(ListToString(terms),ListToString(result));	}
 	
 }

@@ -42,7 +42,7 @@ public class correctPowerTest {
 		
 		ArrayList[] result = sim.correctPower(terms);
 		
-		assertEquals(ListToString(result), ListToString(terms));
+		assertEquals( ListToString(terms),ListToString(result));
 	}
 	@Test
 	void test2() {
@@ -62,7 +62,7 @@ public class correctPowerTest {
 		terms[0].add("-34.0");
 		terms[0].add("1.0");
 		
-		assertEquals(ListToString(result), ListToString(terms));
+		assertEquals(ListToString(terms),ListToString(result));
 	}
 	@Test
 	void test3() {
@@ -79,7 +79,7 @@ public class correctPowerTest {
 		ArrayList[] result = sim.correctPower(terms);
 		terms[1].set(1, "-34.0x");
 		terms[1].set(2, "x");
-		assertEquals(ListToString(result), ListToString(terms));
+		assertEquals(ListToString(terms),ListToString(result));
 	}
 	@Test
 	void test4() {
@@ -103,7 +103,7 @@ public class correctPowerTest {
 		terms[1].set(2, "x");
 		terms[0].add("-1.0");
 		terms[0].add("1.0");
-		assertEquals(ListToString(result), ListToString(terms));
+		assertEquals(ListToString(terms),ListToString(result));
 	}
 	@Test
 	void test5() {
@@ -123,7 +123,7 @@ public class correctPowerTest {
 		terms[0].add("34.0");
 		terms[0].add("1.0");
 		
-		assertEquals(ListToString(result), ListToString(terms));
+		assertEquals(ListToString(terms),ListToString(result));
 	}
 }
 

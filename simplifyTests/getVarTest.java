@@ -44,7 +44,20 @@ public class getVarTest {
 	@Test
 	void test8() {
 		Simplify sim = Simplify.getInstance();
-		String result = sim.getVar("2^3x^2");
-		assertEquals("x^2", result);
+		String result = sim.getVar("-2.0X^2");
+		assertEquals("X^2", result);
 	}
+	@Test
+	void test9() {
+		Simplify sim = Simplify.getInstance();
+		String result = sim.getVar("");
+		assertEquals("", result);
+	}
+	@Test
+	void test10() {
+		Simplify sim = Simplify.getInstance();
+		String result = sim.getVar("2");
+		assertEquals("", result);
+	}
+	
 }
