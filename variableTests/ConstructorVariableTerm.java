@@ -24,4 +24,14 @@ public class ConstructorVariableTerm{
 		VariableTerm result = new VariableTerm("22x^2");
 		assertEquals("22.0x^2", result.toString());
 	}
+	@Test
+	public void testConstructor3() {
+		VariableTerm result = new VariableTerm("-22x^2");
+		assertEquals("-22.0x^2", result.toString());
+	}
+	@Test
+	public void testConstructor4() {
+		VariableTerm result = new VariableTerm("+22x^2");
+		assertEquals("22.0x^2", result.toString());
+	}
 }

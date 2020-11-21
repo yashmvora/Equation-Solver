@@ -2,8 +2,11 @@ package command;
 
 import equation.CubicEquation;
 import equation.QuadraticEquation;
+import equation.SimultaneousEquation;
 import factory.factoryCubic;
 import factory.factoryQuadratic;
+import factory.factorySimultaneous;
+import input.InputValidator;
 
 public class cmdSolveQuadratic implements Command {
 	
@@ -15,8 +18,9 @@ public class cmdSolveQuadratic implements Command {
 
 	@Override
 	public void execute(String[] args) {
-		QuadraticEquation eq = (QuadraticEquation) factoryQuadratic.getInstance().factoryMethod(args[1]);
-
+		if (InputValidator.getInstance().isValid(args[1])) {
+			QuadraticEquation eq = (QuadraticEquation) factoryQuadratic.getInstance().factoryMethod(args[1]);
+		}	
 	}
 	
 	public static cmdSolveQuadratic getInstance() {
