@@ -412,6 +412,12 @@ public class Simplify{
     }
 
     public ArrayList<String>[] splitIntoTerms(String s){
+    	
+    	
+    	//HANDLE THE CASE WHERE THERE IS A '-' OR '+' RIGHT AFTER A '*' 
+    	
+    	
+    	
         ArrayList<String>[] terms = new ArrayList[2]; //+x-1
         terms[0]=new ArrayList<String>(); //constants
         terms[1] = new ArrayList<String>(); //variables
