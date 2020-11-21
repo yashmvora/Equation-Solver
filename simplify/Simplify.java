@@ -121,7 +121,7 @@ public class Simplify{
     //for addition of terms with variables
 		public String calculate(ArrayList<String> terms[]){ //pass terms[1]
         correctPower(terms);
-        simplifyTerms(terms[1]);
+        simplifyTerms(terms);
 
         String result="";
         int i=0;
@@ -235,7 +235,7 @@ public class Simplify{
         return term;
     }
 
-    public void simplifyTerms(ArrayList<String>[] terms){//for taking care of the multiply sign in the terms
+    public ArrayList<String>[] simplifyTerms(ArrayList<String>[] terms){//for taking care of the multiply sign in the terms
     	//is called in calc to take care so that terms are appropriate for addition
 
         for(int i=0;i<terms[1].size();i++){
@@ -268,8 +268,14 @@ public class Simplify{
 
             String term=terms[1].get(i);
             String[] subterms = term.split("\\*");
+            double m = 1;
+            for(int j=0;j<subterms.length;j++) {
+            	m=m*Double.parseDouble(subterms[j]);
+            }
+            terms[0].set(i, Double.toString(m));
         }
-
+        
+        return terms;
     }
 
     public boolean isConstant(String term){
@@ -452,7 +458,6 @@ public class Simplify{
 
     public static void main(String args[]){
       System.out.println(Simplify.getInstance().simplify("(2*23)*x*(1.5)"));
-			System.out.println(Simplify.getInstance().calc("1*23"));
 
     }
 }
