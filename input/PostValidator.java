@@ -5,9 +5,7 @@ public class PostValidator{
 
 	public static PostValidator getInstance() {
 		return instance;
-		
     }
-
     public int checkDegree(String eq){
         char[] exp = eq.toCharArray();
         int degree=0;

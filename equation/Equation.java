@@ -32,4 +32,8 @@ public abstract class Equation {
     	}
     	return result;
     }
+    
+    public void addTerm(Term term) {
+    	terms.add(term);
+    }
 }
