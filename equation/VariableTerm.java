@@ -15,8 +15,15 @@ public class VariableTerm extends Term {
                 coef+=x;
             }
             else{
-                if(coef=="")
-                    coef="1";
+            	if(coef.length()==0) {
+            		coef="1";
+            	}
+            	else if((coef.charAt(0)=='+'&&coef.length()==1)) {
+            		coef = "1";
+            	}
+            	else if(coef.charAt(0)=='-'&&coef.length()==1) {
+            		coef="-1";
+            	}
                 var = x;
                 String exp = term.substring(i);
                 if(exp.length()==1)

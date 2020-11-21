@@ -51,6 +51,6 @@ public class getCoefficientTest {
 	void test8() {
 		Simplify sim = Simplify.getInstance();
 		double result = sim.getCoefficient("");
-		assertEquals(1.0, result);
+		assertEquals(0.0, result);
 	}
 }

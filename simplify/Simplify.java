@@ -371,26 +371,30 @@ public class Simplify{
         return Integer.parseInt(a.substring(a.length()-1));
     }
 
-    public double getCoefficient(String a){
-
-        String coefficient=""; double c=1;
-        for(int i =0;i<a.length();i++){
-            char x=a.charAt(i);
-            if((x=='-'||x=='+')&&!isConstant(a.charAt(i+1))){
-                return x=='-'?-1:+1;
-            }
-            if((x>='0' && x<='9')|| x=='.'||x=='+'||x=='-'){
-                coefficient+=x;
+    public double getCoefficient(String term) {
+    	String coef = "";
+        for(int i =0;i<term.length();i++){
+            char x=term.charAt(i);
+            if(!((x>='a' && x<='z')||(x>='A'&&x<='Z'))){
+                coef+=x;
             }
             else{
-                if(coefficient=="")
-                    return c;
-                c = Double.parseDouble(coefficient);
-                return c;
+            	if(coef.length()==0) {
+            		coef="1";
+            	}
+            	else if((coef.charAt(0)=='+'&&coef.length()==1)) {
+            		coef = "1";
+            	}
+            	else if(coef.charAt(0)=='-'&&coef.length()==1) {
+            		coef="-1";
+            	}
+                return Double.parseDouble(coef);
             }
         }
-        return c;
+        return 0;
     }
+    
+   
     
     public String getVar(String a) {
     	for(int i=0;i<a.length();i++){
