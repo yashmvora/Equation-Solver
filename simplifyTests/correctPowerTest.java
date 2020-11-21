@@ -126,3 +126,8 @@ public class correctPowerTest {
 		assertEquals(ListToString(result), ListToString(terms));
 	}
 }
+
+
+
+
+
