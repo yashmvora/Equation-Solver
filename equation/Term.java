@@ -8,10 +8,12 @@ public abstract class Term {
 	public Term(String coef) {
 		this.coefficient=Double.parseDouble(coef);
 	}
-	public void setCoefficient(double c){
+	
+	public void setCoefficient(double c) {
         this.coefficient = c;
     }
-	public double getCoefficient(){
+	
+	public double getCoefficient() {
         return this.coefficient;
     }
 	

@@ -11,8 +11,8 @@ import equation.SimultaneousEquation;
 import equation.Term;
 import equation.VariableTerm;
 
-public class setMatrixTest {
-	
+public class invertMatrixTest {
+
 	@BeforeEach
 	public void setUp() throws Exception {  }
 	

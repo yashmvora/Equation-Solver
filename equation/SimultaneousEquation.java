@@ -5,17 +5,20 @@ import java.util.ArrayList;
 public class SimultaneousEquation {
     
     ArrayList<LinearEquation> eqs;
-    double a[][]= new double[10][10];
-    double constMatrix[][] = new double[10][1];
+    double a[][];
+    double constMatrix[][];
     int n;
     
-    SimultaneousEquation (ArrayList<LinearEquation> equations) { //Term and Constant
+    public SimultaneousEquation (ArrayList<LinearEquation> equations) { //Term and Constant
         eqs = equations;
     }
 
     public void setMatrix () {
         // initialise the matrix from getting data from eqs
         n = eqs.size();
+        
+        a = new double[n][n];
+        constMatrix  = new double[n][1];
         
         for(int i=0; i<n; i++)
             for(int j=0; j<n; j++)
@@ -28,9 +31,10 @@ public class SimultaneousEquation {
     }
 
 
-    //need to decide if mulitply in the same function calcInverse 
+    //need to decide if multiply in the same function calcInverse 
 
     public void solve() {
+    	
     	setMatrix();
     	int result[][]=new int[n][n];  //3 rows and 3 columns  
     	double d[][] = invert(a);

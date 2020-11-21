@@ -11,8 +11,8 @@ import equation.SimultaneousEquation;
 import equation.Term;
 import equation.VariableTerm;
 
-public class setMatrixTest {
-	
+public class solveSimultaneousEquationTest {
+
 	@BeforeEach
 	public void setUp() throws Exception {  }
 	
