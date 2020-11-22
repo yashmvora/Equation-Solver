@@ -54,7 +54,11 @@ public class VariableTerm extends Term {
     	this.var=v;
     }
     public String toString(){
-        String term = Double.toString(this.getCoefficient())+this.var+"^"+this.power;
+    	String term;
+    	if(this.getPower()>1) 
+    		term = Double.toString(this.getCoefficient())+this.var+"^"+this.power;
+    	else
+    		term=Double.toString(this.getCoefficient())+this.var+"";
         return term;
     }
 

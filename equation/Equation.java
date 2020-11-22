@@ -9,8 +9,21 @@ public abstract class Equation {
         this.terms=terms;
     }
     
-
-    public abstract String toString();
+    public String toString() {
+		String result ="";
+		for(int i=0;i<terms.size();i++) {
+			String term = terms.get(i).toString();
+			if(term.charAt(0)!='+'&&term.charAt(0)!='-') {
+				result+="+"+term;
+			}
+			else {
+				result+=term;
+			}
+		}
+		result=result.substring(1);
+		return result;
+	
+    }
     
     public ConstantTerm getConstant() {
     	for(Term term:terms) {
