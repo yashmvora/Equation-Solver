@@ -3,18 +3,18 @@ package solution;
 import equation.VariableTerm;
 
 public class RealSolution implements Solution {
-	private VariableTerm variable;
+	private char variable;
 	private double value;
 	private boolean solutionExists;
 	
-	public RealSolution(VariableTerm var, double val) {
+	public RealSolution(char var, double val) {
 		this.variable=var;
 		this.value=val;
 	}
 	
 	@Override
 	public String toString() {
-		return String.format("%s=%d", variable.toString(), value);
+		return String.format("%s=%f", variable, value);
 	}
 
 }

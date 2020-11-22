@@ -14,7 +14,7 @@ public abstract class Factory {
 	public ArrayList<Term> getTerms(String input) {
 		ArrayList<Term> result = new ArrayList<>();
 		String temp = Simplify.getInstance().simplify(input);
-		ArrayList<String>[] strTerms = Simplify.getInstance().splitIntoTerms(input);
+		ArrayList<String>[] strTerms = Simplify.getInstance().splitIntoTerms(temp);
 		for(int i =0; i<strTerms[1].size();i++) {
 			result.add(new VariableTerm(strTerms[1].get(i)));
 		}

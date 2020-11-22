@@ -9,6 +9,7 @@ import factory.factoryCubic;
 import factory.factoryQuadratic;
 import factory.factorySimultaneous;
 import input.InputValidator;
+import input.TextInput;
 
 public class cmdSolveQuadratic implements Command {
 	
@@ -20,12 +21,12 @@ public class cmdSolveQuadratic implements Command {
 
 	@Override
 	public void execute() {
-		Scanner in = new Scanner(System.in);
-		String in.nextLine();
+		Scanner in = TextInput.getInstance().getScanner();
+		String inEq = in.nextLine();
 		
-		
-		if (InputValidator.getInstance().isValid(args[1])) {
-			QuadraticEquation eq = (QuadraticEquation) factoryQuadratic.getInstance().factoryMethod(args[1]);
+		if (InputValidator.getInstance().isValid(inEq)) {
+			QuadraticEquation eq = (QuadraticEquation) factoryQuadratic.getInstance().factoryMethod(inEq);
+			System.out.println("Simplified: "+eq.toString());
 		}	
 	}
 	

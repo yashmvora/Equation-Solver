@@ -7,10 +7,10 @@ import command.cmdSolveLinear;
 
 public class Main {
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
+		Scanner in = TextInput.getInstance().getScanner();
 		System.out.print("");
 		int input = in.nextInt();
-		in.close();
+		String input1 = in.nextLine();
 		if (input==1) {
 			cmdSolveLinear.getInstance().execute();
 		} else if (input==2) {

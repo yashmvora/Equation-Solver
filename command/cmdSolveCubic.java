@@ -1,8 +1,13 @@
 package command;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 import equation.CubicEquation;
 import factory.factoryCubic;
 import input.InputValidator;
+import input.TextInput;
+import solution.Solution;
 
 public class cmdSolveCubic implements Command {
 
@@ -14,8 +19,14 @@ public class cmdSolveCubic implements Command {
 
 	@Override
 	public void execute() {
-		if (InputValidator.getInstance().isValid(args[1])) {
-			CubicEquation eq = (CubicEquation) factoryCubic.getInstance().factoryMethod(args[1]);
+		Scanner in = TextInput.getInstance().getScanner();
+		String inEq = in.nextLine();
+		if (InputValidator.getInstance().isValid(inEq)) {
+			CubicEquation eq = (CubicEquation) factoryCubic.getInstance().factoryMethod(inEq);
+			ArrayList<Solution>solutions = eq.solve();
+			System.out.println("Simplified: "eq.toString());
+			for(Solution s: solutions)
+				System.out.println(s.toString());
 		}
 
 	}

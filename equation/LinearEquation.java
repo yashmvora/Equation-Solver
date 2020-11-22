@@ -9,4 +9,5 @@ public class LinearEquation extends Equation {
 		// TODO Auto-generated constructor stub
 	}
 
+	
 }
