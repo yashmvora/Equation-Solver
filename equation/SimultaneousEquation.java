@@ -35,111 +35,118 @@ public class SimultaneousEquation {
     	setMatrix();
     	int result[][] = new int[n][n]; 
     	double inverseMatrix[][] = inverse(originalMatrix);
-        //multiplying 2 matrices    
+        // multiplying 2 matrices    
         for(int i = 0; i < n; i++) {
             for(int j = 0;j < n; j++) {    
            
                 result[i][j] = 0;     
                 
-                for(int k = 0; k < n; k++){      
+                for(int k = 0; k < n; k++) {      
                     result[i][j] += inverseMatrix[i][k] * constMatrix[k][j];      
                 } 
             } 
         }
+        printResult(result);
     }
 
     public double[][] inverse(double originalMatrix[][]) 
     {
         int n = originalMatrix.length;
-        double x[][] = new double[n][n];
+        double invert[][] = new double[n][n];
         double b[][] = new double[n][n];
         int index[] = new int[n];
-        for (int i=0; i<n; ++i) 
+        for (int i = 0; i < n; ++i) 
             b[i][i] = 1;
  
         // Transform the matrix into an upper triangle
         gaussian(originalMatrix, index);
  
         // Update the matrix b[i][j] with the ratios stored
-        for (int i=0; i<n-1; ++i)
-            for (int j=i+1; j<n; ++j)
-                for (int k=0; k<n; ++k)
-                    b[index[j]][k] -= originalMatrix[index[j]][i]*b[index[i]][k];
+        for (int i = 0; i < n - 1; ++i)
+            for (int j = i + 1; j < n; ++j)
+                for (int k = 0; k < n; ++k)
+                    b[index[j]][k] -= originalMatrix[index[j]][i] * b[index[i]][k];
  
         // Perform backward substitutions
         for (int i = 0; i < n; i++) 
         {
-            x[n-1][i] = b[index[n-1]][i] / originalMatrix[index[n-1]][n-1];
+            invert[n-1][i] = b[index[n-1]][i] / originalMatrix[index[n-1]][n-1];
             for (int j = n - 2; j >= 0; --j) 
             {
-                x[j][i] = b[index[j]][i];
+                invert[j][i] = b[index[j]][i];
                 for (int k = j+1; k < n; ++k) 
                 {
-                    x[j][i] -= originalMatrix[index[j]][k]*x[k][i];
+                    invert[j][i] -= originalMatrix[index[j]][k] * invert[k][i];
                 }
-                x[j][i] /= originalMatrix[index[j]][j];
+                invert[j][i] /= originalMatrix[index[j]][j];
             }
         }
-        return x;
+        return invert;
     }
  
     public void gaussian(double originalMatrix[][], int index[]) 
     {
         int n = index.length;
-        double c[] = new double[n];
+        double gauMatrix[] = new double[n];
  
         // Initialise the index
-        for (int i=0; i<n; ++i) 
+        for (int i = 0; i < n; ++i) 
             index[i] = i;
  
-        // Find the rescaling factors, one from each row
-        for (int i=0; i<n; ++i) 
+        for (int i = 0; i < n; ++i) 
         {
-            double c1 = 0;
-            for (int j=0; j<n; ++j) 
+            double element1 = 0;
+            for (int j = 0; j < n; ++j) 
             {
-                double c0 = Math.abs(originalMatrix[i][j]);
-                if (c0 > c1) c1 = c0;
+                double element0 = Math.abs(originalMatrix[i][j]);
+                if (element1 < element0) 
+                	element1 = element0;
             }
-            c[i] = c1;
+            gauMatrix[i] = element1;
         }
  
         // Search the pivoting element from each column
         int k = 0;
-        for (int j=0; j<n-1; ++j) 
+        for (int j = 0; j < n - 1; ++j) 
         {
-            double pi1 = 0;
-            for (int i=j; i<n; ++i) 
+            double pivot1 = 0;
+            for (int i = j; i < n; ++i) 
             {
-                double pi0 = Math.abs(originalMatrix[index[i]][j]);
-                pi0 /= c[index[i]];
-                if (pi0 > pi1) 
+                double pivot0 = Math.abs(originalMatrix[index[i]][j]);
+                pivot0 /= gauMatrix[index[i]];
+                if (pivot0 > pivot1) 
                 {
-                    pi1 = pi0;
+                    pivot1 = pivot0;
                     k = i;
                 }
             }
  
             // Interchange rows according to the pivoting order
-            int itmp = index[j];
+            int temp = index[j];
             index[j] = index[k];
-            index[k] = itmp;
-            for (int i=j+1; i<n; ++i) 	
+            index[k] = temp;
+            for (int i = j + 1; i < n; ++i) 	
             {
-                double pj = originalMatrix[index[i]][j] / originalMatrix[index[j]][j];
+                double pivot = originalMatrix[index[i]][j] / originalMatrix[index[j]][j];
  
             // Record pivoting ratios below the diagonal
-                originalMatrix[index[i]][j] = pj;
+                originalMatrix[index[i]][j] = pivot;
  
                 // Modify other elements accordingly
-                for(int l=j+1; l<n; ++l)
-                    originalMatrix[index[i]][l] -= pj * originalMatrix[index[j]][l];
+                for(int l = j + 1; l < n; ++l)
+                    originalMatrix[index[i]][l] -= pivot * originalMatrix[index[j]][l];
             }
         }
     }
 
-    public void printResult() {
+    public void printResult(int[][] result) {
         //print result matrix
+    	for (int i=0;i<n;i++) {
+    		for (int j=0;j<n;j++) 
+    			System.out.print(result[i][j]);
+    		System.out.println();
+    	}
+    	
     }
 }
 
