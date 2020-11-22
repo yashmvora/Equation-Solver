@@ -19,7 +19,7 @@ public class factoryCubic extends Factory {
 
 	@Override
 	public Equation factoryMethod(String input) {
-		ArrayList<Term> terms = this.getTerms(input);
+		ArrayList<Term> terms = this.simplifyInput(input);
 		return new CubicEquation(terms);
 	}
 

@@ -10,9 +10,6 @@ import factory.*;
 import equation.Term;
 import equation.VariableTerm;
 public class ConstructorVariableTerm{
-	public String ListToString(ArrayList<Term> terms) {
-		return terms.get(0).toString();
-	}
 	
 	@Test
 	public void testConstructor1() {

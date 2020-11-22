@@ -11,7 +11,7 @@ public abstract class Factory {
 	
 	public abstract Equation factoryMethod(String input);
 	
-	public ArrayList<Term> getTerms(String input) {
+	public ArrayList<Term> simplifyInput(String input) {
 		ArrayList<Term> result = new ArrayList<>();
 		String temp = Simplify.getInstance().simplify(input);
 		ArrayList<String>[] strTerms = Simplify.getInstance().splitIntoTerms(temp);

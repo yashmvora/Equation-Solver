@@ -20,7 +20,7 @@ public class factoryLinear extends Factory {
 
 	@Override
 	public Equation factoryMethod(String input) {
-		ArrayList<Term> terms = this.getTerms(input);
+		ArrayList<Term> terms = this.simplifyInput(input);
 		return new LinearEquation(terms);
 	}
 
