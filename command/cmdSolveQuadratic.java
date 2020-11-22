@@ -1,5 +1,7 @@
 package command;
 
+import java.util.Scanner;
+
 import equation.CubicEquation;
 import equation.QuadraticEquation;
 import equation.SimultaneousEquation;
@@ -17,7 +19,11 @@ public class cmdSolveQuadratic implements Command {
 	}
 
 	@Override
-	public void execute(String[] args) {
+	public void execute() {
+		Scanner in = new Scanner(System.in);
+		String in.nextLine();
+		
+		
 		if (InputValidator.getInstance().isValid(args[1])) {
 			QuadraticEquation eq = (QuadraticEquation) factoryQuadratic.getInstance().factoryMethod(args[1]);
 		}	

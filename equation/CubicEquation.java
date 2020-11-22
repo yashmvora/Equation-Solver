@@ -29,8 +29,7 @@ public class CubicEquation extends PolynomialEquation {
 			if(power==2)
 				index[1]=i;
 			if(power==1)
-				index[2]=i;
-				
+				index[2]=i;	
 		}
 		double m=VTerms.get(index[0]).getCoefficient();
 		double n=VTerms.get(index[1]).getCoefficient();

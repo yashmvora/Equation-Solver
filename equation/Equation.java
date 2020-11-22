@@ -10,9 +10,7 @@ public abstract class Equation {
     }
     
 
-    public String toString(){
-      return null;  
-    }
+    public abstract String toString();
     
     public ConstantTerm getConstant() {
     	for(Term term:terms) {
@@ -36,4 +34,5 @@ public abstract class Equation {
     public void addTerm(Term term) {
     	terms.add(term);
     }
+    
 }

@@ -1,12 +1,23 @@
 package input;
+
 import java.util.*;
 
+import command.cmdSolveCubic;
+import command.cmdSolveLinear;
+
 public class Main {
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
 		System.out.print("");
-		String input = in.nextLine();
+		int input = in.nextInt();
 		in.close();
-		InputHandler.getInstance().handleInput(input);
-    }
+		if (input==1) {
+			cmdSolveLinear.getInstance().execute();
+		} else if (input==2) {
+			cmdSolveLinear.getInstance().execute();
+		} else if (input==3) {
+			cmdSolveCubic.getInstance().execute();
+		}
+
+	}
 }
