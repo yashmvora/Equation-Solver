@@ -9,6 +9,7 @@ import equation.SimultaneousEquation;
 import factory.factoryCubic;
 import factory.factorySimultaneous;
 import input.InputValidator;
+import input.TextInput;
 
 public class cmdSolveLinear implements Command {
 
@@ -22,15 +23,13 @@ public class cmdSolveLinear implements Command {
 	public void execute() {
 		ArrayList<String> inEqs = new ArrayList<>();
 		String temp;
-		Scanner in = new Scanner(System.in);
+		Scanner in = TextInput.getInstance().getScanner();
 		boolean valid = true;
 		do {
 			temp = in.nextLine();
 			inEqs.add(temp);
 		} while (!temp.equals("done"));
 		inEqs.remove(inEqs.size());
-		in.close();
-
 		for (String eq : inEqs) {
 			if (!InputValidator.getInstance().isValid(eq)) {
 				valid = false;
