@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public class SimultaneousEquation {
     
     ArrayList<LinearEquation> eqs;
-    double a[][];
+    double originalMatrix[][];
     double constMatrix[][];
     int n;
     
-    public SimultaneousEquation (ArrayList<LinearEquation> equations) { //Term and Constant
+    public SimultaneousEquation (ArrayList<LinearEquation> equations) { 
         eqs = equations;
     }
 
@@ -17,12 +17,12 @@ public class SimultaneousEquation {
         // initialise the matrix from getting data from eqs
         n = eqs.size();
         
-        a = new double[n][n];
+        originalMatrix = new double[n][n];
         constMatrix  = new double[n][1];
         
         for(int i=0; i<n; i++)
             for(int j=0; j<n; j++)
-                a[i][j] = eqs.get(i).getVTerms().get(j).getCoefficient();  //need to check
+                originalMatrix[i][j] = eqs.get(i).getVTerms().get(j).getCoefficient();  //need to check
         
         for (int i=0;i<n;i++) {
             constMatrix[i][0] = eqs.get(i).getConstant().getCoefficient();
@@ -30,70 +30,65 @@ public class SimultaneousEquation {
         
     }
 
-
-    //need to decide if multiply in the same function calcInverse 
-
     public void solve() {
     	
     	setMatrix();
-    	int result[][]=new int[n][n];  //3 rows and 3 columns  
-    	double d[][] = invert(a);
-        //multiplying and printing multiplication of 2 matrices    
-        for(int i=0;i<n;i++){    
-            for(int j=0;j<n;j++){    
-                result[i][j]=0;      
-                for(int k=0;k<n;k++){      
-                    result[i][j]+=d[i][k]*constMatrix[k][j];      
-                }//end of k loop  
-            }//end of j loop  
+    	int result[][] = new int[n][n]; 
+    	double inverseMatrix[][] = inverse(originalMatrix);
+        //multiplying 2 matrices    
+        for(int i = 0; i < n; i++) {
+            for(int j = 0;j < n; j++) {    
+           
+                result[i][j] = 0;     
+                
+                for(int k = 0; k < n; k++){      
+                    result[i][j] += inverseMatrix[i][k] * constMatrix[k][j];      
+                } 
+            } 
         }
     }
 
-    public double[][] invert(double a[][]) 
+    public double[][] inverse(double originalMatrix[][]) 
     {
-        int n = a.length;
+        int n = originalMatrix.length;
         double x[][] = new double[n][n];
         double b[][] = new double[n][n];
         int index[] = new int[n];
         for (int i=0; i<n; ++i) 
             b[i][i] = 1;
  
- // Transform the matrix into an upper triangle
-        gaussian(a, index);
+        // Transform the matrix into an upper triangle
+        gaussian(originalMatrix, index);
  
         // Update the matrix b[i][j] with the ratios stored
         for (int i=0; i<n-1; ++i)
             for (int j=i+1; j<n; ++j)
                 for (int k=0; k<n; ++k)
-                    b[index[j]][k]
-                    	    -= a[index[j]][i]*b[index[i]][k];
+                    b[index[j]][k] -= originalMatrix[index[j]][i]*b[index[i]][k];
  
         // Perform backward substitutions
-        for (int i=0; i<n; ++i) 
+        for (int i = 0; i < n; i++) 
         {
-            x[n-1][i] = b[index[n-1]][i]/a[index[n-1]][n-1];
-            for (int j=n-2; j>=0; --j) 
+            x[n-1][i] = b[index[n-1]][i] / originalMatrix[index[n-1]][n-1];
+            for (int j = n - 2; j >= 0; --j) 
             {
                 x[j][i] = b[index[j]][i];
-                for (int k=j+1; k<n; ++k) 
+                for (int k = j+1; k < n; ++k) 
                 {
-                    x[j][i] -= a[index[j]][k]*x[k][i];
+                    x[j][i] -= originalMatrix[index[j]][k]*x[k][i];
                 }
-                x[j][i] /= a[index[j]][j];
+                x[j][i] /= originalMatrix[index[j]][j];
             }
         }
         return x;
     }
  
-    // Method to carry out the partial-pivoting Gaussian
-    // elimination.  Here index[] stores pivoting order.
- 
-    public void gaussian(double a[][], int index[]) 
+    public void gaussian(double originalMatrix[][], int index[]) 
     {
         int n = index.length;
         double c[] = new double[n];
  
-        // Initialize the index
+        // Initialise the index
         for (int i=0; i<n; ++i) 
             index[i] = i;
  
@@ -103,7 +98,7 @@ public class SimultaneousEquation {
             double c1 = 0;
             for (int j=0; j<n; ++j) 
             {
-                double c0 = Math.abs(a[i][j]);
+                double c0 = Math.abs(originalMatrix[i][j]);
                 if (c0 > c1) c1 = c0;
             }
             c[i] = c1;
@@ -116,7 +111,7 @@ public class SimultaneousEquation {
             double pi1 = 0;
             for (int i=j; i<n; ++i) 
             {
-                double pi0 = Math.abs(a[index[i]][j]);
+                double pi0 = Math.abs(originalMatrix[index[i]][j]);
                 pi0 /= c[index[i]];
                 if (pi0 > pi1) 
                 {
@@ -131,14 +126,14 @@ public class SimultaneousEquation {
             index[k] = itmp;
             for (int i=j+1; i<n; ++i) 	
             {
-                double pj = a[index[i]][j]/a[index[j]][j];
+                double pj = originalMatrix[index[i]][j] / originalMatrix[index[j]][j];
  
             // Record pivoting ratios below the diagonal
-                a[index[i]][j] = pj;
+                originalMatrix[index[i]][j] = pj;
  
                 // Modify other elements accordingly
                 for(int l=j+1; l<n; ++l)
-                    a[index[i]][l] -= pj*a[index[j]][l];
+                    originalMatrix[index[i]][l] -= pj * originalMatrix[index[j]][l];
             }
         }
     }
