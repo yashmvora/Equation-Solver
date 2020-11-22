@@ -13,8 +13,7 @@ private static InputValidator instance = new InputValidator();
 		
     }
     
-    public boolean isValid(String[] exps) {
-        for (String e : exps) {
+    public boolean isValid(String e) {
 
             String[] exp = e.split("");
             if (!bracketsValid(exp)) {
@@ -23,7 +22,7 @@ private static InputValidator instance = new InputValidator();
             if(!operatorsValid(exp)){
                 return false;
             }
-        }
+        
         return true;
     }
 
