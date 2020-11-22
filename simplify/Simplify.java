@@ -224,7 +224,7 @@ public class Simplify{
         double a = 0.0;
         for(int i=0;i<term.length();i++){
             if(term.charAt(i)=='^'){
-                if(isConstant(term.substring(0,i))){
+                if(isConstant(term.substring(0,i+1))){
                     a = Double.parseDouble(term.substring(0,i));
                     double b = Math.pow(a,Integer.parseInt(term.substring(i,i+1)));
                     return (term.substring(i).length()>2)?b+term.substring(i+2):b+"";
@@ -440,6 +440,10 @@ public class Simplify{
             else {
                 if(i==s.length()-1)
                     temp+=s.charAt(i);
+                if(i!=0&&s.charAt(i-1)=='*') {
+                	temp+=s.charAt(i);
+                	continue;
+                }
                 try{
                     temp = removeConstantPower(temp);
                     newsign=s.charAt(i); //+
