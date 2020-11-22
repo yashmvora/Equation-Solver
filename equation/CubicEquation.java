@@ -59,7 +59,7 @@ public class CubicEquation extends PolynomialEquation {
 		double c = s / m;
 		double q = (a * a - 3 * b) / 9;
 		double r = (2 * a * a * a - 9 * a * b + 27 * c) / 54;
-		if (r * r < q * q * q) {
+		if (r * r <=q * q * q) {
 			System.out.println("There are three solutions:");
 			t = Math.acos(r / Math.sqrt(q * q * q));
 			double x1 = -2 * Math.sqrt(q) * Math.cos(t / 3) - a / 3;
