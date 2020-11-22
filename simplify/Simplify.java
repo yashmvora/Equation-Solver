@@ -62,8 +62,6 @@ public class Simplify{
 							String x = simplify(terms.get(i));
 							if(x.charAt(0)=='+'||x.charAt(0)=='-')
 									tmp += x;
-							else
-									tmp += "+"+x;
 					}
 					//System.out.println("Check Calc - "+tmp+" -- "+calc(tmp));
 					return calc(tmp);
@@ -219,22 +217,7 @@ public class Simplify{
         return terms;
     }
 
-    //take care of constants with power
-    public String removeConstantPower(String term){
-        double a = 0.0;
-        for(int i=0;i<term.length();i++){
-            if(term.charAt(i)=='^'){
-                if(isConstant(term.substring(0,i+1))){
-                    a = Double.parseDouble(term.substring(0,i));
-                    double b = Math.pow(a,Integer.parseInt(term.substring(i,i+1)));
-                    return (term.substring(i).length()>2)?b+term.substring(i+2):b+"";
-                }
-
-            }
-        }
-        return term;
-    }
-
+    
     public ArrayList<String>[] simplifyTerms(ArrayList<String>[] terms){//for taking care of the multiply sign in the terms
     	//is called in calc to take care so that terms are appropriate for addition
 
@@ -445,7 +428,6 @@ public class Simplify{
                 	continue;
                 }
                 try{
-                    temp = removeConstantPower(temp);
                     newsign=s.charAt(i); //+
                     if(i==0){
                         continue;

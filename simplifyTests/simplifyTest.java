@@ -48,4 +48,16 @@ public class simplifyTest {
 		String result = sim.simplify("(1-(36x+30)(x+2)(2))");
 		assertEquals("-204.0x-72.0x^2-119.0", result);
 	}
+	@Test
+	void test8() {
+		Simplify sim = Simplify.getInstance();
+		String result = sim.simplify("(1-(36x+30)*(-(x+2))*2)");
+		assertEquals("+204.0x+72.0x^2+121.0", result);
+	}
+	@Test
+	void test9() {
+		Simplify sim = Simplify.getInstance();
+		String result = sim.simplify("(1-(36x+30)*(x+2)*2)");
+		assertEquals("-204.0x-72.0x^2-119.0", result);
+	}
 }
