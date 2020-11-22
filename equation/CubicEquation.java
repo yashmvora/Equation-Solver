@@ -1,5 +1,4 @@
 
-
 package equation;
 
 import java.util.ArrayList;
@@ -7,7 +6,10 @@ import java.util.ArrayList;
 public class CubicEquation extends PolynomialEquation {
 	 ArrayList<Term> eq;
 	 int sizeOfEq=0;
-	 int[] index=new int[4];
+	 int[] index= {-1,-1,-1,-1};
+	 double m,n,t,s;
+	 ConstantTerm cc;
+		double cCo;
 	public CubicEquation(ArrayList<Term> terms) {
 		super(terms);
 		// TODO Auto-generated constructor stub
@@ -16,25 +18,37 @@ public class CubicEquation extends PolynomialEquation {
 	    
 
 	public void solve() {
-		ConstantTerm cc = getConstant();
-		double cCo = cc.getCoefficient();
+	
 		
 		ArrayList<VariableTerm> VTerms = getVTerms(); 
 		sizeOfEq=VTerms.size();
-		for(int i=0;i<sizeOfEq;i++)
-		{
-			int power = VTerms.get(i).getPower();
-			if(power==3)
-				index[0]=i;
-			if(power==2)
-				index[1]=i;
-			if(power==1)
-				index[2]=i;	
-		}
-		double m=VTerms.get(index[0]).getCoefficient();
-		double n=VTerms.get(index[1]).getCoefficient();
-		double t=VTerms.get(index[2]).getCoefficient();
-		double s=cCo;
+		
+			 cc = getConstant();
+			 cCo = cc.getCoefficient();
+		
+			for(int i=0;i<sizeOfEq;i++)
+			{
+				int power = VTerms.get(i).getPower();
+				if(power==3)
+					index[0]=i;
+				if(power==2)
+					index[1]=i;
+				if(power==1)
+					index[2]=i;
+					
+			}
+		
+
+		 m=VTerms.get(index[0]).getCoefficient();
+		if(index[1]==-1)
+			 n= 0;
+		else
+			n=VTerms.get(index[1]).getCoefficient();
+		if(index[2]==-1)
+			 t= 0;
+		else
+			t=VTerms.get(index[2]).getCoefficient();
+		 s=cCo;
 		
 		
 		double a=n/m;
@@ -61,9 +75,7 @@ public class CubicEquation extends PolynomialEquation {
 		System.out.println("x="+x1);
 		}
 
-		//double coef = VTerms.get(2).getCoefficient();
-		//int power = VTerms.get(1).getPower();
-		//char v = VTerms.get(3).getVar();
+	
 		
 			
 	}
