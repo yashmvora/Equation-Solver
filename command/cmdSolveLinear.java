@@ -20,9 +20,6 @@ public class cmdSolveLinear implements Command {
 		if (InputValidator.getInstance().isValid(args[1])) {
 			SimultaneousEquation eq = factorySimultaneous.getInstance().factoryMethod(args);
 		}
-		
-		
-
 	}
 	
 	public static cmdSolveLinear getInstance() {

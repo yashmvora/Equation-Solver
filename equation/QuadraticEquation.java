@@ -9,11 +9,23 @@ public class QuadraticEquation extends PolynomialEquation {
 	public QuadraticEquation(ArrayList<Term> terms) {
 		super(terms);
 		
-
+	}
 		private static final double ERROR = 0.00000001; // acceptable error for Newton's Method
 	
 	/*
 	 * Solves the quadratic equation and outputs roots to the screen. Throws an exception is precision is lost during calculation.
+	 * 
+	 * 
+	 * new instructions
+	 * 
+	 * Return the answer in RealSolution objects in an ArrayList of Solution. If there are no real roots return a ImaginarySolution object in the Solution ArrayList
+	 * 
+	 * no static methods
+	 * no input validation
+	 * don't have to take care of input
+	 * all terms already present in the terms arraylist in equation class: use getConstant to get ConstantTerm variable and getVTerms to get an arraylist of VTerm objects
+	 * look at Term, ConstantTerm and VariableTerm classes to check how to get coefficient, power and variable of the terms
+	 * 
 	 */
 		public static void solveQuadratic(double a, double b, double c) throws NotEnoughPrecisionException {
 			
