@@ -97,29 +97,6 @@ private static InputValidator instance = new InputValidator();
         return false;
     }
 
-//postchecking
-    public boolean checkNumberofEqs(String[] exp){//number of eqs< number of variables infinite solutions
-        int eqs=0;
-        HashMap<Character, Integer> variables = new HashMap<Character, Integer>();
-       
-        for (int i=0;i<exp.length;i++){
-            eqs++;
-            for (int j=0;j<exp[i].length();j++){
-                if (Character.toString(exp[i].charAt(j)).matches("[A-Za-z]")){
-                    if (variables.containsKey(exp[i].charAt(j))){
-                        int num=variables.get(exp[i].charAt(j));
-                        variables.replace(exp[i].charAt(j), num+=1);
-                    } else{
-                        variables.put(exp[i].charAt(j), 0);
-                }
-            }
-        }
-    }
-        if (eqs==variables.size()){
-            return true;
-        }
-        return false;
-    }
 
     public boolean checkDecimal(String[] exp){
         for(int i=0;i<exp.length;i++){
@@ -177,26 +154,6 @@ private static InputValidator instance = new InputValidator();
     	}
     	return true;
     }
-    //put in input handler
-    
-    public String removeSpaces(String exp) {
-    	return exp.replaceAll(" ", "");
-    }
-    
-    public String changeBrackets(String exp) {
-    	for (int i=0;i<exp.length();i++){
-    		if (exp.charAt(i)=='{'||exp.charAt(i)=='[') {
-    			exp=exp.substring(0,i)+'('+exp.substring(i+1);
-    		}
-    		else if(exp.charAt(i)=='}'||exp.charAt(i)==']') {
-    			exp=exp.substring(0,i)+')'+exp.substring(i+1);
-    		}
-    	}
-    	return exp;
-    }
-    
-    
-    //post validator only linear has multiple varibales quadratic and cubic dont
 }
 
 
