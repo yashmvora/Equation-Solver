@@ -24,7 +24,7 @@ public class cmdSolveCubic implements Command {
 		if (InputValidator.getInstance().isValid(inEq)) {
 			CubicEquation eq = (CubicEquation) factoryCubic.getInstance().factoryMethod(inEq);
 			ArrayList<Solution>solutions = eq.solve();
-			System.out.println("Simplified: "eq.toString());
+			System.out.println("Simplified: "+eq.toString());
 			for(Solution s: solutions)
 				System.out.println(s.toString());
 		}
