@@ -1,4 +1,6 @@
 package simultaneousEquationTest;
+import static org.junit.Assert.assertArrayEquals;
+
 //test inverse
 import java.util.ArrayList;
 
@@ -31,7 +33,7 @@ public class InvertMatrixTest {
 		eq1.add(new VariableTerm("-2y"));
 		eq1.add(new ConstantTerm("5"));
 		
-		ArrayList<Term>eq2= new ArrayList<>();
+		ArrayList<Term> eq2= new ArrayList<>();
 		eq2.add(new VariableTerm("x"));
 		eq2.add(new VariableTerm("-y"));
 		eq2.add(new ConstantTerm("-3"));
@@ -46,7 +48,7 @@ public class InvertMatrixTest {
 
         double[][] result = simul.inverse(simul.getOriginalMatrix());
 
-        assertEquals(result, expected);
+        assertArrayEquals(result, expected);
 		
     }
     
@@ -54,9 +56,9 @@ public class InvertMatrixTest {
 	public void test_2() {
 
         double[][] expected = {
-            {5/34, 3/34}, 
-            {3/34, -5/34}, 
-      };
+            {5.0/34.0, 3.0/34.0}, 
+            {3.0/34.0, -5.0/34.0}, 
+        };
 		
 		ArrayList<Term> eq1= new ArrayList<>();
 		eq1.add(new VariableTerm("5x"));
@@ -78,7 +80,7 @@ public class InvertMatrixTest {
 
         double[][] result = simul.inverse(simul.getOriginalMatrix());
 
-        assertEquals(result, expected);
+        assertArrayEquals(result, expected);
 		
     }
     
@@ -110,7 +112,7 @@ public class InvertMatrixTest {
 
         double[][] result = simul.inverse(simul.getOriginalMatrix());
 
-        assertEquals(result, expected);
+        assertArrayEquals(result, expected);
 		
 	}
 	

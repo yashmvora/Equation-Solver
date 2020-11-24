@@ -1,4 +1,6 @@
 package simultaneousEquationTest;
+import static org.junit.Assert.assertArrayEquals;
+
 //test solve
 import java.util.ArrayList;
 
@@ -22,7 +24,7 @@ public class SolveSimultaneousEquationTest {
 	public void test_1() {
         
         double[][] expected = {
-            {1}, 
+            {-22}, 
             {-2}, 
         };
 
@@ -43,7 +45,7 @@ public class SolveSimultaneousEquationTest {
 		
         SimultaneousEquation simul = new SimultaneousEquation(equations);
         double[][] result = simul.solve();
-        assertEquals(result, expected);
+        assertArrayEquals(result, expected);
 		
     }
 
@@ -72,7 +74,7 @@ public class SolveSimultaneousEquationTest {
 		
         SimultaneousEquation simul = new SimultaneousEquation(equations);
         double[][] result = simul.solve();
-        assertEquals(result, expected);
+        assertArrayEquals(result, expected);
 		
     }
 
@@ -101,7 +103,7 @@ public class SolveSimultaneousEquationTest {
 		
         SimultaneousEquation simul = new SimultaneousEquation(equations);
         double[][] result = simul.solve();
-        assertEquals(result, expected);
+        assertArrayEquals(result, expected);
 		
     }
 	

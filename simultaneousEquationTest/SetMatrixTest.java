@@ -1,4 +1,6 @@
 package simultaneousEquationTest;
+import static org.junit.Assert.assertArrayEquals;
+
 //test setMatrix - done
 import java.util.ArrayList;
 
@@ -44,7 +46,7 @@ public class SetMatrixTest {
         SimultaneousEquation simul = new SimultaneousEquation(equations);
         simul.setMatrix();
 
-        assertEquals(simul.getOriginalMatrix(), expected);
+        assertArrayEquals(simul.getOriginalMatrix(), expected);
 		
     }
     
@@ -74,7 +76,7 @@ public class SetMatrixTest {
         SimultaneousEquation simul = new SimultaneousEquation(equations);
         simul.setMatrix();
 
-        assertEquals(simul.getOriginalMatrix(), expected);
+        assertArrayEquals(simul.getOriginalMatrix(), expected);
 		
     }
     
@@ -82,8 +84,8 @@ public class SetMatrixTest {
 	public void testConstantMatrix_1() {
         
         double[][] expected = {
-            {7}, 
-            {-23}, 
+            {-7}, 
+            {23}, 
         };
         
 		ArrayList<Term> eq1= new ArrayList<>();
@@ -104,7 +106,7 @@ public class SetMatrixTest {
         SimultaneousEquation simul = new SimultaneousEquation(equations);
         simul.setMatrix();
 
-        assertEquals(simul.getConstantMatrix(), expected);
+        assertArrayEquals(simul.getConstantMatrix(), expected);
 		
     }
     
@@ -112,8 +114,8 @@ public class SetMatrixTest {
 	public void testConstantMatrix_2() {
 
         double[][] expected = {
-            {-5}, 
-            {3}, 
+            {5}, 
+            {-3}, 
         };
 		
 		ArrayList<Term> eq1= new ArrayList<>();
@@ -134,7 +136,7 @@ public class SetMatrixTest {
         SimultaneousEquation simul = new SimultaneousEquation(equations);
         simul.setMatrix();
 
-        assertEquals(simul.getConstantMatrix(), expected);
+        assertArrayEquals(simul.getConstantMatrix(), expected);
 		
 	}
 	

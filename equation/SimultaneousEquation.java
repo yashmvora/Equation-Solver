@@ -42,12 +42,12 @@ public class SimultaneousEquation {
                 result[i][j] = 0;     
                 
                 for(int k = 0; k < n; k++) {      
-                    result[i][j] += inverseMatrix[i][k] * constMatrix[k][j];      
+                    result[i][0] += inverseMatrix[i][k] * constMatrix[k][0];  
                 } 
             } 
         }
         return result;
-//        printResult(result);
+
     }
 
     public double[][] inverse(double originalMatrix[][]) 
@@ -62,7 +62,6 @@ public class SimultaneousEquation {
         // Transform the matrix into an upper triangle
         gaussian(originalMatrix, index);
  
-        // Update the matrix b[i][j] with the ratios stored
         for (int i = 0; i < n - 1; ++i)
             for (int j = i + 1; j < n; ++j)
                 for (int k = 0; k < n; ++k)
@@ -106,7 +105,6 @@ public class SimultaneousEquation {
             gauMatrix[i] = element1;
         }
  
-        // Search the pivoting element from each column
         int k = 0;
         for (int j = 0; j < n - 1; ++j) 
         {
@@ -146,15 +144,5 @@ public class SimultaneousEquation {
 
     public double[][] getConstantMatrix() {
         return this.constMatrix;
-    }
-
-    public void printResult(int[][] result) {
-        //print result matrix
-    	for (int i=0;i<n;i++) {
-    		for (int j=0;j<n;j++) 
-    			System.out.print(result[i][j]);
-    		System.out.println();
-    	}
-    	
     }
 }
