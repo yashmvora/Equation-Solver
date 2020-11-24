@@ -30,10 +30,10 @@ public class SimultaneousEquation {
         
     }
 
-    public void solve() {
+    public double[][] solve() {
     	
     	setMatrix();
-    	int result[][] = new int[n][n]; 
+    	double[][] result = new double[n][n]; 
     	double inverseMatrix[][] = inverse(originalMatrix);
         // multiplying 2 matrices    
         for(int i = 0; i < n; i++) {
@@ -46,7 +46,8 @@ public class SimultaneousEquation {
                 } 
             } 
         }
-        printResult(result);
+        return result;
+//        printResult(result);
     }
 
     public double[][] inverse(double originalMatrix[][]) 
@@ -139,6 +140,14 @@ public class SimultaneousEquation {
         }
     }
 
+    public double[][] getOriginalMatrix() {
+        return this.originalMatrix;
+    }
+
+    public double[][] getConstantMatrix() {
+        return this.constMatrix;
+    }
+
     public void printResult(int[][] result) {
         //print result matrix
     	for (int i=0;i<n;i++) {
@@ -149,17 +158,3 @@ public class SimultaneousEquation {
     	
     }
 }
-
-// 3x + 4y = 5
-// 2x - y = 2
-
-// A 
-// 3 4
-// 2 -1
-
-// B
-// 5
-// 2
-
-// AX = B
-// X = A-1 * B
