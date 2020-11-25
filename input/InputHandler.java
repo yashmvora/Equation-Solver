@@ -12,6 +12,13 @@ public class InputHandler {
 		return instance;
 	}
 	
+	public String handleInput(String exp){
+		String updated;
+		updated=removeSpaces(exp);
+		updated=changeBrackets(updated);
+		return updated;
+	}
+
 	public String removeSpaces(String exp) {
     	return exp.replaceAll(" ", "");
     }
