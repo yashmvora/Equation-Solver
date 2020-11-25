@@ -33,16 +33,16 @@ public class SimultaneousEquation {
     public double[][] solve() {
     	
     	setMatrix();
-    	double[][] result = new double[n][n]; 
+    	double[][] result = new double[n][1]; 
     	double inverseMatrix[][] = inverse(originalMatrix);
         // multiplying 2 matrices    
         for(int i = 0; i < n; i++) {
-            for(int j = 0;j < n; j++) {    
+            for(int j = 0;j < 1; j++) {    
            
                 result[i][j] = 0;     
                 
                 for(int k = 0; k < n; k++) {      
-                    result[i][0] += inverseMatrix[i][k] * constMatrix[k][0];  
+                    result[i][j] += inverseMatrix[i][k] * constMatrix[k][j];  
                 } 
             } 
         }
