@@ -14,15 +14,32 @@ private static InputValidator instance = new InputValidator();
     }
     
     public boolean isValid(String e) {
-
             String[] exp = e.split("");
+
             if (!bracketsValid(exp)) {
                 return false;
             }
             if(!operatorsValid(exp)){
                 return false;
             }
-        
+            if(!checkInvalidChars(exp)){
+                return false;
+            }
+            if (!checkDecimal(exp)) {
+                return false;
+            }
+            if(!checkAFterBrackets(exp)){
+                return false;
+            }
+            if(!checkAfterVariable(exp)){
+                return false;
+            }
+            if (!checkConstantPowers(exp)) {
+                return false;
+            }
+            if(!checkPowers(exp)){
+                return false;
+            }
         return true;
     }
 
