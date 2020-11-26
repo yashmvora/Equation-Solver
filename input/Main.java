@@ -18,6 +18,5 @@ public class Main {
 		} else if (input==3) {
 			cmdSolveCubic.getInstance().execute();
 		}
-
 	}
 }

@@ -15,29 +15,36 @@ private static InputValidator instance = new InputValidator();
     
     public boolean isValid(String e) {
             String[] exp = e.split("");
-
+            if(!checkInvalidChars(exp)){
+            	System.out.println("Invalid Characters!");
+                return false;
+            }
             if (!bracketsValid(exp)) {
+            	System.out.println("Invalid Brackets!");
                 return false;
             }
             if(!operatorsValid(exp)){
-                return false;
-            }
-            if(!checkInvalidChars(exp)){
+            	System.out.println("Invalid Operators!");
                 return false;
             }
             if (!checkDecimal(exp)) {
+            	System.out.println("");
                 return false;
             }
             if(!checkAfterBrackets(exp)){
+            	System.out.println("");
                 return false;
             }
             if(!checkAfterVariable(exp)){
+            	System.out.println("");
                 return false;
             }
             if (!checkConstantPowers(exp)) {
+            	System.out.println("");
                 return false;
             }
             if(!checkPowers(exp)){
+            	System.out.println("");
                 return false;
             }
         return true;
@@ -52,7 +59,7 @@ private static InputValidator instance = new InputValidator();
                 if(exp[i+1].matches("[*/^]+")){
                     return false;
                 }
-                if(!exp[i-1].matches("[A-Za-z0-9]+")&&!exp[i+1].matches("[A-Za-z0-9]+")){  
+                if(!exp[i-1].matches("[A-Za-z0-9)\\]}({\\[]+")&&!exp[i+1].matches("[A-Za-z0-9)\\\\]}({\\\\[]+")){  
                     return false;
                 }  
             }
