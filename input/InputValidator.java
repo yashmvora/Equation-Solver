@@ -185,7 +185,7 @@ private static InputValidator instance = new InputValidator();
     public boolean checkPowers(String[] exp) {
     	for (int i=1;i<exp.length;i++){
             if(exp[i]=="^" && exp[i+1].matches("[A-Za-z]")){
-                System.out.println("Powers can not be variables")
+                System.out.println("Powers can not be variables");
             	return false;
             }
     	}
