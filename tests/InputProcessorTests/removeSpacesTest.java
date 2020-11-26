@@ -1,16 +1,16 @@
-package tests.InputHandlerTests;
+package tests.InputProcessorTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import input.InputHandler;
+import input.InputProcessor;
 
 class removeSpacesTest{
 
 	@Test
 	void test1() {
-		InputHandler inputHandler = InputHandler.getInstance();
+		InputProcessor inputHandler = InputProcessor.getInstance();
 		String input="x +   1";
 		String result = inputHandler.removeSpaces(input);
 		assertEquals("x+1", result);
@@ -18,7 +18,7 @@ class removeSpacesTest{
 
 	@Test
 	void test2() {
-		InputHandler inputHandler = InputHandler.getInstance();
+		InputProcessor inputHandler = InputProcessor.getInstance();
 		String input="            ";
 		String result = inputHandler.removeSpaces(input);
 		assertEquals("", result);

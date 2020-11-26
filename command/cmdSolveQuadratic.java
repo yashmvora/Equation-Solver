@@ -9,6 +9,7 @@ import equation.SimultaneousEquation;
 import factory.factoryCubic;
 import factory.factoryQuadratic;
 import factory.factorySimultaneous;
+import input.InputProcessor;
 import input.InputValidator;
 import input.TextInput;
 import solution.Solution;
@@ -25,8 +26,9 @@ public class cmdSolveQuadratic implements Command {
 	public void execute() {
 		Scanner in = TextInput.getInstance().getScanner();
 		String inEq = in.nextLine();
-		
+		inEq= InputProcessor.getInstance().handleInput(inEq);
 		if (InputValidator.getInstance().isValid(inEq)) {
+			inEq=InputProcessor.getInstance().changeBrackets(inEq);
 			QuadraticEquation eq = (QuadraticEquation) factoryQuadratic.getInstance().factoryMethod(inEq);
 			ArrayList<Solution>solutions = eq.solve();
 			System.out.println("Simplified: "+eq.toString());
