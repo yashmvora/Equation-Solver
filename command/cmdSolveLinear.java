@@ -8,7 +8,6 @@ import equation.QuadraticEquation;
 import equation.SimultaneousEquation;
 import factory.factoryCubic;
 import factory.factorySimultaneous;
-import input.InputProcessor;
 import input.InputValidator;
 import input.TextInput;
 
@@ -29,22 +28,13 @@ public class cmdSolveLinear implements Command {
 		boolean valid = true;
 		do {
 			temp = in.nextLine();
-<<<<<<< HEAD
 			inEqs.add(temp);
 		} while (!temp.equalsIgnoreCase("done"));
-=======
-			inEqs.add(InputProcessor.getInstance().handleInput(temp));
-		} while (!temp.equals("done"));
->>>>>>> 92741c067610e9fd65b108a2eb85d2add9c4320b
 		inEqs.remove(inEqs.size());
 		for (String eq : inEqs) {
 			if (!InputValidator.getInstance().isValid(eq)) {
 				valid = false;
 			}
-		}
-		
-		for(int i = 0;i<inEqs.size();i++) {
-			inEqs.set(i, InputProcessor.getInstance().changeBrackets(inEqs.get(i)));
 		}
 
 		if (valid) {
