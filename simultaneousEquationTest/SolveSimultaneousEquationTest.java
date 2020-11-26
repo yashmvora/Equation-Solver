@@ -33,12 +33,11 @@ public class SolveSimultaneousEquationTest {
 		eq1.add(new VariableTerm("-2y"));
 		eq1.add(new ConstantTerm("5"));
 		
-		ArrayList<Term>eq2= new ArrayList<>();
+		ArrayList<Term> eq2= new ArrayList<>();
 		eq2.add(new VariableTerm("x"));
 		eq2.add(new VariableTerm("-y"));
 		eq2.add(new ConstantTerm("-3"));
-		
-
+			
 		ArrayList<LinearEquation> equations = new ArrayList<>();
 		equations.add(new LinearEquation(eq1));
 		equations.add(new LinearEquation(eq2));
@@ -62,7 +61,7 @@ public class SolveSimultaneousEquationTest {
 		eq1.add(new VariableTerm("3y"));
 		eq1.add(new ConstantTerm("-7"));
 		
-		ArrayList<Term>eq2= new ArrayList<>();
+		ArrayList<Term> eq2= new ArrayList<>();
 		eq2.add(new VariableTerm("3x"));
 		eq2.add(new VariableTerm("-5y"));
 		eq2.add(new ConstantTerm("23"));
@@ -82,24 +81,33 @@ public class SolveSimultaneousEquationTest {
 	public void test_3() {
         
         double[][] expected = {
-            {1}, 
-            {4}, 
+            {-0.9999999999999996}, 
+            {-4},
+            {1.9999999999999998},
         };
 
 		ArrayList<Term> eq1= new ArrayList<>();
-		eq1.add(new VariableTerm("2x"));
-		eq1.add(new VariableTerm("2y"));
-		eq1.add(new ConstantTerm("2"));
+		eq1.add(new VariableTerm("4x"));
+		eq1.add(new VariableTerm("-3y"));
+		eq1.add(new VariableTerm("z"));
+		eq1.add(new ConstantTerm("10"));
 		
-		ArrayList<Term>eq2= new ArrayList<>();
-		eq2.add(new VariableTerm("3x"));
-		eq2.add(new VariableTerm("-4y"));
-		eq2.add(new ConstantTerm("5"));
+		ArrayList<Term> eq2= new ArrayList<>();
+		eq2.add(new VariableTerm("2x"));
+		eq2.add(new VariableTerm("y"));
+		eq2.add(new VariableTerm("3z"));
+		eq2.add(new ConstantTerm("0"));
 		
+		ArrayList<Term> eq3= new ArrayList<>();
+		eq3.add(new VariableTerm("-x"));
+		eq3.add(new VariableTerm("2y"));
+		eq3.add(new VariableTerm("-5z"));
+		eq3.add(new ConstantTerm("-17"));
 
 		ArrayList<LinearEquation> equations = new ArrayList<>();
 		equations.add(new LinearEquation(eq1));
 		equations.add(new LinearEquation(eq2));
+		equations.add(new LinearEquation(eq3));
 		
         SimultaneousEquation simul = new SimultaneousEquation(equations);
         double[][] result = simul.solve();

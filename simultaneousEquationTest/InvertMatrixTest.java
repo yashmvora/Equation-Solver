@@ -54,11 +54,16 @@ public class InvertMatrixTest {
     
     @Test
 	public void test_2() {
+    	
+    	double[][] expected = {
+    			{5.0/34.0, 0.08823529411764705}, 
+                {3.0/34.0, -5.0/34.0},
+    	};
 
-        double[][] expected = {
-            {5.0/34.0, 3.0/34.0}, 
-            {3.0/34.0, -5.0/34.0}, 
-        };
+//        double[][] expected = {
+//            {5.0/34.0, 3.0/34.0}, 
+//            {3.0/34.0, -5.0/34.0}, 
+//        };
 		
 		ArrayList<Term> eq1= new ArrayList<>();
 		eq1.add(new VariableTerm("5x"));
@@ -88,18 +93,18 @@ public class InvertMatrixTest {
 	public void test_3() {
 
         double[][] expected = {
-            {1, -1}, 
-            {4, 2}, 
+            {1, -1.9999999999999998}, 
+            {-0.49999999999999994, 1.4999999999999998}, 
       };
 		
 		ArrayList<Term> eq1= new ArrayList<>();
-		eq1.add(new VariableTerm("2x"));
-		eq1.add(new VariableTerm("2y"));
+		eq1.add(new VariableTerm("3x"));
+		eq1.add(new VariableTerm("4y"));
 		eq1.add(new ConstantTerm("2"));
 		
 		ArrayList<Term>eq2= new ArrayList<>();
-		eq2.add(new VariableTerm("3x"));
-		eq2.add(new VariableTerm("-4y"));
+		eq2.add(new VariableTerm("1x"));
+		eq2.add(new VariableTerm("2y"));
 		eq2.add(new ConstantTerm("5"));
 		
 
