@@ -1,5 +1,6 @@
 package input;
 
+import java.nio.file.FileSystemLoopException;
 import java.util.ArrayList;
 import java.util.Stack;
 import java.util.HashMap;
@@ -190,6 +191,13 @@ private static InputValidator instance = new InputValidator();
             }
     	}
     	return true;
+    }
+
+    public boolean checkEqualsToSign(String[] exp){
+        if(exp[0]=="="){
+            System.out.println("Equals To Sign can not be the first thing in the expression");
+            return false;
+        }
     }
 }
 

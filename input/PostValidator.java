@@ -64,7 +64,7 @@ public class PostValidator{
 
 
         //postchecking
-    public boolean checkNumberofEqs(String[] exp){//number of eqs< number of variables infinite solutions
+   /* public boolean checkNumberofEqs(String[] exp){//number of eqs< number of variables infinite solutions
         int eqs=0;
         HashMap<Character, Integer> variables = new HashMap<Character, Integer>();
        
@@ -85,5 +85,5 @@ public class PostValidator{
             return true;
         }
         return false;
-    }
+    }*/
 }
