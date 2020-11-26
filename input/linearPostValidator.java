@@ -13,6 +13,7 @@ public class linearPostValidator extends PostValidator{
         if(checkDegree(exp)==1){
             return true;
         }
+        System.out.println("The Equation is not a Linear one");
         return false;
     }
 }
