@@ -14,7 +14,7 @@ public class Main {
 		int input;
 		do {
 			
-			System.out.println("Enter the type of equation you wish to solve:\n1 : Simultaneous Linear Equations\n2: Quadratic Equation\n3: Cubic Equation\n-1: Terminate the program");
+			System.out.println("\nEnter the type of equation you wish to solve:\n1 : Simultaneous Linear Equations\n2: Quadratic Equation\n3: Cubic Equation\n-1: Terminate the program");
 					
 			input = in.nextInt();
 			String input1 = in.nextLine();
@@ -26,7 +26,7 @@ public class Main {
 				cmdSolveCubic.getInstance().execute();
 			}
 			else if(input==-1) {
-				System.out.println("Thank you for using the Equation Solver! Have a good day!");
+				System.out.println("Thank you for using the Equation Solver! Have a good day!\n____________________________________________________");
 			}
 			else if(input<-1||input>3){
 				System.out.println("Invalid choice.");
