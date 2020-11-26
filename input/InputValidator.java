@@ -28,7 +28,7 @@ private static InputValidator instance = new InputValidator();
             if (!checkDecimal(exp)) {
                 return false;
             }
-            if(!checkAFterBrackets(exp)){
+            if(!checkAfterBrackets(exp)){
                 return false;
             }
             if(!checkAfterVariable(exp)){
