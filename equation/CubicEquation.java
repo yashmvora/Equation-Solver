@@ -69,9 +69,7 @@ public class CubicEquation extends PolynomialEquation {
 			solutions.add(new RealSolution(var, x1));
 			solutions.add(new RealSolution(var, x2));
 			solutions.add(new RealSolution(var, x3));
-
 		} else {
-			System.out.println("There is only one solution:");
 			int sgn = (r >= 0) ? 1 : -1;
 			double u = -sgn * Math.pow((Math.abs(r) + Math.sqrt(r * r - q * q * q)), 1. / 3);
 			double v = (u != 0) ? q / u : 0;

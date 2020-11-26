@@ -1,5 +1,6 @@
 package command;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import equation.CubicEquation;
@@ -10,6 +11,7 @@ import factory.factoryQuadratic;
 import factory.factorySimultaneous;
 import input.InputValidator;
 import input.TextInput;
+import solution.Solution;
 
 public class cmdSolveQuadratic implements Command {
 	
@@ -26,7 +28,10 @@ public class cmdSolveQuadratic implements Command {
 		
 		if (InputValidator.getInstance().isValid(inEq)) {
 			QuadraticEquation eq = (QuadraticEquation) factoryQuadratic.getInstance().factoryMethod(inEq);
+			ArrayList<Solution>solutions = eq.solve();
 			System.out.println("Simplified: "+eq.toString());
+			for(Solution s: solutions)
+				System.out.println(s.toString());
 		}	
 	}
 	
