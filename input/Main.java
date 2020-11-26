@@ -8,7 +8,7 @@ import command.cmdSolveQuadratic;
 
 public class Main {
 	public static void main(String[] args) {
-		System.out.println("Hi! Welcome to your friendly neighbourhood Equation Solver!");
+		System.out.println("Hi! I am your best buddy, the Equation Solver!");
 		System.out.println("This program can simplify the equations you input and then solve them for you!");
 		Scanner in = TextInput.getInstance().getScanner();
 		int input;
