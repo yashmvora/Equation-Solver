@@ -157,7 +157,7 @@ private static InputValidator instance = new InputValidator();
         return true;
     }
     
-    public boolean checkAFterBrackets(String[] exp) {
+    public boolean checkAfterBrackets(String[] exp) {
     	for(int i=0;i<exp.length;i++){
             if (exp[i]=="(" && exp[i+1]=="^"){
             	return false;
