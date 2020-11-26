@@ -38,7 +38,7 @@ public class SimultaneousEquation {
         // multiplying 2 matrices    
         for(int i = 0; i < n; i++) {
             for(int j = 0;j < 1; j++) {    
-            	
+           
                 result[i][j] = 0;     
                 
                 for(int k = 0; k < n; k++) {      
