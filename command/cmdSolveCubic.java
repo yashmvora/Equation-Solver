@@ -12,11 +12,6 @@ import solution.Solution;
 
 public class cmdSolveCubic implements Command {
 
-	private static cmdSolveCubic instance = new cmdSolveCubic();
-
-	private cmdSolveCubic() {
-
-	}
 
 	@Override
 	public void execute() {
@@ -31,10 +26,6 @@ public class cmdSolveCubic implements Command {
 			for(Solution s: solutions)
 				System.out.println(s.toString());
 		}
-	}
-
-	public static cmdSolveCubic getInstance() {
-		return instance;
 	}
 
 }

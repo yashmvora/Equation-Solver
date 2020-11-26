@@ -13,13 +13,6 @@ import input.InputValidator;
 import input.TextInput;
 
 public class cmdSolveLinear implements Command {
-
-	private static cmdSolveLinear instance = new cmdSolveLinear();
-
-	private cmdSolveLinear() {
-
-	}
-
 	@Override
 	public void execute() {
 		ArrayList<String> inEqs = new ArrayList<>();
@@ -46,8 +39,5 @@ public class cmdSolveLinear implements Command {
 		}
 	}
 
-	public static cmdSolveLinear getInstance() {
-		return instance;
-	}
 
 }

@@ -16,12 +16,6 @@ import solution.Solution;
 
 public class cmdSolveQuadratic implements Command {
 	
-	private static cmdSolveQuadratic instance = new cmdSolveQuadratic();
-	
-	private cmdSolveQuadratic() {
-		
-	}
-
 	@Override
 	public void execute() {
 		Scanner in = TextInput.getInstance().getScanner();
@@ -37,8 +31,5 @@ public class cmdSolveQuadratic implements Command {
 		}	
 	}
 	
-	public static cmdSolveQuadratic getInstance() {
-		return instance;
-	}
 
 }
