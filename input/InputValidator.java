@@ -15,29 +15,36 @@ private static InputValidator instance = new InputValidator();
     
     public boolean isValid(String e) {
             String[] exp = e.split("");
-
+            if(!checkInvalidChars(exp)){
+            	System.out.println("Invalid Characters!");
+                return false;
+            }
             if (!bracketsValid(exp)) {
+            	System.out.println("Invalid Brackets!");
                 return false;
             }
             if(!operatorsValid(exp)){
-                return false;
-            }
-            if(!checkInvalidChars(exp)){
+            	System.out.println("Invalid Operators!");
                 return false;
             }
             if (!checkDecimal(exp)) {
+            	System.out.println("");
                 return false;
             }
-            if(!checkAFterBrackets(exp)){
+            if(!checkAfterBrackets(exp)){
+            	System.out.println("");
                 return false;
             }
             if(!checkAfterVariable(exp)){
+            	System.out.println("");
                 return false;
             }
             if (!checkConstantPowers(exp)) {
+            	System.out.println("");
                 return false;
             }
             if(!checkPowers(exp)){
+            	System.out.println("");
                 return false;
             }
         return true;
@@ -52,7 +59,7 @@ private static InputValidator instance = new InputValidator();
                 if(exp[i+1].matches("[*/^]+")){
                     return false;
                 }
-                if(!exp[i-1].matches("[A-Za-z0-9]+")&&!exp[i+1].matches("[A-Za-z0-9]+")){  
+                if(!exp[i-1].matches("[A-Za-z0-9)\\]}({\\[]+")&&!exp[i+1].matches("[A-Za-z0-9)\\\\]}({\\\\[]+")){  
                     return false;
                 }  
             }
@@ -104,23 +111,29 @@ private static InputValidator instance = new InputValidator();
 
     public boolean checkInvalidChars(String[] exp){
         for (int i=0;i<exp.length;i++){
-        if (exp[i].matches("[A-Za-z0-9+\\-/(){}\\[\\]*^]")){
+        if (exp[i].matches("[A-Za-z0-9*^+/()-]")){
            continue; 
-        } else{
-            return true;
+        } else{ 
+            return false;
         }
     }
-        return false;
+        return true;
     }
 
 
     public boolean checkDecimal(String[] exp){
+    	for(int i=0;i<exp.length;i++){
+            if (exp[i]=="." && i+1<exp.length && exp[i+1].matches("[+/*^*-]")){
+            	return false;
+            }
+            }
+    	
         for(int i=0;i<exp.length;i++){
-            if (exp[i]=="."){
-               for (int j=0;j<exp.length;j++){
+            if (exp[i]=="." && i+1<exp.length){
+               for (int j=i+1;j<exp.length;j++){
                     if(exp[j].matches("[A-Za-z]")){
                         return false;
-                    } else if(exp[j].matches("[+*/-]+")){
+                    } else if(exp[j].matches("[+/*^*-]")){
                         break;
                     }
                } 
@@ -151,7 +164,7 @@ private static InputValidator instance = new InputValidator();
         return true;
     }
     
-    public boolean checkAFterBrackets(String[] exp) {
+    public boolean checkAfterBrackets(String[] exp) {
     	for(int i=0;i<exp.length;i++){
             if (exp[i]=="(" && exp[i+1]=="^"){
             	return false;

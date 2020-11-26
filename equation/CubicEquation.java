@@ -60,18 +60,14 @@ public class CubicEquation extends PolynomialEquation {
 		double q = (a * a - 3 * b) / 9;
 		double r = (2 * a * a * a - 9 * a * b + 27 * c) / 54;
 		if (r * r <=q * q * q) {
-			System.out.println("There are three solutions:");
 			t = Math.acos(r / Math.sqrt(q * q * q));
 			double x1 = -2 * Math.sqrt(q) * Math.cos(t / 3) - a / 3;
 			double x2 = -2 * Math.sqrt(q) * Math.cos((t + 2 * Math.PI) / 3) - a / 3;
 			double x3 = -2 * Math.sqrt(q) * Math.cos((t - 2 * Math.PI) / 3) - a / 3;
-			
 			solutions.add(new RealSolution(var, x1));
 			solutions.add(new RealSolution(var, x2));
 			solutions.add(new RealSolution(var, x3));
-
 		} else {
-			System.out.println("There is only one solution:");
 			int sgn = (r >= 0) ? 1 : -1;
 			double u = -sgn * Math.pow((Math.abs(r) + Math.sqrt(r * r - q * q * q)), 1. / 3);
 			double v = (u != 0) ? q / u : 0;
