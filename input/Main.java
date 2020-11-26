@@ -32,6 +32,6 @@ public class Main {
 				System.out.println("Invalid choice.");
 				
 			}
-		} while(input==-1);
+		} while(input!=-1);
 	}
 }

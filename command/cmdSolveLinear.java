@@ -22,13 +22,14 @@ public class cmdSolveLinear implements Command {
 	@Override
 	public void execute() {
 		ArrayList<String> inEqs = new ArrayList<>();
+		System.out.println("Enter a list of equations with degree 1 (type \"done\" to stop):");
 		String temp;
 		Scanner in = TextInput.getInstance().getScanner();
 		boolean valid = true;
 		do {
 			temp = in.nextLine();
 			inEqs.add(temp);
-		} while (!temp.equals("done"));
+		} while (!temp.equalsIgnoreCase("done"));
 		inEqs.remove(inEqs.size());
 		for (String eq : inEqs) {
 			if (!InputValidator.getInstance().isValid(eq)) {

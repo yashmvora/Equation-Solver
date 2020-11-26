@@ -19,6 +19,7 @@ public class cmdSolveCubic implements Command {
 
 	@Override
 	public void execute() {
+		System.out.println("Enter a cubic equation:");
 		Scanner in = TextInput.getInstance().getScanner();
 		String inEq = in.nextLine();
 		
