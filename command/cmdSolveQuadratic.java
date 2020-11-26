@@ -25,13 +25,14 @@ public class cmdSolveQuadratic implements Command {
 	@Override
 	public void execute() {
 		Scanner in = TextInput.getInstance().getScanner();
+		System.out.println("Enter a quadratic equation:");
 		String inEq = in.nextLine();
 		inEq= InputProcessor.getInstance().handleInput(inEq);
 		if (InputValidator.getInstance().isValid(inEq)) {
 			inEq=InputProcessor.getInstance().changeBrackets(inEq);
 			QuadraticEquation eq = (QuadraticEquation) factoryQuadratic.getInstance().factoryMethod(inEq);
 			ArrayList<Solution>solutions = eq.solve();
-			System.out.println("Simplified: "+eq.toString());
+			System.out.println("Simplified equation: "+eq.toString());
 			for(Solution s: solutions)
 				System.out.println(s.toString());
 		}	
