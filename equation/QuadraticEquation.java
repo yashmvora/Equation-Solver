@@ -55,9 +55,9 @@ public class QuadraticEquation extends PolynomialEquation {
 		
 		pos3 = coEff;
 
-		double a = Index[0]*pos1;
-		double b = Index[0]*pos2;
-		double c = Index[0]*pos3;
+		double a = pos1;
+		double b = pos2;
+		double c = pos3;
 
 		disc = (b*b)-(4*a*c);
 
