@@ -104,23 +104,29 @@ private static InputValidator instance = new InputValidator();
 
     public boolean checkInvalidChars(String[] exp){
         for (int i=0;i<exp.length;i++){
-        if (exp[i].matches("[A-Za-z0-9+\\-/(){}\\[\\]*^]")){
+        if (exp[i].matches("[A-Za-z0-9*^+/()-]")){
            continue; 
-        } else{
-            return true;
+        } else{ 
+            return false;
         }
     }
-        return false;
+        return true;
     }
 
 
     public boolean checkDecimal(String[] exp){
+    	for(int i=0;i<exp.length;i++){
+            if (exp[i]=="." && i+1<exp.length && exp[i+1].matches("[+/*^*-]")){
+            	return false;
+            }
+            }
+    	
         for(int i=0;i<exp.length;i++){
-            if (exp[i]=="."){
-               for (int j=0;j<exp.length;j++){
+            if (exp[i]=="." && i+1<exp.length){
+               for (int j=i+1;j<exp.length;j++){
                     if(exp[j].matches("[A-Za-z]")){
                         return false;
-                    } else if(exp[j].matches("[+*/-]+")){
+                    } else if(exp[j].matches("[+/*^*-]")){
                         break;
                     }
                } 
