@@ -10,7 +10,7 @@ public class linearPostValidator extends PostValidator{
     }
 
     public boolean isValid(String exp){
-        if(checkDegree(exp)==1 && checkVariables(exp)){
+        if(checkDegree(exp)==1){
             return true;
         }
         return false;

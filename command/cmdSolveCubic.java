@@ -21,6 +21,7 @@ public class cmdSolveCubic implements Command {
 	public void execute() {
 		Scanner in = TextInput.getInstance().getScanner();
 		String inEq = in.nextLine();
+		
 		if (InputValidator.getInstance().isValid(inEq)) {
 			CubicEquation eq = (CubicEquation) factoryCubic.getInstance().factoryMethod(inEq);
 			ArrayList<Solution>solutions = eq.solve();
