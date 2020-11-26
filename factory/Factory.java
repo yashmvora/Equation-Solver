@@ -14,7 +14,7 @@ public abstract class Factory {
 	public ArrayList<Term> simplifyInput(String input) {
 		ArrayList<Term> result = new ArrayList<>();
 		String temp = Simplify.getInstance().simplify(input);
-		System.out.println("Simplified equation: "+temp+"=0.0");
+		System.out.println("\nSimplified equation: "+temp+"=0.0\n");
 		ArrayList<String>[] strTerms = Simplify.getInstance().splitIntoTerms(temp);
 		for(int i =0; i<strTerms[1].size();i++) {
 			result.add(new VariableTerm(strTerms[1].get(i)));

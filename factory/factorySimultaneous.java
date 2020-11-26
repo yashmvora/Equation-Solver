@@ -16,11 +16,11 @@ public class factorySimultaneous{
 	}
 
 
-	public SimultaneousEquation factoryMethod(String[]input) {
+	public SimultaneousEquation factoryMethod(ArrayList<String>input) {
 		ArrayList<LinearEquation> result = new ArrayList<>();
 		
-		for(int i =1; i<input.length;i++) {
-			result.add((LinearEquation) factoryLinear.getInstance().factoryMethod(input[i]));
+		for(int i =0; i<input.size();i++) {
+			result.add((LinearEquation) factoryLinear.getInstance().factoryMethod(input.get(i)));
 		}
 		
 		return new SimultaneousEquation(result);

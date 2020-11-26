@@ -2,6 +2,9 @@ package equation;
 
 import java.util.ArrayList;
 
+import solution.RealSolution;
+import solution.Solution;
+
 public class SimultaneousEquation {
     
     ArrayList<LinearEquation> eqs;
@@ -30,7 +33,10 @@ public class SimultaneousEquation {
         
     }
 
-    public double[][] solve() {
+    public ArrayList<Solution> solve() {
+    	
+    	ArrayList<Solution> answer = new ArrayList<>();
+    	
     	
     	setMatrix();
     	double[][] result = new double[n][1]; 
@@ -42,11 +48,17 @@ public class SimultaneousEquation {
                 result[i][j] = 0;     
                 
                 for(int k = 0; k < n; k++) {      
-                    result[i][j] += inverseMatrix[i][k] * constMatrix[k][j];  
+                    result[i][j] += inverseMatrix[i][k] * constMatrix[k][j];
+
                 } 
             } 
         }
-        return result;
+        
+        for (int i = 0; i < n; i++) {
+        	answer.add(new RealSolution(eqs.get(0).getVTerms().get(i).getVar(), result[i][0]));
+        }
+        
+        return answer;
 
     }
 

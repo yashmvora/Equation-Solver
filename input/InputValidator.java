@@ -1,5 +1,6 @@
 package input;
 
+import java.nio.file.FileSystemLoopException;
 import java.util.ArrayList;
 import java.util.Stack;
 import java.util.HashMap;
@@ -185,11 +186,37 @@ private static InputValidator instance = new InputValidator();
     public boolean checkPowers(String[] exp) {
     	for (int i=1;i<exp.length;i++){
             if(exp[i]=="^" && exp[i+1].matches("[A-Za-z]")){
-                System.out.println("Powers can not be variables")
+                System.out.println("Powers can not be variables");
             	return false;
             }
     	}
     	return true;
+    }
+
+    public boolean checkEqualsToSign(String[] exp){
+        if(exp[0]=="="){
+            System.out.println("Equals To Sign can not be the first thing in the expression");
+            return false;
+        }
+
+        if(exp[exp.length-1]=="="){
+            System.out.println("Equals To Sign can not be the last thing in the expression");
+            return false;
+        }
+
+        int count=0;
+        for(int i=0;i<exp.length;i++){
+            if(exp[i]=="="){
+                count++;
+            }
+        }
+
+        if(count!=1){
+            System.out.println("There needs to be only one Equals To Sign");
+            return false;
+        }
+
+        return true;
     }
 }
 

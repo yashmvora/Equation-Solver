@@ -7,7 +7,7 @@ public class RealSolution implements Solution {
 	private double value;
 	private boolean solutionExists;
 	
-	public RealSolution(char var, double val) {
+	public RealSolution(char var, double val) { 
 		this.variable=var;
 		this.value=val;
 	}

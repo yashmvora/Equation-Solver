@@ -22,4 +22,3 @@ public class cubicPostValidator extends PostValidator{
         return true;
     }
 }
-}

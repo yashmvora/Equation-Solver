@@ -13,13 +13,7 @@ import solution.RealSolution;;
 
 public class QuadraticEquation extends PolynomialEquation {
 
-	private static final double ERROR = 0.00000001; // acceptable error for Newton's Method
-	double sqrt, q, pos1, pos2, pos3;
-	double disc, coEff;
-	int eqLen, pow;
-	int[] Index = {-1, -1, -1};
-	ConstantTerm conTerm;
-	char var = 0;
+	
 
 	public QuadraticEquation(ArrayList<Term> terms) {
 		super(terms);
@@ -28,6 +22,12 @@ public class QuadraticEquation extends PolynomialEquation {
 
 	@Override
 	public ArrayList<Solution> solve() {
+		double sqrt, q, pos1, pos2, pos3;
+		double disc, coEff;
+		int eqLen, pow;
+		int[] Index = {-1, -1, -1};
+		ConstantTerm conTerm;
+		char var = 0;
 		ArrayList<Solution> sol = new ArrayList<>();
 
 		ArrayList<VariableTerm> varTerm = getVTerms();

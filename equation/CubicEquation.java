@@ -7,12 +7,7 @@ import solution.RealSolution;
 import solution.Solution;
 
 public class CubicEquation extends PolynomialEquation {
-	ArrayList<Term> eq;
-	int sizeOfEq = 0;
-	int[] index = { -1, -1, -1, -1 };
-	double m, n, t, s;
-	ConstantTerm cc;
-	double cCo;
+	
 
 	public CubicEquation(ArrayList<Term> terms) {
 		super(terms);
@@ -20,6 +15,11 @@ public class CubicEquation extends PolynomialEquation {
 	}
 
 	public ArrayList<Solution> solve() {
+		int sizeOfEq = 0;
+		int[] index = { -1, -1, -1, -1 };
+		double m, n, t, s;
+		ConstantTerm cc;
+		double cCo;
 
 		ArrayList<Solution> solutions = new ArrayList<>();
 

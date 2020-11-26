@@ -9,16 +9,15 @@ import command.cmdSolveQuadratic;
 
 public class Main {
 	public static void main(String[] args) {
-		System.out.println("Hi! Welcome to your friendly neighbourhood Equation Solver!");
+		System.out.println("Hi! I am your best buddy, the Equation Solver!");
 		System.out.println("This program can simplify the equations you input and then solve them for you!");
 		Scanner in = TextInput.getInstance().getScanner();
 		String input;
 		do {
 			
-			System.out.println("\nEnter the type of equation you wish to solve:\n1 : Simultaneous Linear Equations\n2: Quadratic Equation\n3: Cubic Equation\n-1: Terminate the program");
+			System.out.println("\n____________________________________________________\nList of available commands:\n\n1 : Simultaneous Linear Equations\n2: Quadratic Equation\n3: Cubic Equation\n4: Simplify an expression\n-1: Terminate the program\n\nEnter a command to solve equations or terminate:");
 					
 			input = in.nextLine();
-			String input1 = in.nextLine();
 			if (input.equals("1")) {
 				new cmdSolveLinear().execute();
 			} else if (input.equals("2")) {
@@ -30,7 +29,7 @@ public class Main {
 				new cmdSimplify().execute();
 			}
 			else if(input.equals("-1")) {
-				System.out.println("Thank you for using the Equation Solver! Have a good day!\n____________________________________________________");
+				System.out.println("Thank you for using the Equation Solver. Have a good day!");
 			}
 			else {
 				System.out.println("Invalid choice.");
