@@ -107,6 +107,7 @@ private static InputValidator instance = new InputValidator();
         if (exp[i].matches("[A-Za-z0-9*^+/()-]")){
            continue; 
         } else{ 
+            System.out.println(exp[i]+" is an Invalid Character");
             return false;
         }
     }
@@ -117,6 +118,7 @@ private static InputValidator instance = new InputValidator();
     public boolean checkDecimal(String[] exp){
     	for(int i=0;i<exp.length;i++){
             if (exp[i]=="." && i+1<exp.length && exp[i+1].matches("[+/*^*-]")){
+                System.out.println("Invalid Decimal");
             	return false;
             }
             }
@@ -125,6 +127,7 @@ private static InputValidator instance = new InputValidator();
             if (exp[i]=="." && i+1<exp.length){
                for (int j=i+1;j<exp.length;j++){
                     if(exp[j].matches("[A-Za-z]")){
+                        System.out.println("Invalid Decimal");
                         return false;
                     } else if(exp[j].matches("[+/*^*-]")){
                         break;
@@ -139,6 +142,7 @@ private static InputValidator instance = new InputValidator();
         for (int i=1;i<exp.length;i++){
             if(exp[i]=="^"){
                 if(exp[i-1].matches("[0-9]")){
+                    System.out.println("Numbers can not be raised to any power");
                     return false;
                 }
             }
@@ -150,6 +154,7 @@ private static InputValidator instance = new InputValidator();
         for(int i=0;i<(exp.length-1);i++){
             if(exp[i].matches("[A-Za-z]")){
                 if (exp[i+1].matches("[0-9]")){
+                    System.out.println("Can not have a number after a variable");
                     return false;
                 }
             }
@@ -160,8 +165,10 @@ private static InputValidator instance = new InputValidator();
     public boolean checkAfterBrackets(String[] exp) {
     	for(int i=0;i<exp.length;i++){
             if (exp[i]=="(" && exp[i+1]=="^"){
-            	return false;
+                System.out.println("Can not raise brackets to a power");
+                return false;
             } else if (exp[i]==")" && exp[i+1]=="^") {
+                System.out.println("Can not raise brackets to a power");
             	return false;
             } 
     	}
@@ -171,6 +178,7 @@ private static InputValidator instance = new InputValidator();
     public boolean checkPowers(String[] exp) {
     	for (int i=1;i<exp.length;i++){
             if(exp[i]=="^" && exp[i+1].matches("[A-Za-z]")){
+                System.out.println("Powers can not be variables")
             	return false;
             }
     	}
