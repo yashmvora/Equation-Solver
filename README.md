@@ -65,3 +65,8 @@ crashes
 
 Problems left to solve:
 1. removeConstantPower is not working
+•	Empty String in main
+•	Empty String in Simultaneous
+•	Simultaneous equations variable and no of equations thing (first equation)
+•	Remove some singleton classes
+

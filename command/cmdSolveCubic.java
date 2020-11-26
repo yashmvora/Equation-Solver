@@ -28,6 +28,7 @@ public class cmdSolveCubic implements Command {
 			inEq=InputProcessor.getInstance().changeBrackets(inEq);
 			CubicEquation eq = (CubicEquation) factoryCubic.getInstance().factoryMethod(inEq);
 			ArrayList<Solution>solutions = eq.solve();
+			System.out.println("Answers:");
 			for(Solution s: solutions)
 				System.out.println(s.toString());
 		}

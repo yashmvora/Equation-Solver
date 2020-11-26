@@ -11,6 +11,7 @@ import factory.factorySimultaneous;
 import input.InputProcessor;
 import input.InputValidator;
 import input.TextInput;
+import solution.Solution;
 
 public class cmdSolveLinear implements Command {
 
@@ -28,22 +29,28 @@ public class cmdSolveLinear implements Command {
 		boolean valid = true;
 		do {
 			temp = in.nextLine();
-			inEqs.add(InputProcessor.getInstance().handleInput(temp));
+			if (!temp.equals("done"))
+				inEqs.add(InputProcessor.getInstance().handleInput(temp));
 		} while (!temp.equals("done"));
-		inEqs.remove(inEqs.size());
 		for (String eq : inEqs) {
 			if (!InputValidator.getInstance().isValid(eq)) {
 				valid = false;
 			}
 		}
-		
-		for(int i = 0;i<inEqs.size();i++) {
+
+		for (int i = 0; i < inEqs.size(); i++) {
 			inEqs.set(i, InputProcessor.getInstance().changeBrackets(inEqs.get(i)));
 		}
 
 		if (valid) {
-			SimultaneousEquation eq = factorySimultaneous.getInstance().factoryMethod((String[])inEqs.toArray());
+			SimultaneousEquation eq = factorySimultaneous.getInstance().factoryMethod(inEqs);
+			ArrayList<Solution>solutions= eq.solve();
+			for(Solution s:solutions) {
+				System.out.println(s.toString());
+			}
+			
 		}
+		
 	}
 
 	public static cmdSolveLinear getInstance() {
