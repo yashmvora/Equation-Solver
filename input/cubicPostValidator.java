@@ -10,9 +10,16 @@ public class cubicPostValidator extends PostValidator{
     }
 
     public boolean isValid(String exp){
-        if(checkDegree(exp)==3 && checkVariables(exp)){
-            return true;
+        if(checkDegree(exp)!=3){
+            System.out.println("Equation is not a Cubic one");
+            return false;
         }
-        return false;
+
+        if(!checkVariables(exp)){
+            System.out.println("More than one variable in equation");
+            return false;
+        }
+        return true;
     }
+}
 }
