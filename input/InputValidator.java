@@ -198,6 +198,25 @@ private static InputValidator instance = new InputValidator();
             System.out.println("Equals To Sign can not be the first thing in the expression");
             return false;
         }
+
+        if(exp[exp.length-1]=="="){
+            System.out.println("Equals To Sign can not be the last thing in the expression");
+            return false;
+        }
+
+        int count=0;
+        for(int i=0;i<exp.length;i++){
+            if(exp[i]=="="){
+                count++;
+            }
+        }
+
+        if(count!=1){
+            System.out.println("There needs to be only one Equals To Sign");
+            return false;
+        }
+
+        return true;
     }
 }
 
