@@ -45,6 +45,7 @@ public class cmdSolveLinear implements Command {
 		if (valid) {
 			SimultaneousEquation eq = factorySimultaneous.getInstance().factoryMethod(inEqs);
 			ArrayList<Solution>solutions= eq.solve();
+			System.out.println("Answers:");
 			for(Solution s:solutions) {
 				System.out.println(s.toString());
 			}

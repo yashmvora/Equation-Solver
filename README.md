@@ -69,4 +69,10 @@ Problems left to solve:
 •	Empty String in Simultaneous
 •	Simultaneous equations variable and no of equations thing (first equation)
 •	Remove some singleton classes
+Yash's code case with 1 variable
+{1
+2x+2=0
+done}
 
+Shuai's code still has problems:
+(x-2)(x-2)(x+3)
