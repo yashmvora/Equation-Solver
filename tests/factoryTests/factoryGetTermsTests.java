@@ -27,7 +27,7 @@ public class factoryGetTermsTests {
 	public void testConstructor1() {
 		ArrayList<Term> result = factoryCubic.getInstance().simplifyInput("22x");
 		ArrayList<String> expected = new ArrayList<>();
-		expected.add("22.0x^1");
+		expected.add("22.0x");
 		expected.add("0.0");
 		ArrayList<String> strResult = toString(result);
 		assertArrayEquals(expected.toArray(), strResult.toArray());
@@ -45,7 +45,7 @@ public class factoryGetTermsTests {
 	public void testConstructor3() {
 		ArrayList<Term> result = factoryCubic.getInstance().simplifyInput("22x+3");
 		ArrayList<String> expected = new ArrayList<>();
-		expected.add("22.0x^1");
+		expected.add("22.0x");
 		expected.add("3.0");
 		ArrayList<String> strResult = toString(result);
 		assertArrayEquals(expected.toArray(), strResult.toArray());
