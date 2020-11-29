@@ -32,9 +32,9 @@ class OperatorsValidTest {
 	@Test
 	void test4() {
 		InputValidator inputValidator = new InputValidator();
-		String [] input= "/2".split("");
+		String [] input= "-6".split("");
 		boolean result = inputValidator.operatorsValid(input);
-		assertEquals(false, result);
+		assertEquals(true, result);
 	}
 	@Test
 	void test5() {
@@ -81,9 +81,22 @@ class OperatorsValidTest {
 	@Test
 	void test11() {
 		InputValidator inputValidator = new InputValidator();
-		String [] input= "2+3/3+2".split("");
+		String [] input= "(*+2)".split("");
 		boolean result = inputValidator.operatorsValid(input);
-		assertEquals(true, result);
+		assertEquals(false, result);
 	}
-	
+	@Test
+	void test12() {
+		InputValidator inputValidator = new InputValidator();
+		String [] input= "(*+2+*)".split("");
+		boolean result = inputValidator.operatorsValid(input);
+		assertEquals(false, result);
+	}
+	@Test
+	void test13() {
+		InputValidator inputValidator = new InputValidator();
+		String [] input= "+2*".split("");
+		boolean result = inputValidator.operatorsValid(input);
+		assertEquals(false, result);
+	}
 }

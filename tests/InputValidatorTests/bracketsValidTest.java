@@ -113,5 +113,13 @@ class bracketsValidTest {
 		boolean result = inputValidator.bracketsValid(input);
 		assertEquals(false, result);
 	}
+	@Test
+	void test16() {
+		InputValidator inputValidator = new InputValidator();
+		String [] input= "(}".split("");
+		boolean result = inputValidator.bracketsValid(input);
+		assertEquals(false, result);
+	}
+	
 	
 }
