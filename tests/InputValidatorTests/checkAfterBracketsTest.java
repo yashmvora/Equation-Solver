@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import input.InputValidator;
 
-class checkAfterBrackets{
+class checkAfterBracketsTest{
 
 	@Test
 	void test1() {
