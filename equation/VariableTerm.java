@@ -38,10 +38,6 @@ public class VariableTerm extends Term {
 
     
 
-    public void setPower(int p){
-        this.power = p;
-    }
-
     public int getPower(){
         return this.power;
     }
@@ -50,9 +46,7 @@ public class VariableTerm extends Term {
         return this.var;
     }
 
-    public void setVar(char v) {
-    	this.var=v;
-    }
+
     public String toString(){
     	String term;
     	if(this.getPower()>1) 
