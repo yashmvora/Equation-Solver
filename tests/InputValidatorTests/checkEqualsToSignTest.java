@@ -1,4 +1,4 @@
-package testInputHandler;
+package tests.InputValidatorTests;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
