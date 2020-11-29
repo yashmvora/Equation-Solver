@@ -8,24 +8,7 @@ import simplify.Simplify;
 public class splitIntoTermsTest {
 	
 	public String ListToString(ArrayList<String>[] terms) {
-		String result ="";
-		for(int i=0;i<terms[1].size();i++) {
-			char x = terms[1].get(i).charAt(0);
-			if(x=='-'||x=='+') {
-				result+=terms[1].get(i);
-			}
-			else
-				result+="+"+terms[1].get(i);
-		}
-		for(int i=0;i<terms[0].size();i++) {
-			char x = terms[0].get(i).charAt(0);
-			if(x=='-'||x=='+') {
-				result+=terms[0].get(i);
-			}
-			else
-				result+="+"+terms[0].get(i);
-		}
-		return result;
+		return TestHelper.ListToString(terms);
 	}
 	@Test
 	void test1() {
@@ -73,5 +56,44 @@ public class splitIntoTermsTest {
 		terms[0].add("+7");
 		assertEquals(ListToString(terms),ListToString(result));	
 	}
-	
+	@Test
+	void test5() {
+		Simplify sim = Simplify.getInstance();
+		ArrayList<String>[] result = sim.splitIntoTerms("x*2x*22");
+		ArrayList<String>[] terms = new ArrayList[2];
+		terms[0] = new ArrayList<String>();
+		terms[1] = new ArrayList<String>();
+		terms[1].add("x*2x*22");
+		assertEquals(ListToString(terms),ListToString(result));	
+	}
+	@Test
+	void test6() {
+		Simplify sim = Simplify.getInstance();
+		ArrayList<String>[] result = sim.splitIntoTerms("-2*2");
+		ArrayList<String>[] terms = new ArrayList[2];
+		terms[0] = new ArrayList<String>();
+		terms[1] = new ArrayList<String>();
+		terms[1].add("-2*2");
+		assertEquals(ListToString(terms),ListToString(result));	
+	}
+	@Test
+	void test7() {
+		Simplify sim = Simplify.getInstance();
+		ArrayList<String>[] result = sim.splitIntoTerms("-2*-2");
+		ArrayList<String>[] terms = new ArrayList[2];
+		terms[0] = new ArrayList<String>();
+		terms[1] = new ArrayList<String>();
+		terms[1].add("-2*-2");
+		assertEquals(ListToString(terms),ListToString(result));	
+	}
+	@Test
+	void test8() {
+		Simplify sim = Simplify.getInstance();
+		ArrayList<String>[] result = sim.splitIntoTerms("-2*-2*x*x^2");
+		ArrayList<String>[] terms = new ArrayList[2];
+		terms[0] = new ArrayList<String>();
+		terms[1] = new ArrayList<String>();
+		terms[1].add("-2*-2*x*x^2");
+		assertEquals(ListToString(terms),ListToString(result));	
+	}
 }

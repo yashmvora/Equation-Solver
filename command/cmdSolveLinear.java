@@ -23,7 +23,12 @@ public class cmdSolveLinear implements Command {
 		do {
 			temp = in.nextLine();
 			if (!temp.equals("done"))
-				inEqs.add(InputProcessor.getInstance().handleInput(temp));
+				if (InputValidator.getInstance().checkEqualsToSign(temp.split("")))
+					inEqs.add(InputProcessor.getInstance().handleInput(temp));
+				else {
+					valid=false;
+					break;
+				}
 		} while (!temp.equals("done"));
 		for (String eq : inEqs) {
 			if (!InputValidator.getInstance().isValid(eq)) {
@@ -37,15 +42,14 @@ public class cmdSolveLinear implements Command {
 
 		if (valid) {
 			SimultaneousEquation eq = factorySimultaneous.getInstance().factoryMethod(inEqs);
-			ArrayList<Solution>solutions= eq.solve();
+			ArrayList<Solution> solutions = eq.solve();
 			System.out.println("Answers:");
-			for(Solution s:solutions) {
+			for (Solution s : solutions) {
 				System.out.println(s.toString());
 			}
-			
-		}
-		
-	}
 
+		}
+
+	}
 
 }

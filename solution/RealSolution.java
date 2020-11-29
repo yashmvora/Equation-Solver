@@ -16,5 +16,9 @@ public class RealSolution implements Solution {
 	public String toString() {
 		return String.format("%s=%f", variable, value);
 	}
+	
+	public Double getValue() {
+		return value;
+	}
 
 }

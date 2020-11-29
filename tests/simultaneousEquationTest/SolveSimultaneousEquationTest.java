@@ -1,6 +1,7 @@
 package tests.simultaneousEquationTest;
 import static org.junit.Assert.assertArrayEquals;
 
+import java.lang.reflect.Array;
 //test solve
 import java.util.ArrayList;
 
@@ -12,8 +13,19 @@ import equation.LinearEquation;
 import equation.SimultaneousEquation;
 import equation.Term;
 import equation.VariableTerm;
+import solution.Solution;
 
 public class SolveSimultaneousEquationTest {
+	
+	public double[][] toArray(ArrayList<Solution> solution) {
+		double[][]result = new double[solution.size()][1];
+		for(int i =0; i<solution.size();i++) {
+			result[i][0] = solution.get(i).getValue();
+		}
+		return result;
+	}
+	
+	
 
 	@BeforeEach
 	public void setUp() throws Exception {  }
@@ -44,7 +56,7 @@ public class SolveSimultaneousEquationTest {
 		equations.add(new LinearEquation(eq2));
 		
         SimultaneousEquation simul = new SimultaneousEquation(equations);
-        double[][] result = simul.solve();
+        double[][] result = toArray(simul.solve());
         assertArrayEquals(result, expected);
 		
     }
@@ -73,7 +85,7 @@ public class SolveSimultaneousEquationTest {
 		equations.add(new LinearEquation(eq2));
 		
         SimultaneousEquation simul = new SimultaneousEquation(equations);
-        double[][] result = simul.solve();
+        double[][] result = toArray(simul.solve());
         assertArrayEquals(result, expected);
 		
     }
@@ -112,7 +124,7 @@ public class SolveSimultaneousEquationTest {
 		equations.add(new LinearEquation(eq3));
 		
         SimultaneousEquation simul = new SimultaneousEquation(equations);
-        double[][] result = simul.solve();
+        double[][] result = toArray(simul.solve());
         assertArrayEquals(result, expected);
 		
     }
