@@ -423,8 +423,9 @@ public class Simplify{
             else {
                 if(i==s.length()-1)
                     temp+=s.charAt(i);
-                if(i!=0&&s.charAt(i-1)=='*') {
+                if(i!=0&&s.charAt(i)=='-'&&s.charAt(i-1)=='*') {
                 	temp+=s.charAt(i);
+                	if(i!=s.length()-1)
                 	continue;
                 }
                 try{

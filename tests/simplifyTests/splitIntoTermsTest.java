@@ -73,4 +73,5 @@ public class splitIntoTermsTest {
 		terms[0].add("+7");
 		assertEquals(ListToString(terms),ListToString(result));	
 	}
+	
 }
