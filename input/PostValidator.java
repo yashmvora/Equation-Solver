@@ -14,7 +14,7 @@ public class PostValidator{
         boolean lessthan2=true;
         
         for(int i=0;i<exp.length;i++){
-            if(exp[i]=='^'){
+            if(exp[i].equals('^')){
                 lessthan2=false;
             }
         }
@@ -29,7 +29,7 @@ public class PostValidator{
         
         if(!lessthan2) {
         	for(int i=0;i<exp.length-1;i++) {
-        		if(exp[i]=='^') {
+        		if(exp[i].equals('^')) {
         			degree=Math.max(degree,Character.getNumericValue(exp[i+1]));
         		}
         	}

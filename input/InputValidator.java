@@ -125,14 +125,14 @@ private static InputValidator instance = new InputValidator();
 
     public boolean checkDecimal(String[] exp){
     	for(int i=0;i<exp.length;i++){
-            if (exp[i]=="." && i+1<exp.length && exp[i+1].matches("[+/*^*-]")){
+            if (exp[i].equals(".") && i+1<exp.length && exp[i+1].matches("[+/*^*-]")){
                 System.out.println("Invalid Decimal");
             	return false;
             }
             }
     	
         for(int i=0;i<exp.length;i++){
-            if (exp[i]=="." && i+1<exp.length){
+            if (exp[i].equals(".") && i+1<exp.length){
                for (int j=i+1;j<exp.length;j++){
                     if(exp[j].matches("[A-Za-z]")){
                         System.out.println("Invalid Decimal");
@@ -148,7 +148,7 @@ private static InputValidator instance = new InputValidator();
 
     public boolean checkConstantPowers(String[] exp){
         for (int i=1;i<exp.length;i++){
-            if(exp[i]=="^"){
+            if(exp[i].equals("^")){
                 if(exp[i-1].matches("[0-9]")){
                     System.out.println("Numbers can not be raised to any power");
                     return false;
@@ -172,10 +172,10 @@ private static InputValidator instance = new InputValidator();
     
     public boolean checkAfterBrackets(String[] exp) {
     	for(int i=0;i<exp.length;i++){
-            if (exp[i]=="(" && exp[i+1]=="^"){
+            if (exp[i].equals("(") && exp[i+1].equals("^")){
                 System.out.println("Can not raise brackets to a power");
                 return false;
-            } else if (exp[i]==")" && exp[i+1]=="^") {
+            } else if (exp[i].equals(")") && exp[i+1].equals("^")) {
                 System.out.println("Can not raise brackets to a power");
             	return false;
             } 
@@ -185,28 +185,30 @@ private static InputValidator instance = new InputValidator();
     
     public boolean checkPowers(String[] exp) {
     	for (int i=1;i<exp.length;i++){
-            if(exp[i]=="^" && exp[i+1].matches("[A-Za-z]")){
+            if(exp[i].equals("^") && exp[i+1].matches("[A-Za-z]")){
                 System.out.println("Powers can not be variables");
             	return false;
             }
-    	}
+        }
+        
+
     	return true;
     }
 
     public boolean checkEqualsToSign(String[] exp){
-        if(exp[0]=="="){
+        if(exp[0].equals("=")){
             System.out.println("Equals To Sign can not be the first thing in the expression");
             return false;
         }
 
-        if(exp[exp.length-1]=="="){
+        if(exp[exp.length-1].equals("=")){
             System.out.println("Equals To Sign can not be the last thing in the expression");
             return false;
         }
 
         int count=0;
         for(int i=0;i<exp.length;i++){
-            if(exp[i]=="="){
+            if(exp[i].equals("=")){
                 count++;
             }
         }
