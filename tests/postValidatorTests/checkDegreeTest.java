@@ -1,4 +1,4 @@
-package tests.postValidatorTests;
+package InputValidatorTests;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import input.*;
@@ -46,4 +46,22 @@ public class checkDegreeTest{
 		int degree=postValidator.checkDegree(input);
 		assertEquals(0,degree);
 	}
+	
+	@Test
+	public void test7() {
+		PostValidator postValidator = PostValidator.getInstance(); 
+		String input = "x^22+x^3";
+		int degree=postValidator.checkDegree(input);
+		assertEquals(22,degree);
+	}
+	
+	@Test
+	public void test8() {
+		PostValidator postValidator = PostValidator.getInstance(); 
+		String input = "x^29+x^35";
+		int degree=postValidator.checkDegree(input);
+		assertEquals(35,degree);
+	}
+	
+	
 }

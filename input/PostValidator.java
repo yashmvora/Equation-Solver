@@ -8,7 +8,7 @@ public class PostValidator{
 		return instance;
     }
 
-        public int checkDegree(String eq){
+    public int checkDegree(String eq){
         char[] exp = eq.toCharArray();
         int degree=0;
         boolean lessthan2=true;
@@ -16,6 +16,7 @@ public class PostValidator{
         for(int i=0;i<exp.length;i++){
             if(exp[i]=='^'){
                 lessthan2=false;
+                break;
             }
         }
         
@@ -23,6 +24,7 @@ public class PostValidator{
         	for(int i=0;i<exp.length;i++) {
         		if(Character.toString(exp[i]).matches("[A-Za-z]")){
         			degree=1;
+        			break;
         		}
         	}
         }
@@ -32,18 +34,19 @@ public class PostValidator{
         		if(exp[i]=='^') {
                     int num=Character.getNumericValue(exp[i+1]);
                     int j=i+2;
-                    while (j<exp.length-1){
+                    while (j<exp.length && Character.toString(exp[j]).matches("[0-9]")){
                         num*=10;
                         num+=Character.getNumericValue(exp[j]);
                         j++;
                     }
-                    degree=Math.max(degree,Character.getNumericValue(exp[i+1]));
+                    degree=Math.max(degree,num);
         		}
         	}
         }
         
         return degree;
     }
+    
         //post validator only linear has multiple varibales quadratic and cubic dont
         public boolean checkVariables(String eq){
             char[] exp = eq.toCharArray();
