@@ -2,7 +2,8 @@
 package equation;
 
 import java.util.ArrayList;
-
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import solution.RealSolution;
 import solution.Solution;
 
@@ -58,8 +59,15 @@ public class CubicEquation extends PolynomialEquation {
 		double b = t / m;
 		double c = s / m;
 		double q = (a * a - 3 * b) / 9;
+		double truncatedQ=BigDecimal.valueOf(q*q*q)
+				    .setScale(10, RoundingMode.HALF_UP)
+				    .doubleValue();
 		double r = (2 * a * a * a - 9 * a * b + 27 * c) / 54;
-		if (r * r <=q * q * q) {
+		double truncatedR=BigDecimal.valueOf(r*r)
+				    .setScale(10, RoundingMode.HALF_UP)
+				    .doubleValue();
+		
+		if (truncatedR<=truncatedQ) {
 			t = Math.acos(r / Math.sqrt(q * q * q));
 			double x1 = -2 * Math.sqrt(q) * Math.cos(t / 3) - a / 3;
 			double x2 = -2 * Math.sqrt(q) * Math.cos((t + 2 * Math.PI) / 3) - a / 3;
