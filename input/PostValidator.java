@@ -1,13 +1,13 @@
 package input;
 import java.util.*;
-public class PostValidator{
 
-    private static PostValidator instance = new PostValidator();
+import equation.Term;
+public abstract class PostValidator{
 
-	public static PostValidator getInstance() {
-		return instance;
-    }
+   
 
+	public abstract boolean isValid(ArrayList<Term>terms);
+	
     public int checkDegree(String eq){
         char[] exp = eq.toCharArray();
         int degree=0;
@@ -46,6 +46,14 @@ public class PostValidator{
         
         return degree;
     }
+	
+//	public int checkDegree(ArrayList<Term>terms) {
+//		int result = 0;
+//		for(Term t: terms) {
+//			result = Math.max(t.getPower(), result);
+//		}
+//		return result;
+//	}
     
         //post validator only linear has multiple varibales quadratic and cubic dont
         public boolean checkVariables(String eq){
@@ -70,6 +78,23 @@ public class PostValidator{
 
             return true;
         }
+        
+        public String arrayToString(ArrayList<Term>terms) {
+    		String result ="";
+    		for(int i=0;i<terms.size();i++) {
+    			String term = terms.get(i).toString();
+    			if(term.charAt(0)!='+'&&term.charAt(0)!='-') {
+    				result+="+"+term;
+    			}
+    			else {
+    				result+=term;
+    			}
+    		}
+    		result=result.substring(1);
+    		return result;
+    	
+        }
+
 
 
         //postchecking

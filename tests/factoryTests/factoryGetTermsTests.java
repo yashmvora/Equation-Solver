@@ -108,4 +108,14 @@ public class factoryGetTermsTests {
 		ArrayList<String> strResult = toString(result);
 		assertArrayEquals(expected.toArray(), strResult.toArray());
 	}
+	@Test
+	public void testConstructor10() {
+		ArrayList<Term> result = factoryCubic.getInstance().simplifyInput("-356x^3-22x^2");
+		ArrayList<String> expected = new ArrayList<>();
+		expected.add("-356.0x^3");
+		expected.add("-22.0x^2");
+		expected.add("0.0");
+		ArrayList<String> strResult = toString(result);
+		assertArrayEquals(expected.toArray(), strResult.toArray());
+	}
 }

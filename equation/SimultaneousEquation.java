@@ -157,4 +157,8 @@ public class SimultaneousEquation {
     public double[][] getConstantMatrix() {
         return this.constMatrix;
     }
+    
+    public ArrayList<LinearEquation> getEquations(){
+    	return this.eqs;
+    }
 }

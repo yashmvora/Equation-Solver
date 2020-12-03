@@ -1,14 +1,15 @@
 
 package factory;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 
 import equation.Equation;
 import equation.QuadraticEquation;
 import equation.Term;
+import input.quadraticPostValidator;
 
 public class factoryQuadratic extends Factory {
-	
+
 	private static factoryQuadratic instance = new factoryQuadratic();
 
 	public static factoryQuadratic getInstance() {
@@ -20,8 +21,10 @@ public class factoryQuadratic extends Factory {
 
 	@Override
 	public Equation factoryMethod(String input) {
-		ArrayList<Term>terms = this.simplifyInput(input);
-		return new QuadraticEquation(terms);
+		ArrayList<Term> terms = this.simplifyInput(input);
+		if (quadraticPostValidator.getInstance().isValid(terms))
+			return new QuadraticEquation(terms);
+		return null;
 	}
 
 }

@@ -1,6 +1,8 @@
 package input;
 import java.util.*;
 
+import equation.Term;
+
 public class linearPostValidator extends PostValidator{
 
     private static linearPostValidator instance = new linearPostValidator();
@@ -9,7 +11,8 @@ public class linearPostValidator extends PostValidator{
 		return instance;
     }
 
-    public boolean isValid(String exp){
+    public boolean isValid(ArrayList<Term>terms){
+    	String exp = arrayToString(terms);
         if(checkDegree(exp)==1){
             return true;
         }

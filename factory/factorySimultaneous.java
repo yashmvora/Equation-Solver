@@ -1,11 +1,14 @@
 
 package factory;
+
 import java.util.ArrayList;
 
 import equation.*;
+import input.SimultaneousPostValidator;
+import input.quadraticPostValidator;
 
-public class factorySimultaneous{
-	
+public class factorySimultaneous {
+
 	private static factorySimultaneous instance = new factorySimultaneous();
 
 	public static factorySimultaneous getInstance() {
@@ -15,15 +18,20 @@ public class factorySimultaneous{
 	private factorySimultaneous() {
 	}
 
+	public SimultaneousEquation factoryMethod(ArrayList<String> input) {
+		ArrayList<LinearEquation> equations = new ArrayList<>();
 
-	public SimultaneousEquation factoryMethod(ArrayList<String>input) {
-		ArrayList<LinearEquation> result = new ArrayList<>();
-		
-		for(int i =0; i<input.size();i++) {
-			result.add((LinearEquation) factoryLinear.getInstance().factoryMethod(input.get(i)));
+		for (int i = 0; i < input.size(); i++) {
+			LinearEquation temp = (LinearEquation) factoryLinear.getInstance().factoryMethod(input.get(i));
+			if(temp==null) {
+				return null;
+			}
+			equations.add(temp);
 		}
-		
-		return new SimultaneousEquation(result);
+
+		if (SimultaneousPostValidator.getInstance().isValid(equations))
+			return new SimultaneousEquation(equations);
+		return null;
 	}
 
 }
