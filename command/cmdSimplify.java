@@ -1,16 +1,25 @@
 package command;
 import input.TextInput;
 import java.util.*;
+
+import equation.QuadraticEquation;
+import factory.factoryQuadratic;
 import simplify.Simplify;
+import solution.Solution;
 import input.InputProcessor;
+import input.InputValidator;
 
 public class cmdSimplify implements Command{
 	public void execute() {
-		System.out.println("Enter an expression to simplify:");
+		System.out.println("Enter an equation to simplify:");
 		Scanner abc = TextInput.getInstance().getScanner();
-		String input = abc.nextLine();
-		input = InputProcessor.getInstance().removeSpaces(input);
-		input = InputProcessor.getInstance().changeBrackets(input);
-		System.out.println("Answer:\n"+Simplify.getInstance().simplify(input));
+		String inEq = abc.nextLine();
+		if (InputValidator.getInstance().checkEqualsToSign(inEq.split(""))) {
+			inEq = InputProcessor.getInstance().handleInput(inEq);
+			if (InputValidator.getInstance().isValid(inEq)) {
+				inEq = InputProcessor.getInstance().changeBrackets(inEq);
+				System.out.println("Answer:\n"+Simplify.getInstance().simplify(inEq));
+			}
+		}
 	}
 }

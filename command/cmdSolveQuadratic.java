@@ -23,13 +23,17 @@ public class cmdSolveQuadratic implements Command {
 		String inEq = in.nextLine();
 		if (InputValidator.getInstance().checkEqualsToSign(inEq.split(""))) {
 			inEq = InputProcessor.getInstance().handleInput(inEq);
+			
 			if (InputValidator.getInstance().isValid(inEq)) {
+				
 				inEq = InputProcessor.getInstance().changeBrackets(inEq);
 				QuadraticEquation eq = (QuadraticEquation) factoryQuadratic.getInstance().factoryMethod(inEq);
 				ArrayList<Solution> solutions = eq.solve();
 				System.out.println("Answers:");
+				
 				for (Solution s : solutions)
 					System.out.println(s.toString());
+				
 			}
 		}
 	}
