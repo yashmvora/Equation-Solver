@@ -23,18 +23,20 @@ public class linearPostValidator extends PostValidator{
     }
     
     public boolean isValidSimul(ArrayList<LinearEquation> equations){
-    	HashMap<Character, Integer> variables = new HashMap<Character, Integer>();
+    	
     	for(LinearEquation eq :equations) {
+    		HashMap<Character, Integer> variables = new HashMap<Character, Integer>();
     		ArrayList<VariableTerm>terms=eq.getVTerms();
     		for(VariableTerm t:terms) {
     			variables.put(t.getVar(),t.getPower());
     		}
+    		if(variables.size()!=equations.size()) {
+        		return false;
+        	}
     	}
     	
-    	if(variables.size()==equations.size()) {
-    		return true;
-    	}
-    	return false;
+    	
+    	return true;
     	
     }
 }

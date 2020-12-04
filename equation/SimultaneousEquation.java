@@ -16,10 +16,6 @@ public class SimultaneousEquation {
         eqs = equations;
     }
 
-    public ArrayList<LinearEquation> rearrange(){
-    	
-    }
-    
     public void setMatrix () {
         // initialise the matrix from getting data from eqs
         n = eqs.size();
