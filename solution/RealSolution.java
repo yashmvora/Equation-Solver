@@ -14,7 +14,7 @@ public class RealSolution implements Solution {
 	
 	@Override
 	public String toString() {
-		return String.format("%s=%f", variable, value);
+		return String.format("%s=%.2f", variable, value);
 	}
 	
 	public Double getValue() {

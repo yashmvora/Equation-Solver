@@ -26,11 +26,11 @@ public class cmdSolveQuadratic implements Command {
 			if (InputValidator.getInstance().isValid(inEq)) {
 				inEq = InputProcessor.getInstance().changeBrackets(inEq);
 				QuadraticEquation eq = (QuadraticEquation) factoryQuadratic.getInstance().factoryMethod(inEq);
-				if(eq!=null) {
-				ArrayList<Solution> solutions = eq.solve();
-				System.out.println("Answers:");
-				for (Solution s : solutions)
-					System.out.println(s.toString());
+				if (eq != null) {
+					ArrayList<Solution> solutions = eq.solve();
+					System.out.println("Answers:");
+					for (Solution s : solutions)
+						System.out.println(s.toString());
 				}
 			}
 		}

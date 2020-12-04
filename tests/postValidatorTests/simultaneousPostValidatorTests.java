@@ -12,7 +12,7 @@ import equation.LinearEquation;
 import equation.SimultaneousEquation;
 import equation.Term;
 import equation.VariableTerm;
-import input.SimultaneousPostValidator;
+import input.linearPostValidator;
 
 public class simultaneousPostValidatorTests {
 
@@ -34,7 +34,7 @@ public class simultaneousPostValidatorTests {
 		equations.add(new LinearEquation(eq1));
 		equations.add(new LinearEquation(eq2));
 		
-      boolean result = SimultaneousPostValidator.getInstance().isValid(equations);
+      boolean result = linearPostValidator.getInstance().isValidSimul(equations);
        
         
         assertEquals(true, result);
@@ -58,7 +58,7 @@ public class simultaneousPostValidatorTests {
 		equations.add(new LinearEquation(eq1));
 		equations.add(new LinearEquation(eq2));
 		
-      boolean result = SimultaneousPostValidator.getInstance().isValid(equations);
+      boolean result = linearPostValidator.getInstance().isValidSimul(equations);
        
         
         assertEquals(false, result);

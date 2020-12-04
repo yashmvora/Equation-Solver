@@ -1,7 +1,9 @@
 package input;
 import java.util.*;
 
+import equation.LinearEquation;
 import equation.Term;
+import equation.VariableTerm;
 
 public class linearPostValidator extends PostValidator{
 
@@ -18,5 +20,21 @@ public class linearPostValidator extends PostValidator{
         }
         System.out.println("The Equation is not a Linear one");
         return false;
+    }
+    
+    public boolean isValidSimul(ArrayList<LinearEquation> equations){
+    	HashMap<Character, Integer> variables = new HashMap<Character, Integer>();
+    	for(LinearEquation eq :equations) {
+    		ArrayList<VariableTerm>terms=eq.getVTerms();
+    		for(VariableTerm t:terms) {
+    			variables.put(t.getVar(),t.getPower());
+    		}
+    	}
+    	
+    	if(variables.size()==equations.size()) {
+    		return true;
+    	}
+    	return false;
+    	
     }
 }

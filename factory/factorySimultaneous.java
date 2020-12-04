@@ -4,7 +4,7 @@ package factory;
 import java.util.ArrayList;
 
 import equation.*;
-import input.SimultaneousPostValidator;
+import input.linearPostValidator;
 import input.quadraticPostValidator;
 
 public class factorySimultaneous {
@@ -29,7 +29,7 @@ public class factorySimultaneous {
 			equations.add(temp);
 		}
 
-		if (SimultaneousPostValidator.getInstance().isValid(equations))
+		if (linearPostValidator.getInstance().isValidSimul(equations))
 			return new SimultaneousEquation(equations);
 		return null;
 	}
