@@ -1,6 +1,8 @@
 package input;
 import java.util.*;
 
+import equation.Term;
+
 public class quadraticPostValidator extends PostValidator{
 
     private static quadraticPostValidator instance = new quadraticPostValidator();
@@ -9,7 +11,8 @@ public class quadraticPostValidator extends PostValidator{
 		return instance;
     }
 
-    public boolean isValid(String exp){
+    public boolean isValid(ArrayList<Term>terms){
+    	String exp = arrayToString(terms);
         if(checkDegree(exp)!=2){
             System.out.println("Equation is not a Quadratic one");
             return false;

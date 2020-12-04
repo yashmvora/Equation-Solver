@@ -35,5 +35,40 @@ public class isValidTest {
 		boolean result = inputValidator.isValid(input);
 		assertEquals(false, result);
 	}
+	@Test
+	void test5() {
+		InputValidator inputValidator = new InputValidator();
+		String input= "(x+2)^2";
+		boolean result = inputValidator.isValid(input);
+		assertEquals(false, result);
+	}
+	@Test
+	void test6() {
+		InputValidator inputValidator = new InputValidator();
+		String input= "x5";
+		boolean result = inputValidator.isValid(input);
+		assertEquals(false, result);
+	}
+	@Test
+	void test7() {
+		InputValidator inputValidator = new InputValidator();
+		String input= "5^6";
+		boolean result = inputValidator.isValid(input);
+		assertEquals(false, result);
+	}
 
+	@Test
+	void test8() {
+		InputValidator inputValidator = new InputValidator();
+		String input= "x^y";
+		boolean result = inputValidator.isValid(input);
+		assertEquals(false, result);
+	}
+	@Test
+	void test9() {
+		InputValidator inputValidator = new InputValidator();
+		String input= "x";
+		boolean result = inputValidator.isValid(input);
+		assertEquals(true, result);
+	}
 }

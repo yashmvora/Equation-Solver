@@ -1,6 +1,10 @@
 package input;
 import java.util.*;
 
+import equation.LinearEquation;
+import equation.Term;
+import equation.VariableTerm;
+
 public class linearPostValidator extends PostValidator{
 
     private static linearPostValidator instance = new linearPostValidator();
@@ -9,11 +13,28 @@ public class linearPostValidator extends PostValidator{
 		return instance;
     }
 
-    public boolean isValid(String exp){
+    public boolean isValid(ArrayList<Term>terms){
+    	String exp = arrayToString(terms);
         if(checkDegree(exp)==1){
             return true;
         }
         System.out.println("The Equation is not a Linear one");
         return false;
+    }
+    
+    public boolean isValidSimul(ArrayList<LinearEquation> equations){
+    	HashMap<Character, Integer> variables = new HashMap<Character, Integer>();
+    	for(LinearEquation eq :equations) {
+    		ArrayList<VariableTerm>terms=eq.getVTerms();
+    		for(VariableTerm t:terms) {
+    			variables.put(t.getVar(),t.getPower());
+    		}
+    	}
+    	
+    	if(variables.size()==equations.size()) {
+    		return true;
+    	}
+    	return false;
+    	
     }
 }

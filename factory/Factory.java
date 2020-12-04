@@ -19,9 +19,9 @@ public abstract class Factory {
 		for(int i =0; i<strTerms[1].size();i++) {
 			result.add(new VariableTerm(strTerms[1].get(i)));
 		}
-		if(strTerms[0].isEmpty()) {
-			strTerms[0].add("0.0");
-		}
+//		if(strTerms[0].isEmpty()) {
+//			strTerms[0].add("0.0");
+//		}
 		result.add(new ConstantTerm(strTerms[0].get(0)));
 		return result;
 	}

@@ -6,6 +6,8 @@ import equation.Equation;
 import equation.LinearEquation;
 import equation.QuadraticEquation;
 import equation.Term;
+import input.linearPostValidator;
+import input.quadraticPostValidator;
 
 public class factoryLinear extends Factory {
 
@@ -21,7 +23,9 @@ public class factoryLinear extends Factory {
 	@Override
 	public Equation factoryMethod(String input) {
 		ArrayList<Term> terms = this.simplifyInput(input);
-		return new LinearEquation(terms);
+		if (linearPostValidator.getInstance().isValid(terms))
+			return new LinearEquation(terms);
+		return null;
 	}
 
 }
