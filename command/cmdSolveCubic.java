@@ -13,9 +13,8 @@ import solution.Solution;
 public class cmdSolveCubic implements Command {
 
 	@Override
-	public void execute() {
+	public void execute(Scanner in) {
 		System.out.println("Enter a cubic equation:");
-		Scanner in = TextInput.getInstance().getScanner();
 		String inEq = in.nextLine();
 		if (InputValidator.getInstance().checkEqualsToSign(inEq.split(""))) {
 			inEq = InputProcessor.getInstance().handleInput(inEq);

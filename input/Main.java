@@ -15,18 +15,18 @@ public class Main {
 		String input;
 		do {
 			
-			System.out.println("\n____________________________________________________\nList of available commands:\n\n1 : Simultaneous Linear Equations\n2: Quadratic Equation\n3: Cubic Equation\n4: Simplify an expression\n-1: Terminate the program\n\nEnter a command to solve equations or terminate:");
+			System.out.println("\n____________________________________________________\nList of available commands:\n\n1 : Simultaneous Linear Equations\n2: Quadratic Equation\n3: Cubic Equation\n4: Simplify an equation\n-1: Terminate the program\n\nEnter a command to solve equations or terminate:");
 					
 			input = in.nextLine();
 			if (input.equals("1")) {
-				new cmdSolveLinear().execute();
+				new cmdSolveLinear().execute(in);
 			} else if (input.equals("2")) {
-				new cmdSolveQuadratic().execute();
+				new cmdSolveQuadratic().execute(in);
 			} else if (input.equals("3")) {
-				new cmdSolveCubic().execute();
+				new cmdSolveCubic().execute(in);
 			}
 			else if(input.equals("4")) {
-				new cmdSimplify().execute();
+				new cmdSimplify().execute(in);
 			}
 			else if(input.equals("-1")) {
 				System.out.println("Thank you for using the Equation Solver. Have a good day!");

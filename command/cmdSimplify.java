@@ -10,9 +10,8 @@ import input.InputProcessor;
 import input.InputValidator;
 
 public class cmdSimplify implements Command{
-	public void execute() {
+	public void execute(Scanner abc) {
 		System.out.println("Enter an equation to simplify:");
-		Scanner abc = TextInput.getInstance().getScanner();
 		String inEq = abc.nextLine();
 		if (InputValidator.getInstance().checkEqualsToSign(inEq.split(""))) {
 			inEq = InputProcessor.getInstance().handleInput(inEq);

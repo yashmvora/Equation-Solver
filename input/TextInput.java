@@ -9,6 +9,7 @@ public class TextInput {
 	private TextInput() {
 		in = new Scanner(System.in);
 	}
+	
 	public static TextInput getInstance() {
 		return ins;
 	}

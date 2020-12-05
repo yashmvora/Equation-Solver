@@ -17,8 +17,7 @@ import solution.Solution;
 public class cmdSolveQuadratic implements Command {
 
 	@Override
-	public void execute() {
-		Scanner in = TextInput.getInstance().getScanner();
+	public void execute(Scanner in) {
 		System.out.println("Enter a quadratic equation:");
 		String inEq = in.nextLine();
 		if (InputValidator.getInstance().checkEqualsToSign(inEq.split(""))) {

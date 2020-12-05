@@ -15,10 +15,9 @@ import solution.Solution;
 
 public class cmdSolveLinear implements Command {
 	@Override
-	public void execute() {
+	public void execute(Scanner in) {
 		ArrayList<String> inEqs = new ArrayList<>();
 		String temp;
-		Scanner in = TextInput.getInstance().getScanner();
 		boolean valid = true;
 		do {
 			temp = in.nextLine();
