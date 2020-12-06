@@ -171,7 +171,7 @@ private static InputValidator instance = new InputValidator();
     }
     
     public boolean checkAfterBrackets(String[] exp) {
-    	for(int i=0;i<exp.length;i++){
+    	for(int i=0;i<exp.length-1;i++){
             if (exp[i].equals("(") && exp[i+1].equals("^")){
                 System.out.println("Can not raise brackets to a power");
                 return false;

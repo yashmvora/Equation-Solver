@@ -14,7 +14,7 @@ import command.cmdSolveQuadratic;
 public class cmdSolveQuadraticTest {
 	
 	@Test
-	public void test1() {
+	public void test1() throws Exception{
 		setOutput();
 		Scanner in = new Scanner("x^2+4x+4=0");
 		new cmdSolveQuadratic().execute(in);
