@@ -64,5 +64,29 @@ public class simultaneousPostValidatorTests {
         assertEquals(false, result);
 		
     }
+	
+	@Test
+	public void test_3() {
+
+		ArrayList<Term> eq1= new ArrayList<>(); 
+		eq1.add(new VariableTerm("x"));
+		eq1.add(new VariableTerm("-2y"));
+		eq1.add(new ConstantTerm("5"));
+		
+		ArrayList<Term>eq2= new ArrayList<>();
+		eq2.add(new VariableTerm("x"));
+		eq2.add(new ConstantTerm("-3"));
+		
+
+		ArrayList<LinearEquation> equations = new ArrayList<>();
+		equations.add(new LinearEquation(eq1));
+		equations.add(new LinearEquation(eq2));
+		
+      boolean result = linearPostValidator.getInstance().isValidSimul(equations);
+       
+        
+        assertEquals(false, result);
+		
+    }
 
 }
