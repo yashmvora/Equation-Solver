@@ -28,12 +28,4 @@ public class checkVariablesTest{
 		boolean result=postValidator.checkVariables(input);
 		assertEquals(false,result);
 	}
-
-	@Test
-	public void test4() {
-		quadraticPostValidator postValidator = quadraticPostValidator.getInstance(); 
-		String input = "3";
-		boolean result=postValidator.checkVariables(input);
-		assertEquals(false,result);
-	}
 }
