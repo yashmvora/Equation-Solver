@@ -116,7 +116,7 @@ private static InputValidator instance = new InputValidator();
 
     public boolean checkInvalidChars(String[] exp){
         for (int i=0;i<exp.length;i++){
-        if (exp[i].matches("[A-Za-z0-9*^+()-.]")){
+        if (exp[i].matches("[A-Za-z0-9*^+()-.{}//[//]]")){
            continue; 
         } else{ 
             System.out.println(exp[i]+" is an Invalid Character");
