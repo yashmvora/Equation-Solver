@@ -17,19 +17,19 @@ private static InputValidator instance = new InputValidator();
     public boolean isValid(String e) {
             String[] exp = e.split("");
             if(!checkVariable(exp)){
-            	System.out.println("There needs to be at least one variable in the equation");
+         
                 return false;
             }
             if(!checkInvalidChars(exp)){
-            	System.out.println("Invalid Characters!");
+            
                 return false;
             }
             if (!bracketsValid(exp)) {
-            	System.out.println("Invalid Brackets!");
+            	
                 return false;
             }
             if(!operatorsValid(exp)){
-            	System.out.println("Invalid Operators!");
+            	
                 return false;
             }
             if (!checkDecimal(exp)) {
@@ -231,6 +231,7 @@ private static InputValidator instance = new InputValidator();
     			return true;
     		}
     	}
+       	System.out.println("There needs to be at least one variable in the equation");
     	return false;
     }
 }
