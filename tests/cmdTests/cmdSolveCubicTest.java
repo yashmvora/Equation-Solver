@@ -10,42 +10,34 @@ import java.util.Scanner;
 import org.junit.Test;
 
 import command.cmdSolveCubic;
-import command.cmdSolveQuadratic;
 
-public class cmdSolveQuadraticTest {
+public class cmdSolveCubicTest {
 	
 	@Test
 	public void test1() throws Exception{
 		setOutput();
-		Scanner in = new Scanner("x^2+4x+4=0");
-		new cmdSolveQuadratic().execute(in);
-		assertEquals("x=-2.00",getOutput().substring(getOutput().length()-7));
+		Scanner in = new Scanner("(x-2)(x+3)(x+4)=0");
+		new cmdSolveCubic().execute(in);
+		assertEquals("x=-4.00, x=2.00, x=-3.00",getOutput().substring(getOutput().length()-24));
 		
 	}
-	
 	@Test
 	public void test2() throws Exception{
 		setOutput();
-		Scanner in = new Scanner("(x-1)(x+2)=0");
-		new cmdSolveQuadratic().execute(in);
-		assertEquals("x=1.00, x=-2.00", getOutput().substring(getOutput().length()-15));
-	}
-	@Test
-	public void test3() throws Exception{
-		setOutput();
 		Scanner in = new Scanner("(x-2)(x+3)(x+4)0");
-		new cmdSolveQuadratic().execute(in);
+		new cmdSolveCubic().execute(in);
 		assertEquals("There needs to be only one Equals To Sign",getOutput().substring(getOutput().length()-43,getOutput().length()-2));
 		
 	}
 	@Test
-	public void test4() throws Exception{
+	public void test3() throws Exception{
 		setOutput();
 		Scanner in = new Scanner("(x-2)!(x+3)(x+4)=0");
-		new cmdSolveQuadratic().execute(in);
+		new cmdSolveCubic().execute(in);
 		assertEquals("Invalid Characters!",getOutput().substring(getOutput().length()-21,getOutput().length()-2));
 		
 	}
+	
 	//Output checking support
 	PrintStream oldPrintStream;
 	ByteArrayOutputStream bos;

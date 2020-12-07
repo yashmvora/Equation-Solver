@@ -31,8 +31,11 @@ public class cmdSolveQuadratic implements Command {
 				if (eq != null) {
 					ArrayList<Solution> solutions = eq.solve();
 					System.out.println("Answers:");
-					for (Solution s : solutions)
-						System.out.println(s.toString());
+					for (int i=0;i<solutions.size();i++)
+						if(i<solutions.size()-1)
+							System.out.print(solutions.get(i).toString()+", ");
+						else
+							System.out.print(solutions.get(i).toString());
 				}
 			}
 		}

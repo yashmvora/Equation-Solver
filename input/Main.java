@@ -9,9 +9,15 @@ import command.cmdSolveQuadratic;
 
 public class Main {
 	public static void main(String[] args) {
+		Scanner in;
 		System.out.println("Hi! I am your best buddy, the Equation Solver!");
 		System.out.println("This program can simplify the equations you input and then solve them for you!");
-		Scanner in = TextInput.getInstance().getScanner();
+		if(args.length>0) {
+			 in = new Scanner("test1.txt");
+		}
+		else {
+			 in = TextInput.getInstance().getScanner();
+		}
 		String input;
 		do {
 			

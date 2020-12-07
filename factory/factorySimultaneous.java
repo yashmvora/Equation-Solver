@@ -31,6 +31,8 @@ public class factorySimultaneous {
 
 		if (linearPostValidator.getInstance().isValidSimul(equations))
 			return new SimultaneousEquation(equations);
+		else
+			System.out.println("Invalid set of equations. All equations should have all variables (input variables with coefficient 0 if they are not a part of that equation).");
 		return null;
 	}
 
