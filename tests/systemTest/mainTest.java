@@ -46,7 +46,7 @@ public class mainTest {
 		String[] array= {"test"};
 		new Main().main(array);
 		file.delete();
-		assertEquals("x=-1.67, y=3.33",getOutput().substring(getOutput().length()-332,getOutput().length()-317));
+		assertEquals("x=1.67, y=-3.33",getOutput().substring(getOutput().length()-332,getOutput().length()-317));
 		
 	}
 	@Test

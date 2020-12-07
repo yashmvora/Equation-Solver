@@ -46,7 +46,7 @@ public class cmdSolveLinearTest {
 		
 		new cmdSolveLinear().execute(ob);
 		file.delete();
-		assertEquals("x=-1.67, y=3.33",getOutput().substring(getOutput().length()-15));
+		assertEquals("x=1.67, y=-3.33",getOutput().substring(getOutput().length()-15));
 		
 	}
 	
