@@ -8,7 +8,7 @@ public class checkVariablesTest{
 	@Test
 	public void test1() {
 		quadraticPostValidator postValidator = quadraticPostValidator.getInstance(); 
-		String input = "x+y=5";
+		String input = "x+y-5";
 		boolean result=postValidator.checkVariables(input);
 		assertEquals(true,result);
 	}
@@ -16,7 +16,7 @@ public class checkVariablesTest{
 	@Test
 	public void test2() {
 		quadraticPostValidator postValidator = quadraticPostValidator.getInstance(); 
-		String input = "x^2+y=5";
+		String input = "x^2+y-5";
 		boolean result=postValidator.checkVariables(input);
 		assertEquals(false,result);
 	}
@@ -24,7 +24,15 @@ public class checkVariablesTest{
 	@Test
 	public void test3() {
 		quadraticPostValidator postValidator = quadraticPostValidator.getInstance(); 
-		String input = "x^3+z^2+z+y=5";
+		String input = "x^3+z^2+z+y-5";
+		boolean result=postValidator.checkVariables(input);
+		assertEquals(false,result);
+	}
+
+	@Test
+	public void test4() {
+		quadraticPostValidator postValidator = quadraticPostValidator.getInstance(); 
+		String input = "3";
 		boolean result=postValidator.checkVariables(input);
 		assertEquals(false,result);
 	}
