@@ -36,8 +36,8 @@ public class SolveSimultaneousEquationTest {
 	public void test_1() {
         
         double[][] expected = {
-            {-11}, 
-            {-8}, 
+            {11}, 
+            {8}, 
         };
 
 		ArrayList<Term> eq1= new ArrayList<>(); 
@@ -65,8 +65,8 @@ public class SolveSimultaneousEquationTest {
 	public void test_2() {
         
         double[][] expected = {
-            {0.9999999999999998}, 
-            {-4}, 
+            {-0.9999999999999998}, 
+            {4}, 
         };
 
 		ArrayList<Term> eq1= new ArrayList<>();
@@ -94,9 +94,9 @@ public class SolveSimultaneousEquationTest {
 	public void test_3() {
         
         double[][] expected = {
-        		{-0.9999999999999996}, 
-                {-4},
-                {1.9999999999999998}, 
+        		{0.9999999999999996}, 
+                {4},
+                {-1.9999999999999998}, 
         };
 
         ArrayList<Term> eq1= new ArrayList<>();

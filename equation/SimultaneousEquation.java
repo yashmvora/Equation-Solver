@@ -55,7 +55,7 @@ public class SimultaneousEquation {
         }
         
         for (int i = 0; i < n; i++) {
-        	answer.add(new RealSolution(eqs.get(0).getVTerms().get(i).getVar(), result[i][0]));
+        	answer.add(new RealSolution(eqs.get(0).getVTerms().get(i).getVar(), -1*result[i][0]));
         }
         
         return answer;
