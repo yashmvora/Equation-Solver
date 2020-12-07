@@ -10,21 +10,22 @@ public class isValidTest {
 	@Test
 	void test1() {
 		InputValidator inputValidator = new InputValidator();
-		String input= "$";
+		String input= "x $";
 		boolean result = inputValidator.isValid(input);
 		assertEquals(false, result);
 	}
+	
 	@Test
 	void test2() {
 		InputValidator inputValidator = new InputValidator();
-		String input= "(";
+		String input= "(x";
 		boolean result = inputValidator.isValid(input);
 		assertEquals(false, result);
 	}
 	@Test
 	void test3() {
 		InputValidator inputValidator = new InputValidator();
-		String input= "2+";
+		String input= "x+2+";
 		boolean result = inputValidator.isValid(input);
 		assertEquals(false, result);
 	}
@@ -52,7 +53,7 @@ public class isValidTest {
 	@Test
 	void test7() {
 		InputValidator inputValidator = new InputValidator();
-		String input= "5^6";
+		String input= "5^6x";
 		boolean result = inputValidator.isValid(input);
 		assertEquals(false, result);
 	}
@@ -70,5 +71,12 @@ public class isValidTest {
 		String input= "x";
 		boolean result = inputValidator.isValid(input);
 		assertEquals(true, result);
+	}
+	@Test
+	void test10() {
+		InputValidator inputValidator = new InputValidator();
+		String input= "5";
+		boolean result = inputValidator.isValid(input);
+		assertEquals(false, result);
 	}
 }

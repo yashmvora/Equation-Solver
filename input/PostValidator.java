@@ -57,10 +57,6 @@ public abstract class PostValidator{
     
         //post validator only linear has multiple varibales quadratic and cubic dont
         public boolean checkVariables(String eq){
-            if (!eq.matches("[A-Za-z]")){
-                System.out.println("There needs to be atleast one variable in the equation");
-                return false;
-            }
             char[] exp = eq.toCharArray();
             int degree=checkDegree(eq);
             HashMap<Character, Integer> variables = new HashMap<Character, Integer>();

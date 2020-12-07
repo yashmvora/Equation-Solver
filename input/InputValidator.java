@@ -16,6 +16,10 @@ private static InputValidator instance = new InputValidator();
     
     public boolean isValid(String e) {
             String[] exp = e.split("");
+            if(!checkVariable(exp)){
+            	System.out.println("There needs to be at least one variable in the equation");
+                return false;
+            }
             if(!checkInvalidChars(exp)){
             	System.out.println("Invalid Characters!");
                 return false;
@@ -219,6 +223,15 @@ private static InputValidator instance = new InputValidator();
         }
 
         return true;
+    }
+    
+    public boolean checkVariable(String[] exp) {
+    	for (int i=0;i<exp.length;i++) {
+    		if(exp[i].matches("[A-Za-z]")) {
+    			return true;
+    		}
+    	}
+    	return false;
     }
 }
 
