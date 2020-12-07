@@ -17,7 +17,7 @@ public class cmdSimplify implements Command{
 			inEq = InputProcessor.getInstance().handleInput(inEq);
 			if (InputValidator.getInstance().isValid(inEq)) {
 				inEq = InputProcessor.getInstance().changeBrackets(inEq);
-				System.out.println("Answer:\n"+Simplify.getInstance().simplify(inEq));
+				System.out.println("Answer:\n"+Simplify.getInstance().simplify(inEq)+"=0.0");
 			}
 		}
 	}

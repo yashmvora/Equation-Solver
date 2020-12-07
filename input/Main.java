@@ -2,6 +2,7 @@ package input;
 
 import java.util.*;
 
+import java.io.File;
 import command.cmdSimplify;
 import command.cmdSolveCubic;
 import command.cmdSolveLinear;
@@ -9,11 +10,16 @@ import command.cmdSolveQuadratic;
 
 public class Main {
 	public static void main(String[] args) {
-		Scanner in;
+		Scanner in = null;
 		System.out.println("Hi! I am your best buddy, the Equation Solver!");
 		System.out.println("This program can simplify the equations you input and then solve them for you!");
 		if(args.length>0) {
-			 in = new Scanner("test1.txt");
+			 try {
+				in = new Scanner(new File("test1.txt"));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		else {
 			 in = TextInput.getInstance().getScanner();

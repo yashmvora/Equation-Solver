@@ -46,7 +46,55 @@ public class mainTest {
 		String[] array= {"test"};
 		new Main().main(array);
 		file.delete();
-		assertEquals("x=-1.67, y=3.33",getOutput().substring(getOutput().length()-15));
+		assertEquals("x=-1.67, y=3.33",getOutput().substring(getOutput().length()-332,getOutput().length()-317));
+		
+	}
+	@Test
+	public void test2() throws Exception{
+		setOutput();
+		File file = createFile("test1.txt");
+		write(file, "2\n(x-1)(x-2)=0\n-1");
+		Scanner ob = new Scanner(file);
+		String[] array= {"test"};
+		new Main().main(array);
+		file.delete();
+		assertEquals("x=2.00, x=1.00",getOutput().substring(getOutput().length()-331,getOutput().length()-317));
+		
+	}
+	@Test
+	public void test3() throws Exception{
+		setOutput();
+		File file = createFile("test1.txt");
+		write(file, "3\n(x-1)(x-2)(x+3)=0\n-1");
+		Scanner ob = new Scanner(file);
+		String[] array= {"test"};
+		new Main().main(array);
+		file.delete();
+		assertEquals("x=-3.00, x=2.00, x=1.00",getOutput().substring(getOutput().length()-340,getOutput().length()-317));
+		
+	}
+	@Test
+	public void test4() throws Exception{
+		setOutput();
+		File file = createFile("test1.txt");
+		write(file, "4\n(x-1)(x-2)(x+3)=0\n-1");
+		Scanner ob = new Scanner(file);
+		String[] array= {"test"};
+		new Main().main(array);
+		file.delete();
+		assertEquals("-7.0x+0.0x^2+1.0x^3+6.0=0.0",getOutput().substring(getOutput().length()-346,getOutput().length()-319));
+		
+	}
+	@Test
+	public void test5() throws Exception{
+		setOutput();
+		File file = createFile("test1.txt");
+		write(file, "5\n(x-1)(x-2)(x+3)=0\n-1");
+		Scanner ob = new Scanner(file);
+		String[] array= {"test"};
+		new Main().main(array);
+		file.delete();
+		assertEquals("Invalid choice.",getOutput().substring(getOutput().length()-334,getOutput().length()-319));
 		
 	}
 	
