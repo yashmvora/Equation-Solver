@@ -1,9 +1,10 @@
 # Equation Solver
 
 Equation Roots Calculator
-1. Linear
+1. Simultaneous Linear
 2. Quadratic 
-3. Polynomial
+3. Cubic
+4. Simplify an equation
 
 FLOW  
 - User input (type of equation)
